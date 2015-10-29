@@ -1,0 +1,11 @@
+﻿<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<div class="row auction_house">
+    <ul class="nav nav-pills nav-justified">
+        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "VehiclesIBought" ? "active" : "")"><a href='@Url.Action("VehiclesIBought", "Buyer")'>Vehicles I have bought</a></li>
+        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "VehiclesIAmSelling" ? "active" : "")"><a href='@Url.Action("VehiclesIAmSelling", "Buyer")'>Vehicles I'm Selling</a></li>
+        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "VehiclesShortlisted" ? "active" : "")"><a href='@Url.Action("VehiclesShortlisted", "Buyer")'>Shortlisted Vehicles</a></li>
+        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "VehiclesOffersMade" ? "active" : "")"><a href='@Url.Action("VehiclesOffersMade", "Buyer")'>Offers made</a></li>
+        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "BuyerAccount" ? "active" : "")"><a href='@Url.Action("BuyerAccount", "Buyer")'>Accounts</a></li>
+    </ul>
+</div>

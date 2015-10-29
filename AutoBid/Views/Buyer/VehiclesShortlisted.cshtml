@@ -1,0 +1,114 @@
+﻿@model List<AutoBid.Models.CarBuyer.CarBuyerInfoModel>
+@{
+    ViewBag.Title = "Shortlisted Vehicles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="container">
+        @Html.Partial("_BuyerLink")
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row auction_house_content">
+
+                    <h1>Vehicles Shortlisted</h1>
+                    <div class="col-md-12">
+                        <table width="100%" id="VehiclesShortlisted" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th>Sale Date</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int count = 1;
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td width="1%">@Html.Label(count.ToString())</td>
+                                            <td width="24%"><img src="@item.BuyerImage" alt="@item.BuyerImage" class="thumbnail" width="100%" />   </td>
+                                            <td width="20%">@item.Title</td>
+                                            @if(@item.WayOfSellingID==1)
+                                            {
+                                                <td width="15%">@item.WayOfSelling</td>
+                                            }
+                                            else
+                                            { 
+                                            <td width="15%">@item.BuyDate</td>
+                                            }
+                                            
+                                            <td width="15%">£ @item.BuyingPrice </td>
+                                            <td width="25%">
+                                               @if(@item.WayOfSellingID==2)
+                                                {
+                                                <div class="increaseOffer">
+                                                    <a class="btn btn-info" href="javascript:void(0)"><span class="fa fa-mail-reply"></span>Contact Auction</a>
+                                                </div>
+
+                                                <div class="makeCounterOffer">
+                                                    <a class="btn btn-info" href="javascript:void(0)"><span class="fa fa-gavel"></span>Commission Bid</a>
+                                                </div>
+                                                <div class="makeCounterOffer">
+                                                    <a class="btn btn-info" href="javascript:void(0)">
+                                                        <span class="fa fa-eye"></span>
+                                                        View other vehicles in sales
+                                                    </a>
+                                                </div>
+                                                <div class="makeCounterOffer">
+                                                    <a class="btn btn-info" href="javascript:void(0)">
+                                                        <span class="fa fa-user"></span>
+                                                        Send to a friend
+                                                    </a>
+                                                </div>
+                                                <div class="makeCounterOffer">
+                                                    <a class="btn btn-info" href="/CarDetails/Index/@item.EncodedVehicleID">
+                                                        <span class="fa fa-list"></span>
+                                                        See details
+                                                    </a>
+                                                </div>
+                                                }
+                                                else
+                                                {
+                                                <div class="increaseOffer">
+                                                    <a class="btn btn-warning" href="javascript:void(0)">Make an offer</a>
+                                                </div>
+
+                                                <div class="makeCounterOffer">
+                                                    <a class="btn btn-info" href="/CarDetails/Index/@item.EncodedVehicleID">
+                                                        <span class="fa fa-list"></span>
+                                                        See details
+                                                    </a>
+                                                </div>
+                                    }
+                                            </td>
+                                        </tr>
+                                        count = count + 1;
+                                }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#VehiclesShortlisted').dataTable();
+    });
+</script>

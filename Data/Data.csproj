@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{628C9F47-3A5C-40CF-AC27-D2A4FB3A44E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\Core\bin\Debug\Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EfRepository.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseCarSellingMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseCarSellingFuleTypesMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseCarSellingInteriorTrimMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseCarSellingServiceHistoryMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseCarSellingTransmissionTypeMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseCarSellingVehicleImagesMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseCarSellingVehicleImagesMoreMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseMap.cs" />
+    <Compile Include="Mapping\Auction\AuctionHouseSaleMap.cs" />
+    <Compile Include="Mapping\CarBuyersInfo\CarBuyerInfoMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerDocumentMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerInfoMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerMoreDetailMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerPackageMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerTypeMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerVehicleFuelTypeMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerVehicleImageMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellerVehicleInfoMap.cs" />
+    <Compile Include="Mapping\CarSeller\CarSellingOnMap.cs" />
+    <Compile Include="Mapping\CarSeller\SaleDateMap.cs" />
+    <Compile Include="Mapping\Company\CompanyCategoryMap.cs" />
+    <Compile Include="Mapping\Company\CompanyTypeMap.cs" />
+    <Compile Include="Mapping\Misc\BodyTypeMap.cs" />
+    <Compile Include="Mapping\Misc\CheckStatusMap.cs" />
+    <Compile Include="Mapping\Misc\CityMap.cs" />
+    <Compile Include="Mapping\Misc\CountryMap.cs" />
+    <Compile Include="Mapping\Misc\EngineSizeMap.cs" />
+    <Compile Include="Mapping\Misc\FuelTypeMap.cs" />
+    <Compile Include="Mapping\Misc\ImageSizeMap.cs" />
+    <Compile Include="Mapping\Misc\InteriorTrimMap.cs" />
+    <Compile Include="Mapping\Misc\MakeMap.cs" />
+    <Compile Include="Mapping\Misc\MIMETypeMap.cs" />
+    <Compile Include="Mapping\Misc\CarModelMap.cs" />
+    <Compile Include="Mapping\Misc\ServiceHistoryAuctionMap.cs" />
+    <Compile Include="Mapping\Misc\TransmissionTypeMap.cs" />
+    <Compile Include="Mapping\Seller\SellerCardDetailMap.cs" />
+    <Compile Include="Mapping\Seller\SellerCompanyInfoMap.cs" />
+    <Compile Include="Mapping\Seller\SellerCompanyLogoMap.cs" />
+    <Compile Include="Mapping\Seller\SellerInfoMap.cs" />
+    <Compile Include="Mapping\Seller\SellerPersonalInfoMap.cs" />
+    <Compile Include="Mapping\User\AspNetRoleMap.cs" />
+    <Compile Include="Mapping\User\AspNetUserClaimMap.cs" />
+    <Compile Include="Mapping\User\AspNetUserLoginMap.cs" />
+    <Compile Include="Mapping\User\AspNetUserMap.cs" />
+    <Compile Include="Mapping\User\AspNetUserRolesMap.cs" />
+    <Compile Include="Mapping\User\AspNetUsersAdditionalInfoMap.cs" />
+    <Compile Include="Mapping\User\AspNetUsersANDUserTypesMappingMap.cs" />
+    <Compile Include="Mapping\User\UserProfileMap.cs" />
+    <Compile Include="Mapping\User\UserTypeMap.cs" />
+    <Compile Include="ObjectContext.cs" />
+    <Compile Include="IDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

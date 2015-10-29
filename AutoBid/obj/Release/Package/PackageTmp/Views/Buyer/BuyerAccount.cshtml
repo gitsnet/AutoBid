@@ -1,0 +1,106 @@
+﻿@model AutoBid.Models.CarBuyer.CarBuyerPersonalInfoModel
+@{
+    ViewBag.Title = "BuyerAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="section">
+    <div class="container buyeraccountwrap">
+        @Html.Partial("_BuyerLink")
+        <div class="row">
+            <div class="col-md-3">
+
+                <ul class="nav bs-docs-sidenav accountmenu">
+                    <li class="active"><a href="javascript:void(0);" class="btn-primary" onclick="AccountNavChange('personal',this)">Personal Information</a></li>
+                    <li><a href="javascript:void(0);" class="btn-primary" onclick="AccountNavChange('address', this)">Addresses</a></li>
+                    <li><a href="javascript:void(0);" class="btn-primary" onclick="AccountNavChange('payment', this)">Payment Information</a></li>
+                    @*<li><a href="#" class="btn-primary" onclick="AccountNavChange('personal')">Customer Services</a></li>*@
+                </ul>
+            </div>
+            <div class="col-md-9 accountcontent">
+                <div class="row auction_house_content">
+                    <div class="formbg2 mb20">
+                        <div class="paymentDetails" id="accPersonal">
+                            <div class="sellerfg_header">
+                                Personal Information
+                            </div>
+                            <div class="inforow  headermagin">
+                                <div class="row">
+                                    <div class="col-md-3"><strong>Name:</strong></div>
+                                    <div class="col-md-9">@Model.Title @Model.FirstName @Model.LastName</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"><strong>Email:</strong></div>
+                                    <div class="col-md-9">@Model.Email</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"><strong>Contact No:</strong></div>
+                                    <div class="col-md-9">@Model.ContactNo</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paymentDetails" id="accAddress" style="display:none;">
+                            <div class="sellerfg_header">
+                               Address
+                            </div>
+                            <div class="inforow  headermagin">
+                                <div class="row">
+                                    <div class="col-md-3"><strong>Address:</strong></div>
+                                    <div class="col-md-9">@Model.Address</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"><strong>Postal Code:</strong></div>
+                                    <div class="col-md-9">@Model.PostalCode</div>
+                                </div>
+                                @*<div class="row">
+                                    <div class="col-md-3"><strong>Contact No:</strong></div>
+                                    <div class="col-md-9">@Model.ContactNo</div>
+                                </div>*@
+                            </div>
+                        </div>
+                        <div class="paymentDetails" id="accPayment" style="display:none;">
+                            <div class="sellerfg_header">
+                                Payment Information
+                            </div>
+                            <div class="inforow  headermagin">
+                                <div class="row">
+                                    <div class="col-md-3"><strong>No Information Available</strong></div>
+                                    <div class="col-md-9"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"><strong></strong></div>
+                                    <div class="col-md-9"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"><strong></strong></div>
+                                    <div class="col-md-9"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var AccountNavChange = function (type,that) {
+        $(".accountmenu>li").removeClass("active");
+        $(that).parent().addClass("active")
+        if (type.toLowerCase() == "personal")
+        {
+            $("#accPersonal").show();
+            $("#accAddress").hide();
+            $("#accPayment").hide();
+        }
+        else if (type.toLowerCase() == "address") {
+            $("#accAddress").show();
+            $("#accPersonal").hide();
+            $("#accPayment").hide();
+        }
+        else if (type.toLowerCase() == "payment") {
+            $("#accPayment").show();
+            $("#accAddress").hide();
+            $("#accPersonal").hide();
+        }
+    }
+</script>

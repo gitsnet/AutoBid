@@ -1,0 +1,244 @@
+﻿@model AutoBid.Models.Auction.AuctionHouseModel
+@{
+    ViewBag.Title = "Auction House Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="modal fade" id="termsmodal" tabindex="-1" role="dialog" aria-labelledby="termsmodalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    @Model.TermsCondition
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="auctionHouseBuyeerFee" class="modal fade " role="dialog">
+        <div class="modal-dialog" style="width:70%">
+            <div class="modal-content ">
+                <div class="modal-header bg-blue-soft ">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>Auction House Buyeer Fee</b></h4>
+                </div>
+
+                <div class="modal-body ">
+                    <div id="msg" style="display:none;"></div>
+                    <div id="content"></div>
+                    <div class="row">
+                        @Html.HiddenFor(m => m.AuctionHouseID, new { @id = "hdnAuctionHouseID" })
+                        <div class="col-md-8">
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="inputDate">Buyer Fee</label>
+
+                                @Html.TextBoxFor(m => m.Buyer_Fees, new { @class = "form-control", placeholder = "Enter Buyeer Fee", id = "txtBuyeerFee" })
+                                @Html.ValidationMessageFor(m=>m.Buyer_Fees)
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="UpdateAucSale" class="btn btn-success ladda-button" data-style="expand-left">Update</button>
+                        <button type="button" id="CancelAucSale" class="btn btn-success ladda-button" data-style="expand-left">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        @Html.Partial("_AuctionHouseVehicleMenu")
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="row auctionhouse_profile">
+
+                    <div class="header">
+                        <h1>@Model.AuctionHouseName</h1>
+                        <span class="right">@Model.ContactNo</span>
+                        <span class="right">@Model.Address</span>
+                    </div>
+                    <div class="content">
+
+
+                        <span class="right socialnetwork"><i class="fa fa-facebook facebook"></i> <i class="fa fa-twitter twitter"></i></span>
+                        <h3>About Auction House</h3>
+
+                        <div class="divider"></div>
+                        <div class="left" style="width:27%;">
+                            @if (Model.Logo != null && Model.Logo != "")
+                            {
+                                <img src="~/Content/Assets/AuctionHouseImages/@Model.Logo" class="thumbnail" width="86%">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/noimage.jpg" class="thumbnail" width="86%">
+                            }
+                        </div>
+                        <p>@Model.About</p>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="terms">@Model.AuctionHouseName <a href="javascript:void(0);" id="linkTerms">Terms and Condition</a> - Please read before using live bid</div>
+
+                    <div class="adbanner2">
+                        <span>Ad Banner</span>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4 auctionhouse_profile_sidebar">
+                <div class="rightsidebar_box1">
+                    <div class="header">
+                        <h1>Visit Auction Website</h1>
+                        <p><a href="javascript:void(0);" onclick="newTab();">@Model.WebSite</a></p>
+                    </div>
+                    <div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+                            <tr>
+                                <th>Mail Us @@ :</th>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <th>Next Live Sale :</th>
+                                <td class="time">Jun-20-2014   6:15 pm <span class="badge">LIVE</span></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+
+                <div class="rightsidebar_box2">
+                    <div class="header">
+                        <h1>Next Auctions</h1>
+
+                    </div>
+                    <div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+                            @if (Model.AuctionHouseSaleList.Count > 0)
+                            {
+                                foreach (var sale in Model.AuctionHouseSaleList)
+                                {
+                                    <tr>
+                                        <th>@(sale.Title +" - "+ Convert.ToDateTime(sale.SaleDate).ToString("MMMM-dd-yyyy"))</th>
+                                        @*<td>@(sale.AuctionHouseCarSellingList.Count) vehicles </td>*@
+                                    </tr>
+                                }
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="rightsidebar_box3 btn">
+                    <img src="~/Content/images/cta_icon.jpg" width="24" height="24"> Current Timed Auction <span class="fa fa-chevron-right rightsidebar_box_arrow"></span>
+
+                </div>
+
+                <div class="rightsidebar_box4 btn" id="divImgBuyeerFee">
+                    <img src="~/Content/images/sbf_icon.jpg" width="27" height="27" />  See Buyer Fee <span class="fa fa-chevron-right rightsidebar_box_arrow"></span>
+                   
+                </div>
+
+                <div class="rightsidebar_box5 btn">
+                    <img src="~/Content/images/scaa_icon.jpg" width="36" height="22"> Sell Your Car At This Auction <span class="fa fa-chevron-right rightsidebar_box_arrow"></span>
+                </div>
+
+                <div class="rightsidebar_box6 btn">
+                    <span class="fa fa-comments chat"></span> Live Chat <span class="fa fa-angle-right rightsidebar_box_arrow"></span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+<script type="text/javascript">
+    $("#linkTerms").on("click", function () {
+        $("#termsmodal").modal("show");
+    });
+
+    function newTab() {
+        window.open('http://www.camberleycarauctions.co.uk', '_blank');
+    }
+
+    $("#divImgBuyeerFee").click(function () {
+        console.log("img");
+        
+        $('#auctionHouseBuyeerFee').modal("show");
+
+    });
+
+    $('#UpdateAucSale').click(function () {
+
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtBuyeerFee').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "Buyer_Fees": aucname },
+            url: '@Url.Action("UpdateAucHouseBuyerFee", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                $('#auctionHouseBuyeerFee').modal("hide");
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        $('#txtBuyeerFee').val = result.Buyer_Fees;
+                        console.log($('#txtBuyeerFee').val());
+                        
+                    }
+                });
+            }
+
+        });
+    });
+
+    $('#CancelAucSale').click(function () {
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                $('#txtBuyeerFee').val(" ");
+                console.log($('#txtBuyeerFee').val());
+
+            }
+        });
+
+
+    });
+
+
+</script>

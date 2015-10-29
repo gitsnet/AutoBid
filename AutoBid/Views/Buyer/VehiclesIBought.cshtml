@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Vehicles I Bought";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="container">
+        @Html.Partial("_BuyerLink")
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row auction_house_content">
+
+                    <h1>Vehicles Bought</h1>
+                    <div class="col-md-12">
+                        <table width="100%" id="VehiclesIBought" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th>Title</th>
+                                    <th>Date bought</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int count = 1;
+                                    foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td>@Html.Label(count.ToString())</td>
+                                            <td width="25%"><img src="@item.BuyerImage" alt="@item.BuyerImage" class="thumbnail" width="100%" />   </td>
+                                            <td width="25%">@item.Title</td>
+                                            <td width="25%">@item.BuyDate</td>
+                                            <td width="25%">@item.BuyingPrice £</td>
+                                            <td width="25%"></td>
+                                        </tr>
+                                        count = count + 1;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#VehiclesIBought').dataTable();
+    });
+</script>

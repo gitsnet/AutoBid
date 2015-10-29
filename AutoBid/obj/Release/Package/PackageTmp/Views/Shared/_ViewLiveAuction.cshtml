@@ -1,0 +1,42 @@
+﻿@model AutoBid.Models.Home.IndexHomeModel
+<div class="col-md-4">
+    <h2>Auction Today</h2>
+    <div class="auctionnews">
+        <div class="well">
+            @if (Model.AuctionHouseCarSellingList != null)
+{
+    foreach (var auc in Model.AuctionHouseCarSellingList)
+    {
+        
+            <div class="newsRow">
+                <a href="/CarDetails/Index/auction/@auc.AuctionHouseCarSellingID">
+                    @if (auc.AuctionHouseCarSellingVehicleImages.Count > 0)
+                    {
+                        if (auc.AuctionHouseCarSellingVehicleImages != null)
+                        {
+                            <img src="~/Content/Assets/AuctionHouseSaleVehicleImages/@auc.AuctionHouseCarSellingVehicleImages.FirstOrDefault().Filename" class="thumbnail" style="width:40%;">
+                        }
+                    }
+                    <h4>@(auc.Model.Modelname + " " + auc.Make.Makename)</h4>
+                </a>
+                <div class="time"><span class="fa fa-clock-o"></span><span class="datetime">@String.Format("{0:ddd, MMM d, yyyy}", Convert.ToDateTime(auc.AuctionHouseSale.SaleDate))<br>1 month(s) ago</span></div>
+                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ @auc.Reserve</strong></span></div>
+            </div>
+        
+    }
+}
+else
+{
+                <div>No cars found for auction.</div>
+            }
+            @*<div style="clear:both;" class="newsRow">
+                    <img src="~/Content/images/newsl-car-thumb-small.png">
+                    <h4>Side Widget Well</h4>
+                    <div class="time">
+                        <span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span>
+                    </div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                </div>*@
+        </div>
+    </div>
+</div>

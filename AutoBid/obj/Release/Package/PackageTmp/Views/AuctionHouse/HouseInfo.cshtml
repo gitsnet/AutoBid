@@ -1,0 +1,1003 @@
+﻿@model AutoBid.Models.Auction.AuctionHouseModel
+@{
+    ViewBag.Title = "HouseInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+
+    <div class="container">
+
+        @Html.Partial("_AuctionHouseVehicleMenu")
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="row auction_house_content">
+                    <h1>House Info</h1>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            @Html.HiddenFor(m => m.AuctionHouseID, new { @id = "hdnAuctionHouseID" })
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+                                <tr>
+
+                                    <td contenteditable="false" id="tdAucHouseName">
+                                        <strong id="strHouseName">@Model.AuctionHouseName</strong>
+
+                                    </td>
+
+                                    <td>&nbsp;<button class="btn btn-primary btn-xs" id="editbtnAucHouseName">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" id="savebtnAucHouseName" style="display:none;">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" id="cancelbtnAucHouseName" style="display:none;">Cancel</button></td>
+
+                                </tr>
+                                <tr>
+                                    <td><strong>Description</strong></td>
+                                    <td>&nbsp;<button class="btn btn-primary btn-xs" id="editbtnAucHouseDescrip">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseDescrip">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" id="cancelbtnAucHouseDescrip" style="display:none;">Cancel</button></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" contenteditable="false" id="tdAucHouseDescrip">
+                                        @Model.About
+
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="col-md-7">
+
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped">
+                                <tr>
+                                    <td contenteditable="false">Advertised Buyers Fees</td>
+                                    <td contenteditable="false" id="tdAucHouseBuyeerFee"><strong id="strHouseBuyeerFee">@Model.Buyer_Fees</strong></td>
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnAucHouseBuyeerFees">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseBuyeerFees">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseBuyeerFees">Cancel</button></td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable="false">Usual Sale Dates</td>
+                                    <td contenteditable="false" id="tdAucSaleDate"><strong id="strSaleDate">@Model.SaleDate</strong></td>
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnSaleDate">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseSaleDate">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseSaleDate">Cancel</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Location</td>
+                                    <td contenteditable="false" id="tdAucHouseAddress"><strong id="strHouseAddress">@Model.Address</strong></td>
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnAucHouseAddress">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseAddress">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseAddress">Cancel</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Contact Details</td>
+                                    <td contenteditable="false" id="tdAucHouseContact"><strong id="strHouseContact">@Model.ContactNo</strong></td>
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnAucHouseContact">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseContact">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseContact">Cancel</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Sales Commission</td>
+                                    <td contenteditable="false" id="tdAucHouseSaleComm">&nbsp;<strong id="strAucHouseSaleComm">@Model.SalesCommission</strong></td>
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnAucHouseSaleComm">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseSaleComm">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseSaleComm">Cancel</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Web Address</td>
+                                    <td class="tdAuction" contenteditable="false" id="tdAucHouseWebSite"><strong id="strHouseWebSite">@Model.WebSite</strong></td>
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnAucHouseWebSite">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseWebSite">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseWebSite">Cancel</button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Contact Email</td>
+                                    <td class="tdEmail" contenteditable="false" id="tdAucEmail"><strong id="strAucEmail">@Model.Email</strong></td>
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnAucHouseEmail">Edit</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseEmail">Save</button></td>
+                                    <td><button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseEmail">Cancel</button></td>
+                                </tr>
+
+                                <tr>
+
+                                    <td >Logo</td>
+                                   
+                                    <td id="tdAucHouseLogo">
+                                        <img src="/Content/Assets/AuctionHouseImages/@Model.Logo">
+                                        <button class="btn btn-primary btn-xs" style="display:none;" id="savebtnAucHouseLogo">Save</button>
+                                        @*<button class="btn btn-primary btn-xs" style="display:none;" id="cancelbtnAucHouseLogo">Cancel</button>*@
+                                    </td>
+
+
+                                    <td><button class="btn btn-primary btn-xs" id="editbtnAucHouseLogo">Edit</button></td>
+                                 
+                                </tr>
+
+
+
+
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<script type="text/javascript" src="~/Content/js/jquery.form.js"></script>
+<script type="text/javascript">
+
+
+    $('#editbtnAucHouseEmail').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseEmail = $('#strAucEmail').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucEmail').prop('contenteditable', true)
+            html += "<input id='txtaucAucEmail' value='" + varaucHouseEmail + "' type='text'/>";
+            $('#tdAucEmail').html(html);
+            $('#strAucEmail').hide();
+            $('#editbtnAucHouseEmail').hide();
+            $('#savebtnAucHouseEmail').show();
+            $('#cancelbtnAucHouseEmail').show();
+
+        }
+        else {
+            $('#tdAucEmail').prop('contenteditable', false)
+        }
+
+    });
+
+
+    $('#savebtnAucHouseEmail').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucAucEmail').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "Email": aucname },
+            url: '@Url.Action("UpdateAucHouseEmail", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strAucEmail'>" + result.Email + "</strong>"
+                        $('#tdAucEmail').html(html);
+                        $('#txtaucAucEmail').hide();
+                        $('#editbtnAucHouseEmail').show();
+                        $('#savebtnAucHouseEmail').hide();
+                        $('#cancelbtnAucHouseEmail').hide();
+                    }
+                });
+
+            }
+        });
+
+        $('#tdAucEmail').prop('contenteditable', false)
+
+    });
+
+
+    $('#cancelbtnAucHouseEmail').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strAucEmail'>" + result.Email + "</strong>"
+                $('#tdAucEmail').html(html);
+                $('#txtaucAucEmail').hide();
+                $('#editbtnAucHouseEmail').show();
+                $('#savebtnAucHouseEmail').hide();
+                $('#cancelbtnAucHouseEmail').hide();
+            }
+        });
+
+    });
+
+
+
+    $('#editbtnAucHouseSaleComm').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseSaleComm = $('#strAucHouseSaleComm').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucHouseSaleComm').prop('contenteditable', true)
+            html += "<input id='txtaucHouseSaleComm' value='" + varaucHouseSaleComm + "' type='text'/>";
+            $('#tdAucHouseSaleComm').html(html);
+            $('#strAucHouseSaleComm').hide();
+            $('#editbtnAucHouseSaleComm').hide();
+            $('#savebtnAucHouseSaleComm').show();
+            $('#cancelbtnAucHouseSaleComm').show();
+
+        }
+        else {
+            $('#tdAucHouseSaleComm').prop('contenteditable', false)
+        }
+
+    });
+
+
+    $('#cancelbtnAucHouseSaleComm').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strAucHouseSaleComm'>" + result.SalesCommission + "</strong>"
+                $('#tdAucHouseSaleComm').html(html);
+                $('#txtaucHouseSaleComm').hide();
+                $('#editbtnAucHouseSaleComm').show();
+                $('#savebtnAucHouseSaleComm').hide();
+                $('#cancelbtnAucHouseSaleComm').hide();
+            }
+        });
+
+    });
+
+    $('#savebtnAucHouseSaleComm').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucHouseSaleComm').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "SalesCommission": aucname },
+            url: '@Url.Action("UpdateAucHouseSalesCommission", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strAucHouseSaleComm'>" + result.SalesCommission + "</strong>"
+                        $('#tdAucHouseSaleComm').html(html);
+                        $('#txtaucHouseSaleComm').hide();
+                        $('#editbtnAucHouseSaleComm').show();
+                        $('#savebtnAucHouseSaleComm').hide();
+                        $('#cancelbtnAucHouseSaleComm').hide();
+                    }
+                });
+
+            }
+        });
+
+        $('#tdAucHouseName').prop('contenteditable', false)
+
+    });
+
+
+
+
+    $('#editbtnAucHouseName').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseName = $('#strHouseName').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucHouseName').prop('contenteditable', true)
+            html += "<input id='txtaucHouseName' value='" + varaucHouseName + "' type='text'/>";
+            $('#tdAucHouseName').html(html);
+            $('#strHouseName').hide();
+            $('#editbtnAucHouseName').hide();
+            $('#savebtnAucHouseName').show();
+            $('#cancelbtnAucHouseName').show();
+
+        }
+        else {
+            $('#tdAucHouseName').prop('contenteditable', false)
+        }
+
+    });
+
+    $('#cancelbtnAucHouseName').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strHouseName'>" + result.AuctionHouseName + "</strong>"
+                $('#tdAucHouseName').html(html);
+                $('#txtaucHouseName').hide();
+                $('#editbtnAucHouseName').show();
+                $('#savebtnAucHouseName').hide();
+                $('#cancelbtnAucHouseName').hide();
+            }
+        });
+
+    });
+
+
+
+    $('#savebtnAucHouseName').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucHouseName').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "AuctionHouseName": aucname },
+            url: '@Url.Action("UpdateAucHouseName", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strHouseName'>" + result.AuctionHouseName + "</strong>"
+                        $('#tdAucHouseName').html(html);
+                        $('#txtaucHouseName').hide();
+                        $('#editbtnAucHouseName').show();
+                        $('#savebtnAucHouseName').hide();
+                        $('#cancelbtnAucHouseName').hide();
+                    }
+                });
+
+            }
+        });
+
+        $('#tdAucHouseName').prop('contenteditable', false)
+
+    });
+
+
+    $('#editbtnAucHouseDescrip').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseDescrip = $('#strAucHouseDescrip').html();
+
+
+        if ($(this).html() == 'Edit') {
+            var html = "";
+            $('#tdAucHouseDescrip').prop('contenteditable', true)
+            html += "<textarea id='txtaucHouseDescrip' rows='10'cols='30'>" + varaucHouseDescrip + "</textarea>";
+            $('#tdAucHouseDescrip').html(html);
+
+            $('#editbtnAucHouseDescrip').hide();
+            $('#savebtnAucHouseDescrip').show();
+            $('#cancelbtnAucHouseDescrip').show();
+
+        }
+        else {
+            $('#tdAucHouseDescrip').prop('contenteditable', false)
+        }
+
+    });
+
+
+    $('#cancelbtnAucHouseDescrip').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strAucHouseDescrip'>" + result.About + "</strong> ";
+                $('#tdAucHouseDescrip').html(html);
+                $('#txtaucHouseDescrip').hide();
+                $('#editbtnAucHouseDescrip').show();
+                $('#savebtnAucHouseDescrip').hide();
+                $('#cancelbtnAucHouseDescrip').hide();
+            }
+        });
+
+    });
+
+    $('#savebtnAucHouseDescrip').click(function () {
+
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucHouseDescrip').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "About": aucname },
+            url: '@Url.Action("UpdateAucHouseDescrip", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strAucHouseDescrip'>" + result.About + "</strong> ";
+                        $('#tdAucHouseDescrip').html(html);
+                        $('#txtaucHouseDescrip').hide();
+                        $('#editbtnAucHouseDescrip').show();
+                        $('#savebtnAucHouseDescrip').hide();
+                        $('#cancelbtnAucHouseDescrip').hide();
+                    }
+                });
+
+            }
+        });
+
+        $('#tdAucHouseDescrip').prop('contenteditable', false)
+
+    });
+
+    $('#editbtnAucHouseBuyeerFees').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseBuyeerFees = $('#strHouseBuyeerFee').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucHouseBuyeerFee').prop('contenteditable', true)
+            html += "<input id='txtaucHouseBuyeerFees' value='" + varaucHouseBuyeerFees + "' type='text'/>";
+            $('#tdAucHouseBuyeerFee').html(html);
+            $('#strHouseBuyeerFee').hide();
+            $('#editbtnAucHouseBuyeerFees').hide();
+            $('#savebtnAucHouseBuyeerFees').show();
+            $('#cancelbtnAucHouseBuyeerFees').show();
+
+        }
+        else {
+            $('#tdAucHouseBuyeerFee').prop('contenteditable', false)
+        }
+
+    });
+
+   
+    $('#cancelbtnAucHouseBuyeerFees').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strHouseBuyeerFee'>" + result.Buyer_Fees + "</strong>"
+                $('#tdAucHouseBuyeerFee').html(html);
+                $('#txtaucHouseBuyeerFees').hide();
+                $('#editbtnAucHouseBuyeerFees').show();
+                $('#savebtnAucHouseBuyeerFees').hide();
+                $('#cancelbtnAucHouseBuyeerFees').hide();
+            }
+        });
+
+    });
+
+    $('#savebtnAucHouseBuyeerFees').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucHouseBuyeerFees').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "Buyer_Fees": aucname },
+            url: '@Url.Action("UpdateAucHouseBuyeerFees", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strHouseBuyeerFee'>" + result.Buyer_Fees + "</strong>"
+                        $('#tdAucHouseBuyeerFee').html(html);
+                        $('#txtaucHouseBuyeerFees').hide();
+                        $('#editbtnAucHouseBuyeerFees').show();
+                        $('#savebtnAucHouseBuyeerFees').hide();
+                        $('#cancelbtnAucHouseBuyeerFees').hide();
+                    }
+                });
+
+            }
+        });
+
+    });
+
+
+
+    $('#editbtnSaleDate').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseSaleDate = $('#strSaleDate').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucSaleDate').prop('contenteditable', true)
+            html += "<input id='txtAucHouseSaleDate' value='" + varaucHouseSaleDate + "' type='text'/>";
+            $('#tdAucSaleDate').html(html);
+            $('#strSaleDate').hide();
+            $('#editbtnSaleDate').hide();
+            $('#savebtnAucHouseSaleDate').show();
+            $('#cancelbtnAucHouseSaleDate').show();
+
+        }
+        else {
+            $('#tdAucHouseBuyeerFee').prop('contenteditable', false)
+        }
+
+    });
+
+
+    $('#savebtnAucHouseSaleDate').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucsaledt = $('#txtAucHouseSaleDate').val();
+        var title = "DemoDaleTitle";
+
+        console.log(aucid);
+        console.log(aucsaledt);
+        console.log(title);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "SaleDate": aucsaledt, "Title": title },
+            url: '@Url.Action("UpdateAucHouseSaleDate", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                var aucsaleid = result.AuctionHouseSaleID;
+
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucsaleid },
+                    url: '@Url.Action("GetAuctionHouseSale", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strSaleDate'>" + result.SaleDate + "</strong>"
+                        html += "<input type='hidden' id='hdnAucSaleid' value='" + aucsaleid + "'>"
+                        $('#tdAucSaleDate').html(html);
+                        $('#txtAucHouseSaleDate').hide();
+                        $('#editbtnSaleDate').show();
+                        $('#savebtnAucHouseSaleDate').hide();
+                        $('#cancelbtnAucHouseSaleDate').hide();
+                    }
+                });
+
+            }
+        });
+
+    });
+
+
+    $('#cancelbtnAucHouseSaleDate').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucsaleid = ('#hdnAucSaleid').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strSaleDate'></strong>"
+                $('#tdAucSaleDate').html(html);
+                $('#txtAucHouseSaleDate').hide();
+                $('#editbtnSaleDate').show();
+                $('#savebtnAucHouseSaleDate').hide();
+                $('#cancelbtnAucHouseSaleDate').hide();
+            }
+        });
+
+    });
+
+
+
+
+
+    $('#editbtnAucHouseAddress').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseAddress = $('#strHouseAddress').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucHouseAddress').prop('contenteditable', true)
+            html += "<textarea id='txtaucHouseAddress' rows='4'cols='10'>" + varaucHouseAddress + "</textarea>";
+            $('#tdAucHouseAddress').html(html);
+            $('#strHouseAddress').hide();
+            $('#editbtnAucHouseAddress').hide();
+            $('#savebtnAucHouseAddress').show();
+            $('#cancelbtnAucHouseAddress').show();
+
+        }
+        else {
+            $('#tdAucHouseAddress').prop('contenteditable', false)
+        }
+
+    });
+
+    $('#cancelbtnAucHouseAddress').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strHouseAddress'>" + result.Address + "</strong>"
+                $('#tdAucHouseAddress').html(html);
+                $('#txtaucHouseAddress').hide();
+                $('#editbtnAucHouseAddress').show();
+                $('#savebtnAucHouseAddress').hide();
+                $('#cancelbtnAucHouseAddress').hide();
+            }
+        });
+
+    });
+
+
+    $('#savebtnAucHouseAddress').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucHouseAddress').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "Address": aucname },
+            url: '@Url.Action("UpdateAucHouseAddress", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strHouseAddress'>" + result.Address + "</strong>"
+                        $('#tdAucHouseAddress').html(html);
+                        $('#txtaucHouseAddress').hide();
+                        $('#editbtnAucHouseAddress').show();
+                        $('#savebtnAucHouseAddress').hide();
+                        $('#cancelbtnAucHouseAddress').hide();
+                    }
+                });
+
+            }
+        });
+
+    });
+
+
+    $('#editbtnAucHouseContact').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseContact = $('#strHouseContact').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucHouseContact').prop('contenteditable', true)
+            html += "<input id='txtaucHouseContact' value='" + varaucHouseContact + "' type='text'/>";
+            $('#tdAucHouseContact').html(html);
+            $('#strHouseContact').hide();
+            $('#editbtnAucHouseContact').hide();
+            $('#savebtnAucHouseContact').show();
+            $('#cancelbtnAucHouseContact').show();
+
+        }
+        else {
+            $('#tdAucHouseContact').prop('contenteditable', false)
+        }
+
+    });
+
+    $('#cancelbtnAucHouseContact').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strHouseContact'>" + result.ContactNo + "</strong>"
+                $('#tdAucHouseContact').html(html);
+                $('#txtaucHouseContact').hide();
+                $('#editbtnAucHouseContact').show();
+                $('#savebtnAucHouseContact').hide();
+                $('#cancelbtnAucHouseContact').hide();
+            }
+        });
+
+    });
+
+    $('#savebtnAucHouseContact').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucHouseContact').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "ContactNo": aucname },
+            url: '@Url.Action("UpdateAucHouseContactNo", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<strong id='strHouseContact'>" + result.ContactNo + "</strong>"
+                        $('#tdAucHouseContact').html(html);
+                        $('#txtaucHouseContact').hide();
+                        $('#editbtnAucHouseContact').show();
+                        $('#savebtnAucHouseContact').hide();
+                        $('#cancelbtnAucHouseContact').hide();
+                    }
+                });
+
+            }
+        });
+
+    });
+
+
+    $('#editbtnAucHouseWebSite').click(function () {
+
+        console.log(this);
+        var html = "";
+        var varaucHouseWebSite = $('#strHouseWebSite').html();
+
+        if ($(this).html() == 'Edit') {
+
+            $('#tdAucHouseWebSite').prop('contenteditable', true)
+            html += "<input id='txtaucHouseWebSite' value='" + varaucHouseWebSite + "' type='email'/>";
+            $('#tdAucHouseWebSite').html(html);
+            $('#strHouseWebSite').hide();
+            $('#editbtnAucHouseWebSite').hide();
+            $('#savebtnAucHouseWebSite').show();
+            $('#cancelbtnAucHouseWebSite').show();
+
+        }
+        else {
+            $('#tdAucHouseWebSite').prop('contenteditable', false)
+        }
+
+    });
+
+    $('#cancelbtnAucHouseWebSite').click(function () {
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+
+        $.ajax({
+            type: "POST",
+            data: { "id": aucid },
+            url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strHouseWebSite'>" + result.WebSite + "</strong>"
+                $('#tdAucHouseWebSite').html(html);
+                $('#txtaucHouseWebSite').hide();
+                $('#editbtnAucHouseWebSite').show();
+                $('#savebtnAucHouseWebSite').hide();
+                $('#cancelbtnAucHouseWebSite').hide();
+            }
+        });
+
+    });
+
+
+    $('#savebtnAucHouseWebSite').click(function () {
+
+        console.log(this);
+        var aucid = $('#hdnAuctionHouseID').val();
+        var aucname = $('#txtaucHouseWebSite').val();
+
+        console.log(aucid);
+        console.log(aucname);
+
+        $.ajax({
+            type: "POST",
+            data: { "AuctionHouseID": aucid, "WebSite": aucname },
+            url: '@Url.Action("UpdateAucHouseWebSite", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+
+                $.ajax({
+                    type: "POST",
+                    data: { "id": aucid },
+                    url: '@Url.Action("GetAuctionHouse", "AuctionHouse")',
+                    success: function (result) {
+                        console.log(result);
+                        var html = "";
+                        html += "<p>" + result.WebSite + "</p>"
+                        $('#tdAucHouseWebSite').html(html);
+                        $('#txtaucHouseWebSite').hide();
+                        $('#editbtnAucHouseWebSite').show();
+                        $('#savebtnAucHouseWebSite').hide();
+                        $('#cancelbtnAucHouseWebSite').hide();
+                    }
+                });
+
+            }
+        });
+
+    });
+
+
+    $('#editbtnAucHouseLogo').click(function () {
+
+        var html = "";
+        var aucid = $('#hdnAuctionHouseID').val();
+
+
+        html += "<div class='editimg' style='position:relative;'>\
+                 <div class='btn fileinput-button'>\
+                 <form method='post' id='frmImgUpload' action='/AuctionHouse/UploadVehicleImage' enctype='multipart/form-data' novalidate='novalidate' class='auctionhouse'>\
+                 <span>Edit Image</span>\
+                 <input type='file'  name='files' id='auc_flVehicleFile' onchange='imgUplod();'>\
+                  <input type='hidden' value='40db7f02-e957-41af-9d1b-3c742733d4b6' id='TempImagesUniqueID'>\
+                   </form>\
+                   <a title='Zoom'>\
+                   <img class='img-responsive' data-isempty='false' src='/Content/Assets/AuctionHouseImages/@Model.Logo' id='auc_imgVehicleImagePlaceHolder'>\
+                    </a>\
+                    </div>\
+                    </div>";
+
+
+        $('#tdAucHouseLogo').html(html);
+
+
+
+    });
+
+
+       
+    function imgUplod()
+    {
+           console.log("......")
+            var aucid = $('#hdnAuctionHouseID').val();
+            console.log(aucid);
+
+            $('#spnMessage').html('Please wait...');
+
+
+            $('#frmImgUpload').ajaxSubmit({
+                url: '@Url.Action("UploadVehicleImage", "AuctionHouse")',
+                data: { "id": aucid },
+                type: 'POST',
+                datatype: 'json',
+                success: function (result) {
+
+                    console.log(result);
+
+                        var d = new Date();
+                        var n = d.getMilliseconds();
+                        $('#auc_imgVehicleImagePlaceHolder').attr("data-isempty", "0");
+                        //$('auc_imgRemoveImage').show();
+                        $('#auc_imgVehicleImagePlaceHolder').attr('src', '/Content/Assets/AuctionHouseImages/' + result.Logo);
+                        $('#auc_imgVehicleImagePlaceHolder').attr('data-isempty', 'false');
+                        
+                            $('#savebtnAucHouseLogo').show();
+                            $('#savebtnAucHouseLogo').attr('visible', true);
+                            $('#auc_imgVehicleImagePlaceHolder').text("NON-DELETE");
+                      
+
+                    
+
+                },
+                error: function () { $('#spnMessage').html(''); }
+            })
+        }
+
+
+
+</script>
+
+
+
+
+

@@ -1,0 +1,36 @@
+﻿@model List<Core.CarSeller.CarSellerVehicleInfo>
+@using AutoBid.Helper
+<div>
+    <h2>My Product On Sale</h2>
+    <div class="auctionnews">
+        <div class="well">
+            @if (Model != null)
+            {
+                if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        if (item.CarSellerVehicleImages.Count > 0)
+                        {
+                            <div class="newsRow">
+                                <a href="@Url.Action("Index", "CarDetails", new {@id=CommonHelper.Base64Encode(@item.ID.ToString()) })">
+                                    <img src="~/Content/Assets/CarSellerImages/@item.CarSellerVehicleImages.FirstOrDefault().Filename" class="thumbnail" style="width:50%" />
+                                    <h4>@item.Title</h4>
+                                </a>
+                                <div class="time"><span class="datetime">@String.Format("{0:ddd, MMM d, yyyy}", item.AddedDate)<br>@CommonHelper.TimeAgo(Convert.ToDateTime(item.AddedDate))</span></div>
+                                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ @item.Price</strong></span></div>
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <div class="newsRow">
+                        <h1>Not uploaded</h1>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,663 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>AutoBid</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<!-- Add custom CSS here -->
+<link href="css/autobid.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<script src="js/jquery-1.10.2.js"></script>
+<script>
+	/*$(document).ready(function() {
+			 $("#header").load("header.html"); 
+			 $("#footer").load("footer.html");
+			
+			
+			$("li.signInLink a").click(function() {
+			 alert("test");
+				//Do stuff when clicked
+			});
+			 
+			 
+		});*/
+	
+	
+    $(function () {
+    $('#myTab a:last').tab('show');
+    })
+	
+	
+</script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header" role="navigation">
+  <div class="container1">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <span class="navTxt">24/7 Customer service <span class="greentext">(780) 267-8080</span></span> </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><span class="navTxt welcome">Welcome  UserName</span></li>
+        <!--<li class="active menuItem"><a href="javascript:void(0)"><span>Home</span></a></li>
+        <li class="menuItem"><a href="javascript:void(0)"><span>Mobile</span></a></li>
+        <li class="menuItem"><a href="javascript:void(0)"><span>Tablet</span></a></li>
+        <li class="menuItem"><a href="javascript:void(0)"><span>Your Thoughts</span></a></li>-->
+        <li class="menuItem"><a href="javascript:void(0)"><span>My Account</span></a></li>
+        <li class="menuItem menuItemlast"><a href="javascript:void(0)"><span>T&C&#8217;s</span></a></li>
+        <li class="bluenav bluenavactive signInLink"><a href="login.html">Sign In</a></li>
+        <li class="bluenav"><a href="seller_registration_step1.html">Register</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<div class="container">
+  <div class="row show-grid logowrap">
+    <div class="col-md-4"><a class="logo" href="index.html"><img src="images/logo.png" alt="autobid"/></a></div>
+    <div class="col-md-8 advertisement"><img src="images/carp-advertisement.png"  alt="advertisement"/></div>
+  </div>
+</div>
+<div class="mainnav">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle auctionMenu" data-toggle="collapse" data-target=".navbar-ex2-collapse"> <span class="sr-only">Toggle navigation</span> <span class=""><span class="fa fa-legal"></span> Auction Menu</span> </button>
+        <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex2-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="javascript:void(0)"><span>Home</span></a></li>
+          <li><a href="javascript:void(0)"><span>Sell</span></a> </li>
+          <li><a href="javascript:void(0)"><span>Buy </span></a></li>
+          <li class="active"><a href="javascript:void(0)"><span>Auction Houses</span></a></li>
+          <li><a href="javascript:void(0)"><span>Dealers</span></a></li>
+          <li><a href="javascript:void(0)"><span>Motorbid <span class="motorbidPro">PRO</span></span></a></li>
+        </ul>
+        <button type="button" class="btn btn-primary navbar-right auctionloginBtn"> <span>Auction House Login</span> </button>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+</div>
+<div class="section formwrap">
+  <div class="container">
+  
+  <div class="row auction_house">
+            <ul class="nav nav-pills nav-justified" >
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Sales <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="20_AuctionHouse_Sales_PreviousSales.html">Previous sales</a></li>
+                              <li> <a href="21_AuctionHouse_Sales_UpcomingSales.html">Upcoming sales</a></li>
+                              <li><a href="#">Sales Data</a></li>
+                              <li><a href="25_AuctionHouse_sales_Timedauction.html">Timed Auction</a></li>
+                            </ul></li>
+                          <li><a href="34_AuctionHouse_Profile.html">Dashboard</a></li>
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  href="#">Buy it now <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="26_AuctionHouse_BuyNow_Classified Ads.html">Classified Ads</a></li>
+                              <li> <a href="22_AuctionHouse_Sales_Add-Vehicle-Details.html">Add Vehicle</a></li>
+                            </ul></li>
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  href="27_AuctionHouse_EnterSalesRoom.html">Enter Sales Room <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="">GO LIVE!</a></li>
+                            </ul></li>
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  href="#">Account <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="28_AuctionHouse_Account_HouseInfo.html">House Info</a></li>
+                              <li> <a href="#">VIP</a></li>
+                            </ul></li>
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  href="#">Message <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="29_AuctionHouse_Messages_Inbox.html">Inbox</a></li>
+                              <li> <a href="#">Live Chat</a></li>
+                            </ul></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+        
+        </div>
+    <div class="row">
+      <div class="col-md-8 formbg mb20">
+        <div class="row">
+          <ul class="steps">
+            <li class="step1 active"> <span>1</span> Add Vehicle </li>
+            <li class="step2"> <span>2</span> Photo &amp; Document Upload </li>
+            <li class="step3"> <span>3</span> Confirm &amp; Upload </li>
+          </ul>
+        </div>
+        <div class="row steptitle">
+          <div class="col-md-12"><span class="num">1</span> Basic details about car in upcoming sales.</div>
+          
+        </div>
+        <div class="row formarea">
+          <form class="form-horizontal" role="form">
+            <div class="highlight">
+              <div class="form-group">
+                <label for="saleDate" class="col-sm-4 control-label">Sale date</label>
+                <div class="col-sm-4">
+                  <select class="form-control saleselected"  id="saleDate">
+                    <option>Sale1</option>
+                    <option>Sale2</option>
+                    <option>Sale3</option>
+                    <option>Sale4</option>
+                  </select>
+                </div>
+                <div class="col-sm-4"> <a class="btn btn-primary" href="#"><span class="fa fa-plus"></span> Create Sale</a> </div>
+              </div>
+              <div class="form-group">
+                <label for="reserve" class="col-sm-4 control-label">Reserve</label>
+                <div class="col-sm-4">
+                  <input type="registration" class="form-control saleselected reserve" id="reserve" placeholder="$ 3000">
+                </div>
+                <div class="col-sm-4 notify"> Value with CAP </div>
+              </div>
+            </div>
+            <div class="highlight">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Make</label>
+                <div class="col-md-4">
+                  <select class="form-control">
+                    <option>Hyundai</option>
+                    <option>Hyundai1</option>
+                    <option>Hyundai2</option>
+                    <option>Hyundai3</option>
+                    <option>Hyundai4</option>
+                    <option>Hyundai5</option>
+                  </select>
+                </div>
+                <div class="col-sm-4"> <a href="javascript:void(0)" class="underline">Not your car</a> </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Model</label>
+                <div class="col-sm-8">
+                  <select class="form-control">
+                    <option>i10</option>
+                    <option>i10Grand</option>
+                    <option>i20</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Engine Size</label>
+                <div class="col-sm-8">
+                  <select class="form-control">
+                    <option>Engine Size 1</option>
+                    <option>Engine Size 1</option>
+                    <option>Engine Size 2</option>
+                    <option>Engine Size 3</option>
+                    <option>Engine Size 4</option>
+                    <option>Engine Size 5</option>
+                  </select>
+                  <div>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="fuelType1" value="option1">
+                      Petrol </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="fuelType2" value="option2">
+                      Diesel </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="fuelType3" value="option3">
+                      Bi-fuel </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="fuelType4" value="option3">
+                      LPG </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="color" class="col-sm-4 control-label">Exterior/InteriorColour</label>
+                <div class="col-sm-8">
+                  <input type="text" id="color" class="form-control" placeholder="White">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Body Style</label>
+                <div class="col-sm-8">
+                  <select class="form-control">
+                    <option>Hatchback</option>
+                    <option>Liftbacks</option>
+                    <option>Minivans</option>
+                    <option>Sadan</option>
+                    <option>SUVs</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputDate" class="col-sm-4 control-label">Registration Date</label>
+                <div class="col-sm-8 datewrap"> <span class="fa fa-calendar"></span>
+                  <input type="date" id="inputDate" class="form-control" placeholder="28/01/09">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="vinno" class="col-sm-4 control-label">VIN Number</label>
+                <div class="col-md-4">
+                  <input type="text" id="vinno" class="form-control" placeholder="23902790 W/UW">
+                </div>
+                <div class="col-md-4">
+                <a class="underline" href="javascript:void(0)">Where's this?</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="mileage" class="col-sm-4 control-label">Exact Mileage</label>
+                <div class="col-sm-8">
+                  <input type="text" id="mileage" class="form-control" placeholder="22km/l">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="MOT_ed" class="col-sm-4 control-label">MOT Expiry Date</label>
+                <div class="col-sm-8 datewrap"> <span class="fa fa-calendar"></span>
+                  <input type="date" id="MOT_ed" class="form-control" placeholder="28/01/09">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Tax_ed" class="col-sm-4 control-label">Tax Expiry Date</label>
+                <div class="col-sm-8 datewrap"> <span class="fa fa-calendar"></span>
+                  <input type="date" id="Tax_ed" class="form-control" placeholder="28/01/09">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Transmission</label>
+                <div class="col-sm-8">
+                  <select class="form-control">
+                    <option>Please select...</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Fuel type</label>
+                <div class="col-sm-8">
+                  <select class="form-control">
+                    <option>Please select...</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">Date of first registration</label>
+                <div class="col-sm-8">
+                  <input type="date" class="form-control" id="inputDate" placeholder="">
+                </div>
+              </div>
+              
+            </div>
+            <div class="highlight">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Imported</label>
+                <div class="col-sm-8">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="importedyes" id="importedyes">
+                    Yes </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="importedno" id="importedyes">
+                    No </label>
+                  <div> </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Transmission</label>
+                <div class="col-sm-8">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="transmission1" id="transmission1">
+                    Manual </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="transmission2" id="transmission2">
+                    Auto </label>
+                    <label class="checkbox-inline">
+                    <input type="checkbox" value="transmission3" id="transmission3">
+                    Semi-Auto </label>
+                  <div> </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Full VS Provided</label>
+                <div class="col-sm-8">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="VS1" id="VS1">
+                    Yes </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="VS2" id="VS2">
+                    No </label>
+                  <div> </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="VS-Details">VS Details</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="" id="VS-Details" class="form-control">
+                </div>
+              </div>
+               <hr/>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Interior Trim</label>
+                <div class="col-sm-8">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="interiorTrim1" id="interiorTrim1">
+                    Textured </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="interiorTrim2" id="interiorTrim2">
+                    Cloth </label>
+                    <label class="checkbox-inline">
+                    <input type="checkbox" value="interiorTrim3" id="interiorTrim3">
+                    Leather </label>
+                  <div> </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="formerKeeper">Former Keepers</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="" id="formerKeeper" class="form-control">
+                </div>
+              </div>
+              
+              <hr/>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Service History</label>
+                <div class="col-sm-8">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="sh1" id="sh1">
+                    Yes </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="sh2" id="sh2">
+                    No </label>
+                  <div> </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="FMD1" id="FMD1">
+                    Full Main Dealer </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="FMD2" id="FMD2">
+                    Full </label>
+                    <label class="checkbox-inline">
+                    <input type="checkbox" value="FMD3" id="FMD3">
+                    Part </label>
+                  <div> </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="lastService">Last Service</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="" id="lastService" class="form-control">
+                </div>
+              </div>
+              
+               <hr/>
+               <div class="form-group">
+                <label class="col-md-4 control-label">VCAR Register</label>
+                <div class="col-md-4">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="VCAR1" id="VCAR1">
+                    Yes </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="VCAR2" id="VCAR2">
+                    No </label>
+                    
+                  <div>
+                  
+                  
+                   </div>
+                </div>
+                
+                <div class="col-md-4">
+                  <a href="javascript:void(0)" class="underline">Where's this?</a>
+                  </div>
+              </div>
+               <div class="form-group">
+                <label class="col-sm-4 control-label" for="VCARDetails">VCAR Details</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="" id="VCARDetails" class="form-control">
+                </div>
+              </div>
+              <hr/>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">HPI Clear</label>
+                <div class="col-sm-8">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="HPI1" id="HPI1">
+                    Yes </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="HPI2" id="HPI2">
+                    No </label>
+                    
+                  <div> </div>
+                </div>
+              </div>
+            </div>
+           
+            
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">&nbsp;</label>
+                <div class="col-sm-8">
+                  <button type="button" class="btn btn-primary btn-lg active right"> <a href="23_AuctionHouse_Sales_PhotoUpload.html" > Next</a></button>
+                </div>
+              </div>
+            
+            
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4">
+                
+                <div>
+      <h2>My Product On Auction Today</h2>
+      <div class="auctionnews">
+      		<div class="well">
+            <div class="newsRow">
+                    <img src="images/newsl-car-thumb-small.png">
+                    	<h4>Side Widget Well</h4>
+                        <div class="time"><span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span></div>
+                        <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+             </div>
+             <div style="clear:both;" class="newsRow">
+                    <img src="images/newsl-car-thumb-small.png">
+                    	<h4>Side Widget Well</h4>
+                        <div class="time">
+                        	<span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span>
+                        </div>
+                        <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+             </div>
+          </div>
+       </div>
+       </div>
+       
+       <div>
+       	      <h2 class="bestbuy">Best Buy</h2>
+      <div class="bestbuylist">
+      		<div class="well">
+            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+           		 <ul class="list-unstyled">
+                                <li><a href="#">Best Motability cars</a>
+                                </li>
+                                <li><a href="#">Best automatic cars</a>
+                                </li>
+                                <li><a href="#">Best crossover cars</a>
+                                </li>
+                                <li><a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li><a href="#">Best estate cars</a>
+                                </li>
+                                <li><a href="#"> Best selling cars</a>
+                                </li>
+                                <li><a href="#">Best first car</a>
+                                </li>
+                            </ul>
+          <div class="seemorelink"> <a href="#">See all see best buy &gt;&gt;</a> <div>
+          </div>
+       </div>
+      </div>
+      </div>
+
+       </div>
+       <div class="adbanner"> <span>Ad Banner</span> </div>
+       
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.section Research Best Buy vehicles available -->
+<!--<div class="section reseachBestBuy">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-8">
+      	<div class="headerrow"><h2>New Car Research </h2></div>
+        <div class="clientlogo">
+        	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+           	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+           	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+      <h2 class="bestbuy">Best Buy</h2>
+      <div class="bestbuylist">
+      		<div class="well">
+            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+           		 <ul class="list-unstyled">
+                                <li><a href="#">Best Motability cars</a>
+                                </li>
+                                <li><a href="#">Best automatic cars</a>
+                                </li>
+                                <li><a href="#">Best crossover cars</a>
+                                </li>
+                                <li><a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li><a href="#">Best estate cars</a>
+                                </li>
+                                <li><a href="#"> Best selling cars</a>
+                                </li>
+                                <li><a href="#">Best first car</a>
+                                </li>
+                            </ul>
+          <div class="seemorelink"> <a href="#">See all see best buy >></a> <div>
+          </div>
+       </div>
+      </div>
+      </div>
+    </div>
+  </div>
+ </div>
+ </div>-->
+<!-- /.section Other vehicles available -->
+<!-- /.container -->
+<div class="bottom_banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-2 fvbg"> Fludic VERNA </div>
+      <div class="col-xs-12 col-md-9 fvbg_spacing fvbg_list"> Engine start stop button with Smart Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engine  start stop button with Smart Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engine  start stop button with Smart Key </div>
+      <div class="col-xs-12 col-md-1 fvbg_readmore"> <strong>READ MORE</strong> </div>
+    </div>
+  </div>
+</div>
+<div class="footerbg">
+  <div class="container">
+    <footer>
+      <div class="row footer_L2">
+        <div class="col-xs-12 col-md-4"> <img src="images/logo_footer.png" width="232" height="64" alt="motorbid">
+          <h1>About CarBuyer</h1>
+          Carbuyer provides trusted car reviews from experts and owners, comparisons, car buying guides and more - helping you decide which car to buy. </div>
+        <div class="col-xs-12 col-md-2">
+          <h1> Body Styles</h1>
+          <ul>
+            <li>Convertible / Cabriolet</li>
+            <li>Coupé / Sports car</li>
+            <li>Estate</li>
+            <li>Hatchback</li>
+            <li>MPV / People Carrier</li>
+            <li>Micro Car / City Car</li>
+            <li>Mini MPVs</li>
+            <li>SUV / 4x4</li>
+            <li>Saloon</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <h1>New Cars</h1>
+          <ul>
+            <li>Compare Cars</li>
+            <li>Upcoming Cars in India</li>
+            <li>Indian Car Pictures</li>
+            <li>Toyota Cars</li>
+            <li>Maruti Cars</li>
+            <li>Honda Cars</li>
+            <li>Hyundai Cars</li>
+            <li>Popular Cars</li>
+            <li>Maruti Swift</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <h1>Company</h1>
+          <ul>
+            <li>Contact us</li>
+            <li>Send us a Mail</li>
+            <li>Jobs at Gaadi</li>
+            <li>Press</li>
+            <li>Privacy Policy</li>
+            <li>Visitor Agreement</li>
+            <li>Sitemap</li>
+            <li>Used Car Sitemap</li>
+            <li>QnA Sitemap</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <h1>Connect with us</h1>
+          <img src="images/btn_facebook.png" width="165" height="36" alt="Follow Us on Facebook"> <img src="images/btn_twitter.png" width="165" height="36" alt="Follow Us on Twitter"> <img src="images/btn_youtube.png" width="165" height="36" alt="Follow Us on YouTube"> </div>
+      </div>
+      <div class="row footer_L3">
+        <div class="col-xs-12 col-md-4"> © Copyright Motorbid Limited. All rights reserved<br>
+          <small>Powered By Mti systems</small> </div>
+        <div class="col-xs-12 col-md-4 tac"> <a href="#">Dealers wanting to advertise on Motorbid</a> </div>
+        <div class="col-xs-12 col-md-4 helpline"> Help Line<span>: 18004192277</span> </div>
+      </div>
+    </footer>
+  </div>
+</div>
+<!-- /.container -->
+<!-- JavaScript -->
+<script src="js/bootstrap.js"></script>
+<script src="js/modern-business.js"></script>
+<script src="js/autobid_custom.js"></script>
+</body>
+</html>

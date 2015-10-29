@@ -1,0 +1,467 @@
+﻿@model AutoBid.Models.CarSeller.CarSellerVehicleInfoModel
+@{
+    ViewBag.Title = "Private Seller Vehicle Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section formwrap">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 formbg">
+                <div class="row">
+                    <ul class="steps">
+                        <li class="step1 active" id="liDetails" style="cursor:pointer;" data-value="#tab1" data-enable="@(Convert.ToString(ViewContext.RouteData.Values["Id"]) != "" ? "true":"false")">
+                            <span>1</span>
+                            Vehicle details
+                        </li>
+
+                        <li class="step2" id="liPhotoUpload" style="cursor:pointer;" data-value="#tab2" data-enable="@(Convert.ToString(ViewContext.RouteData.Values["Id"]) != "" ? "true":"false")">
+                            <span>2</span>
+                            Upload Photo
+                        </li>
+
+                        <li class="step3" id="liAdvert" style="cursor:pointer;" data-value="#tab3" data-enable="@(Convert.ToString(ViewContext.RouteData.Values["Id"]) != "" ? "true":"false")">
+                            <span>3</span>
+                            Your Advert
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="tab1" style="display:block;">
+                  
+                    <div class="row steptitle">
+                        <span class="num">1</span> Enter the basic details about the car you want to sell.
+                    </div>
+                    <div class="row formarea">
+                        <form id="FormCarSellingDetails" class="form-horizontal" method="post" action="/CarSeller/CarSellingRegistration" novalidate="novalidate">
+
+                            <div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="saleDate">Title</label>
+                                    <div class="col-sm-4">
+                                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Title)
+                                        @Html.HiddenFor(model=>model.ID, new { @id = "hdnVehicleID" })
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="saleDate">Registration Number</label>
+                                    <div class="col-sm-4">
+                                        @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.RegistrationNumber)
+                                    </div>
+
+                                </div>
+                                @*<div class="form-group">
+                                    <label class="col-sm-4 control-label" for="inputPassword3">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <button class="btn btn-primary btn-lg" type="button">Find Details</button>
+                                    </div>
+                                </div>*@
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-4 control-label">@Html.DisplayNameFor(m => m.MakeID)</label>
+                                    <div class="col-sm-8">
+                                        @Html.DropDownList("MakeID", new SelectList(Model.MakeList, "ID", "Makename"), "--Select--", new { @class = "form-control", @id = "ddlMakes"})
+                                        @Html.TextBoxFor(m => m.NewCarMakeName, new { @id = "txtNewMakename", @style = "display:none;", @class = "form-control" ,@spellcheck=true})
+                                        @Html.ValidationMessageFor(m => m.MakeID)
+                                        <span class="linktext" id="spnCarMakeNotInList">My car make not in list.<br></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-4 control-label">@Html.DisplayNameFor(m => m.ModelID)</label>
+                                    <div class="col-sm-8">
+                                        @Html.HiddenFor(m => m.ModelID, new {@id="hdnModelID" })
+                                        @Html.DropDownList("ModelID", new SelectList(Model.CarModelList, "ID", "Modelname"), "--Select--", new { @class = "form-control", @id = "ddlModels" })
+
+                                        <span id="spnCarModelNotInList" class="linktext">My car model not in list.</span>
+                                        @Html.TextBoxFor(m => m.NewCarModelName, new { @id = "txtNewModelname", @style = "display:none;", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-4 control-label">@Html.DisplayNameFor(m => m.BodyTypeID)</label>
+                                    <div class="col-sm-8">
+                                        @Html.DropDownList("BodyTypeID", new SelectList(Model.BodyTypeList, "ID", "Type", Model.BodyTypeID), "--Select--", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.BodyTypeID)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="color" class="col-sm-4 control-label">@Html.DisplayNameFor(m => m.Color)</label>
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.Color, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Color)
+                                       
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-4 control-label">@Html.DisplayNameFor(m => m.TransmissionTypeID)</label>
+                                    <div class="col-sm-8">
+
+                                        @Html.DropDownList("TransmissionTypeID", new SelectList(Model.TransmissionTypeList, "ID", "Type"), "--Select--", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.TransmissionTypeID)
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Fuel</label>
+                                    <div class="col-sm-8" id="divFuelTypes">
+
+                                        @for (int i = 0; i < Model.FuelTypeList.Count; i++)
+                                        {
+                                            @Html.CheckBoxFor(m => m.FuelTypeList[i].IsChecked, new { id = "FuelTypeList_" + i, @style = "margin-right:5px;margin-left:5px;" })
+                                            @Html.HiddenFor(m => m.FuelTypeList[i].ID)
+                                            <span style="font-weight:bold;">
+                                                @Html.DisplayFor(m => m.FuelTypeList[i].Name)
+                                            </span>
+                                        }
+
+                                        <span id="spanfuelmsg"></span>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="color" class="col-sm-4 control-label">@Html.DisplayNameFor(m => m.EngineSize)</label>
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.EngineSize, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.EngineSize)
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="Tax_ed" class="col-sm-4 control-label">@Html.DisplayNameFor(m => m.DateOfFirstRegistration)</label>
+                                    <div class="col-sm-8 datewrap">
+                                        <span class="fa fa-calendar"></span>
+
+                                        @Html.TextBoxFor(m => m.DateOfFirstRegistration, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.DateOfFirstRegistration)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="inputPassword3">&nbsp;</label>
+                                <div class="col-sm-8">
+                                    <button class="btn btn-primary btn-lg active right" type="button" id="btnPrivateTabDetail1">Next</button>
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+
+                <div id="tab2" style="display:none;" class="tab-pane active">
+                    <div class="row steptitle">
+                        <span class="num">2</span>
+                        Upload Image of Vehicle.
+                    </div>
+
+                    <div class="formbg1 mb20">
+                        <div class="">
+
+                            <div role="form" class="form-horizontal">
+
+                                <div class="highlight">
+                                    <div class="row auction_house_content formHighlightheader">
+                                        <h1>Photo upload</h1>
+
+                                    </div>
+                                    <div class="bs-example bs-example-bg-classes">
+                                        <p class="bg-primary btn-info linemessage">Vehicle with photos get an average 95% more response than without</p>
+                                    </div>
+                                    <div class="row">
+                                        @if (Model.CarSellerVehicleImageList != null)
+                                        {
+                                            if (Model.CarSellerVehicleImageList.Count > 0)
+                                            {
+                                                int i = 0;
+                                                foreach (var item in Model.CarSellerVehicleImageList)
+                                                {
+                                                    <div class="col-md-3 portfolio-item" style="height:100px;">
+                                                        <div class="editimg" style="position:relative;">
+                                                            <div class="btn fileinput-button">
+                                                                <form method="post" id='frmImgUpload_@i' action="/SellMyCar/UploadImage" enctype="multipart/form-data" novalidate="novalidate" class="privateSeller">
+                                                                    <input type="file" data-ctrlid='@i' name="files" id='private_flVehicleFile_@i'>
+                                                                    <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@i">
+                                                                </form>
+                                                                <a title="Zoom">
+                                                                    <img class="img-responsive" data-isempty="false" src='@Url.Content("~/Content/Assets/CarSellerImages/"+@item.Filename)' id="private_imgVehicleImagePlaceHolder_@i">
+                                                                </a>
+                                                            </div>
+                                                            <img data-ctrlid='@i' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: block;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="Private_imgRemoveImage_@i">
+                                                            <div>
+                                                                <span data-ctrlid="@i" id="spnMessage_@i"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    i++;
+                                                }
+                                                for (var j = Model.CarSellerVehicleImageList.Count + 1; j <= 8; j++)
+                                                {
+                                                    <div class="col-md-3 portfolio-item" style="height:100px;">
+                                                        <div class="editimg" style="position:relative;">
+                                                            <div class="btn fileinput-button">
+                                                                <form method="post" id='frmImgUpload_@j' action="/SellMyCar/UploadImage" enctype="multipart/form-data" novalidate="novalidate" class="privateSeller">
+                                                                    <input type="file" data-ctrlid='@j' name="files" id='private_flVehicleFile_@j'>
+                                                                    <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@j">
+                                                                </form>
+                                                                <a title="Zoom">
+                                                                    <img class="img-responsive" data-isempty="true" src='@Url.Content("~/Content/images/uploadimg.png")' id="private_imgVehicleImagePlaceHolder_@j">
+                                                                </a>
+                                                            </div>
+                                                            <img data-ctrlid='@j' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: none;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="Private_imgRemoveImage_@j">
+                                                            <div>
+                                                                <span data-ctrlid="@j" id="spnMessage_@j"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for (var i = 1; i <= 8; i++)
+                                                {
+                                                    <div class="col-md-3 portfolio-item" style="height:100px;">
+                                                        <div class="editimg" style="position:relative;">
+                                                            <div class="btn fileinput-button">
+                                                                <form method="post" id='frmImgUpload_@i' action="/SellMyCar/UploadImage" enctype="multipart/form-data" novalidate="novalidate" class="privateSeller">
+                                                                    <input type="file" data-ctrlid='@i' name="files" id='private_flVehicleFile_@i'>
+                                                                    <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@i">
+                                                                </form>
+                                                                <a title="Zoom">
+                                                                    <img class="img-responsive" data-isempty="1" src='@Url.Content("~/Content/images/uploadimg.png")' id="private_imgVehicleImagePlaceHolder_@i">
+                                                                </a>
+                                                            </div>
+                                                            <img data-ctrlid='@i' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: none;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="Private_imgRemoveImage_@i">
+                                                            <div>
+                                                                <span data-ctrlid="@i" id="spnMessage_@i"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            for (var i = 1; i <= 8; i++)
+                                            {
+                                                <div class="col-md-3 portfolio-item" style="height:100px;">
+                                                    <div class="editimg" style="position:relative;">
+                                                        <div class="btn fileinput-button">
+                                                            <form method="post" id='frmImgUpload_@i' action="/SellMyCar/UploadImage" enctype="multipart/form-data" novalidate="novalidate" class="privateSeller">
+                                                                <input type="file" data-ctrlid='@i' name="files" id='private_flVehicleFile_@i'>
+                                                                <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@i">
+                                                            </form>
+                                                            <a title="Zoom">
+                                                                <img class="img-responsive" data-isempty="1" src='@Url.Content("~/Content/images/uploadimg.png")' id="private_imgVehicleImagePlaceHolder_@i">
+                                                            </a>
+                                                        </div>
+                                                        <img data-ctrlid='@i' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: none;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="Private_imgRemoveImage_@i">
+                                                        <div>
+                                                            <span data-ctrlid="@i" id="spnMessage_@i"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+
+
+
+                                    <div class="bs-example bs-example-bg-classes">
+                                        <p class="bg-primary btn-warning linemessage">Tips: Take photos of the interior or any damage</p>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                            <label class="col-sm-4 control-label"></label>
+                                            <div class="col-sm-8">
+                                                <a class="btn btn-success" href="#"><span class="fa fa-upload"></span>  Upload</a>
+                                            </div>
+
+                                        </div>*@
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        @if (Model.CarSellerVehicleImageList!=null&& Model.CarSellerVehicleImageList.Count>0)
+                                        { 
+                                            <button class="btn btn-primary btn-lg active right" style="display:block;" type="button" id="TabPrivatePhotoUpload">Next</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-primary btn-lg active right" style="display:none;" type="button" id="TabPrivatePhotoUpload">Next</button>
+                                        }
+                                        
+                                        <button class="btn btn-primary btn-lg active right" style="display:none;" type="button" id="TabPrivatePhotoUpload">Next</button>
+                                        <button class="btn btn-primary btn-lg active left PreviousBtn" type="button" id="TabPrivatePrev2" style="float:right;margin-right:10px;">Previous</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="tab3" style="display:none;" class="tab-pane active">
+                    <div class="row steptitle">
+                        <span class="num">3</span>Now tell us your price and some more about the car
+                    </div>
+                    <form id="frmPrivateDetails2" class="form-horizontal" method="post" action="/CarSeller/CarSellingRegistrationDetails" novalidate="novalidate">
+                        <div class="row formarea">
+                            <h4>What's your asking price?</h4>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="inputEmail3" style="text-align:right;">Price</label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @id = "price", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Price)
+
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="inputPassword3">&nbsp;</label>
+                                <div class="col-sm-8">
+
+                                    <button class="btn btn-primary btn-lg active right NextBtn" type="button" id="btnPrivateTabDetail2">Submit</button>
+                                    <button class="btn btn-primary btn-lg active right NextBtn Submit-Btn" id="PrevPrice" type="button">Previous</button>
+
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+
+
+
+                        </div>
+                    </form>
+
+                </div>
+                <div id="tab4" style="display:none;">
+
+                    <div class="formbg thankyou mb20">
+
+                        <h1>Thank you for choosing</h1>
+                        <p>Your advert will be sent for approval and Go Live in a few hours. Remember you can edit your advert at any time through <a href="#">mymotorbid</a></p>
+                        <p>We'd like to know what you think to make our service even better. If you have a spare couple of minutes please <a href="#">click here to tell us</a></p>
+
+                        <a href="/" class="btn btn-primary">Return to Homepage</a>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+            <div class="col-md-4">
+                @Html.Partial("~/Views/Shared/_MyCarWidget.cshtml",Model.CarSellerVehicleInfoList)
+                @*<div>
+                    <h2>My Product On Sale</h2>
+                    <div class="auctionnews">
+                        <div class="well">
+                            <div class="newsRow">
+                                <img src="~/Content/images/newsl-car-thumb-small.png" />
+                                <h4>Side Widget Well</h4>
+                                <div class="time"><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span></div>
+                                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                            </div>
+                            <div class="newsRow" style="clear:both;">
+                                <img src="~/Content/images/newsl-car-thumb-small.png" />
+                                <h4>Side Widget Well</h4>
+                                <div class="time">
+                                    <span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span>
+                                </div>
+                                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+                <div>
+                    <h2 class="bestbuy">Best Buy</h2>
+                    <div class="bestbuylist">
+                        <div class="well">
+                            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Best Motability cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best automatic cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best crossover cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best estate cars</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Best selling cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best first car</a>
+                                </li>
+                            </ul>
+                            <div class="seemorelink">
+                                <a href="#">See all see best buy >></a> <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+@Scripts.Render("~/Content/other")
+<script type="text/javascript" src="~/Content/js/PrivateSellerScript.js"></script>
+<script type="text/javascript" src="~/Content/js/common.js"></script>
+<script src="~/Content/js/jquery.inputmask.js"></script>
+<script>
+    $('#DateOfFirstRegistration').on('changeDate', function (ev) {
+        $(this).datepicker('hide');
+    });
+    $(".steps>li").click(function () {
+        if ($(this).attr("data-enable") == "true") {
+            $(".steps>li").removeClass("active");
+            var tab = $(this).attr("data-value");
+            PrivatePushImages();
+            $("[id^=tab]").hide();
+            $(tab).show();
+            $(this).addClass("active");
+        }
+
+    });
+</script>

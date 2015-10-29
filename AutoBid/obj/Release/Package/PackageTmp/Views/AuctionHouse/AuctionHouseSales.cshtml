@@ -1,0 +1,135 @@
+﻿@model List<AutoBid.Models.Auction.AuctionHouseUpcomingSalesModel>
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section formwrap">
+    <div class="container">
+        @Html.Partial("_AuctionHouseVehicleMenu")
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row auction_house_content">
+                    <h1> @ViewBag.Title</h1>
+                    <div class="col-md-12">
+                        <h3>Stock List</h3>
+
+
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                if (item.aucHouseSale.AuctionHouseCarSellingList.Count > 0)
+                                {
+                                    <div class="salestockWrap">
+                                        <div class="saleHead">
+                                            <h4 class="left">@item.aucHouseSale.Title</h4>
+                                          
+                                            <a class="btn btn-default right print-list"><span class="fa fa-print"></span> Print List</a>
+                                            <a href="@Url.Action("AddEditVehicleTitleSpecific", "AuctionHouseAddEditVehicle", new { @id = item.aucHouseSale.AuctionHouseSaleID })" class="btn btn-default right" id="btnAddMoreVehicle"><span class="fa fa-plus"></span> Add More Vehicle</a>
+                                        </div>
+
+
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Sale Date</th>
+                                                <th>Vehicle name</th>
+                                                <th>Vehicle Reg.No</th>
+                                                <th>Vehicle Reserve</th>
+                                                <th>Edit  details</th>
+                                            </tr>
+                                            @{int i=1;}
+
+                                            @foreach (var item1 in item.aucHouseSale.AuctionHouseCarSellingList)
+                                            {
+                                                <tr>
+                                                    <td> @i</td>
+                                                    <td>@Convert.ToDateTime(item.aucHouseSale.SaleDate).ToShortDateString()</td>
+                                                    <td><a href="#"></a>@AutoBid.Controllers.Auction.AuctionHouseController.GetMakeName(Convert.ToInt32(item1.MakeID)) &nbsp;
+                                                    @AutoBid.Controllers.Auction.AuctionHouseController.GetModelName(Convert.ToInt32(item1.MakeID))
+                                                    </td>
+
+                                                    <td>@item1.RegistrationNo</td>
+                                                    <td>&pound; @item1.Reserve</td>
+
+                                                    <td>
+                                                    <a href="@Url.Action("Edit", "AuctionHouseAddEditVehicle", new { @id=Convert.ToInt64(item1.AuctionHouseCarSellingID)})" style="cursor:pointer;" id="btnEdit_@i" data-value="@i"><span class="fa fa-pencil"></span> Edit</a>
+                                                     </td>
+                                                </tr>
+                                                { i++; }
+                                            }
+                                           
+                                        </table>
+
+
+
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="adbanner"> <span>Ad Banner</span> </div>
+                <div>
+
+                    <div>
+                        <h2 class="bestbuy">Best Buy</h2>
+                        <div class="bestbuylist">
+                            <div class="well">
+                                <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Best Motability cars</a> </li>
+                                    <li><a href="#">Best automatic cars</a> </li>
+                                    <li><a href="#">Best crossover cars</a> </li>
+                                    <li><a href="#">Best 4x4s and SUVs</a> </li>
+                                    <li><a href="#">Best estate cars</a> </li>
+                                    <li><a href="#"> Best selling cars</a> </li>
+                                    <li><a href="#">Best first car</a> </li>
+                                </ul>
+                                <div class="seemorelink">
+                                    <a href="#">See all see best buy &gt;&gt;</a>
+                                    <div> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+
+
+
+           
+
+<script type="text/javascript">
+    $('.print-list').click(function () {
+     
+        var pageTitle = $(this).prev().text(),
+              
+            stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
+            win = window.open('', 'Print', 'width=600,height=400');       
+        var table = $(this).parent().parent().find('table');
+        var TempTable = $(table).clone();
+        $(TempTable).find('th:last-child, td:last-child').remove();
+       
+      
+        //console.log(hhh);
+        win.document.write('<html><head><title>' + pageTitle + '</title>' +
+            '<link rel="stylesheet" href="' + stylesheet + '">' +
+            '</head><body>' + $(TempTable)[0].outerHTML + '</body></html>');
+        win.document.close();
+        win.print();
+        win.close();
+        return false;
+    });
+
+</script>
+

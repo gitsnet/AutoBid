@@ -1,0 +1,75 @@
+﻿@model List<AutoBid.Models.CarBuyer.CarBuyerInfoModel>
+@{
+    ViewBag.Title = "Offers Made";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="container">
+        @Html.Partial("_BuyerLink")
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row auction_house_content">
+
+                    <h1>Offers made</h1>
+                    <div class="col-md-12">
+                        <table width="100%" id="OffersMade" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th>Title</th>
+                                    <th> </th>
+                                    <th>Offer Made</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int count = 1;
+                                    foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td width="1%" >@Html.Label(count.ToString())</td>
+                                            <td width="10%">@item.BuyDate</td>
+                                            <td width="24%"><img src="@item.BuyerImage" alt="@item.BuyerImage" class="thumbnail" width="100%" />   </td>
+                                            <td width="20%">@item.Title</td>
+                                            <td width="15%">@item.WayOfSelling</td>
+                                            @*<td width="25%">@item.BuyDate</td>*@
+                                            <td width="10%">@item.BuyingPrice £</td>
+                                            <td width="20%" valign="middle">
+                                                <div class="increaseOffer"><a class="btn btn-danger" href="javascript:void(0)">Increase Offer</a></div>
+                                                <div class="makeCounterOffer"><a class="btn btn-success" href="javascript:void(0)">Make Counter Offer</a></div>
+                                            </td>
+                                        </tr>
+                                        count = count + 1;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#OffersMade').dataTable();
+    });
+</script>

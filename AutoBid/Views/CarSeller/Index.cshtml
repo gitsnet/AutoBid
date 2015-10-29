@@ -1,0 +1,107 @@
+﻿@model AutoBid.Models.CarSeller.CarSellerMainModel
+@{
+    ViewBag.Title = "Seller";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 formbg2">
+                <div class="sellerfg_header">Sell My Car</div>
+                <div class="sellerfg_header_img"> <img width="748" height="334" src='@Url.Content("~/Content/images/img_car.jpg")' /></div>
+                @using (Html.BeginForm("Index", "CarSeller", FormMethod.Post))
+                {
+                    <div class="row selyourcar_bg">
+                        <div class="col-md-7 selyourcar_div1">                          
+                            @Html.TextBoxFor(m => m.RegistrationNumber, new { placeholder = "Enter Car Registration Number", @class = "form-control inputRegNo" })
+                            @Html.ValidationMessageFor(m => m.RegistrationNumber)
+                            @Html.TextBoxFor(m => m.Milage, new { placeholder = "Enter Car Mileage", @class = "form-control carMileage" })
+                            @Html.ValidationMessageFor(m => m.Milage)
+
+                        </div>
+                        <!--<div class="col-md-1 selyourcar_div2">&nbsp;</div>-->
+                        <div class="col-md-4 selyourcar_div3">
+                            <strong>Choose the type of seller you are</strong>
+                            <div class="form-group">
+                                <div class="typeofseller">
+                                    @{int i = 0;}
+                                    @foreach (var item in Model.CarSellerTypeList)
+                                    {
+
+                                        <label class="radio-inline">
+                                            @if (i == 0)
+                                            {
+                                                @Html.RadioButtonFor(m => m.CarSellerType, item.Value, new { @checked = true })@item.Text
+                                            }
+                                            else
+                                            {
+                                                @Html.RadioButtonFor(m => m.CarSellerType, item.Value)@item.Text
+                                            }
+                                        </label>
+                                            i++;
+
+                                    }
+
+                                </div>
+                            </div>
+                            <strong>Choose the way to sell car</strong>
+                            <div class="form-group">
+                                <div class="typeofseller">
+                                    @{int j = 0;}
+                                    @foreach (var item in Model.CarSellingOnList)
+                                    {
+
+                                        <label class="radio-inline" style="margin-left:5px;">
+                                            @if (j == 0)
+                                            {
+                                                @Html.RadioButtonFor(m => m.CarSellingOnType, item.Value, new { @checked = true })@item.Text
+                                            }
+
+                                          
+                                            else
+                                            {
+                                                @Html.RadioButtonFor(m => m.CarSellingOnType, item.Value)@item.Text
+                                            }
+                                            <br />
+                                        </label>
+                                            j++;
+                                    }
+
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-sellurcar">Create Advert</button>
+                        </div>
+                    </div>
+                }
+                <div class="createliveauction">Create Live Auction <img width="51" height="20" src='@Url.Content("~/Content/images/arrow1.png")'> </div>
+            </div>
+            <div class="col-md-4">
+                <div class="paymentDetails paymentDetailsRight">
+                    <div class="sellerfg_header headermagin"> <a href="javascript:void(0)">Choose payment Type</a><img width="51" height="20" class="arrow2" src='@Url.Content("~/Content/images/arrow2.png")'></div>
+                    <div class="paymenyoptionsWrap">
+                        <div class="paymenyoptions">
+                            <div class="radio"> <a href="javascript:void(0)"><img src='@Url.Content("~/Content/images/othercard.png")'></a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="createliveauction salesPack"><a href="javascript:void(0)">View our sales packages <img width="51" height="20" src='@Url.Content("~/Content/images/arrow2.png")'></a> </div>
+                <div>
+                    <h2>Tips for Selling!</h2>
+                    <div class="auctionnews sellingtips">
+                        <div class="well">
+                            <div class="newsRow"> 1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </div>
+                            <div class="newsRow"> 2. Lorem Ipsum is simply dummy text of the printing and typesetting industry </div>
+                            <div style="clear:both;" class="newsRow"> 3. Lorem Ipsum is simply dummy text of the printing and typesetting industry </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>

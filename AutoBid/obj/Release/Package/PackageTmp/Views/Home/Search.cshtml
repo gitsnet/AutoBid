@@ -1,0 +1,315 @@
+﻿@model AutoBid.Models.Home.IndexHomeModel
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="container">
+       
+        <form  action="/Home/Search" method="get" id="myform" >
+            <div class="row">
+                <div class="col-md-12 dropdown_main">
+                    @Html.HiddenFor(m => m.CarSellingOnName)
+                    @Html.DropDownList("CarSellingOnID", new SelectList(Model.CarSellingOnList, "ID", "Way"), "--Select--", new { @class = "form-control", @id = "ddlCarSellingOn", @onchange = "GetName(this)" })
+                    @*<select class="form-control">
+                        <option>Select</option>
+                        @if (Model.CarSellingOnList.Count > 0 || Model.CarSellingOnList != null)
+                        {
+                            foreach (var item in Model.CarSellingOnList)
+                            {
+                                <option>@item.Way</option>
+                            }
+                        }
+                    </select>*@
+
+                </div>
+            </div>
+            <div class="row dropdown_fields_bg dropdown_fields_d1">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Make</label>
+                        @Html.HiddenFor(m => m.MakeName)
+                        @Html.DropDownList("MakeID", new SelectList(Model.MakeList, "ID", "Makename"), "--Select--", new { @class = "form-control", @id = "ddlMakes",@onchange="GetName(this)" })
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Private / Trade</label>
+                        @Html.HiddenFor(m => m.CarSellerTypeName)
+                        @Html.DropDownList("CarSellerTypeID", new SelectList(Model.CarSellerTypeList, "ID", "Type"), "--Select--", new { @class = "form-control", @id = "ddlCarSellerType", @onchange = "GetName(this)" })
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Doors</label>
+                        <select class="form-control">
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Body Type</label>
+                        @Html.HiddenFor(m => m.BodyTypeName)
+                        @Html.DropDownList("BodyTypeID", new SelectList(Model.bodyTypeList, "ID", "Type"), "--Select--", new { @class = "form-control", @id = "ddlBodyType", @onchange = "GetName(this)" })
+                       
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Model</label>
+                        @Html.HiddenFor(m => m.ModelName)
+                        @Html.DropDownList("ModelID", new SelectList(Model.ModelList, "ID", "Modelname"), "--Select--", new { @class = "form-control", @id = "ddlModelName", @onchange = "GetName(this)" })
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Transmission</label>
+                        @Html.HiddenFor(m => m.TransmissionName)
+                        @Html.DropDownList("TransmissionID", new SelectList(Model.transmissionTypeList, "ID", "Type"), "--Select--", new { @class = "form-control", @id = "ddlTransmissionType", @onchange = "GetName(this)" })
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Vehicle Grade</label>
+                        <select class="form-control">
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Engine Size</label>
+                        <select class="form-control">
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Sale Type</label>
+                        <select class="form-control">
+                            <option>Classified Adverts</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Vehicle Type</label>
+                        <select class="form-control">
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fule Type</label>
+                        @Html.HiddenFor(m => m.FuelTypeName)
+                        @Html.DropDownList("FuelTypeID", new SelectList(Model.fuelTypeList, "ID", "Type"), "--Select--", new { @class = "form-control", @id = "ddlFuelType", @onchange = "GetName(this)" })
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Colour</label>
+                        <select class="form-control">
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row dropdown_fields_bg">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="inputEmail3">Or Type your search terms here</label>
+                        @*<input type="text" placeholder="" id="exampleInputPassword1" class="form-control">*@
+                        @Html.TextBox("searchtext", "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb20 dropdown_fields_bg dropdown_fields_d2">
+                <div class="col-md-6 mb20">
+                    <button class="btn btn-primary btn-lg btn-block" type="button">Reset Filters</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-success btn-lg btn-block" type="submit">Search</button>
+                </div>
+
+            </div>
+
+            </form>
+
+            <div class="row dropdown_main_search">
+
+                <div class="col-md-8">
+                    <div class="col-md-6 result">
+                        <h1>Results</h1>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search by Distance" class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default"><span class="fa fa-search"></span></button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div>
+
+                    </div>
+                    @if (Model.CarDetailsList.Count > 0)
+                    {
+                        foreach (var item in Model.CarDetailsList)
+                        {
+                            <div class="col-md-12 details_list">
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="singlecar_galleryimg">
+                                            @if (item.CarImages.Count > 0 && item.CarImages != null)
+                                            {
+                                                int i = 0;
+                                                foreach (var itemImage in item.CarImages)
+                                                {
+                                                    if (i == 0)
+                                                    {
+                                                        <img src="/Content/Assets/CarSellerImages/@itemImage.Filename" width="212" height="173" id="bigImage">
+                                                        break;
+
+                                                    }
+                                                    i++;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <img src="/Content/images/noimage.jpg" width="100" height="100">
+                                            }
+
+                                        </div>
+
+                                        <ul class="list-inline singlecar_gallery">
+
+
+                                            @if (item.CarImages.Count > 0 && item.CarImages != null)
+                                            {
+                                                //int i = 0;
+                                                foreach (var itemImages in item.CarImages)
+                                                {
+                                                    if (itemImages == null)
+                                                    {
+                                                        <li class="active"><img src="/Content/images/noimage.jpg" width="78" height="59"></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li><a href="javascript:;" class="imggallery"><img src="/Content/Assets/CarSellerImages/@itemImages.Filename" width="78" height="59"></a></li>
+                                                    }
+                                                    //i++;
+                                                }
+                                            }
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="auctionhouse_list col-md-4">
+                                        <h3>
+                                            @*Jeep Grand Cherokee 4.0 5dr<br>
+                                            <small>1988 (p) Estate</small>*@
+                                            @item.Title
+                                            @item.ModelName @item.MakeName
+
+                                        </h3>
+
+
+                                        <ul>
+                                            @*<li>123,000 miles (W) </li>
+                                            <li>Manual</li>
+                                            <li>Diesel</li>*@
+
+                                            <li>@item.TransmissionType</li>
+                                            <li>@item.fuelType</li>
+
+                                        </ul>
+
+                                        <ul>
+                                            @*<li>123,000 miles (W) </li>
+                                            <li>Manual</li>
+                                            <li>Diesel</li>*@
+
+                                            <li>@item.Description</li>
+
+
+                                    </ul>
+
+                                    @*<img width="141" height="99" src="images/auction_house_logo_141x99.jpg">
+                                    <button style="margin-top:6px;" class="btn btn-viewstock btn-xs" type="button">View Auction Stock List</button>*@
+                                </div>
+
+                                <div class="auctionhouse_list col-md-4">
+                                    @*<h4>Distance: <small>126 miles</small></h4>*@
+                                    <p>
+                                        <button style="margin-top:6px;" class="btn btn-primary btn-xs" type="button">Auction Vehicles</button><br>
+                                        @*Full service history,green car, nice wheels with a spoiler and great headlights and really nice inside...<br>*@
+                                        @*@item.Description*@
+                                        <button style="margin-top:6px;" class="btn btn-viewstock btn-xs" type="button">See More</button>
+                                    </p>
+                                    <span class="watchlive_span"><button class="btn btn-watchlive btn-xs" type="button">Watch live</button></span>
+                                    <span class="date_span">DUH: 24/4/13  6:15 pm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        }
+                    }
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="adbanner">
+                        <span>Ad Banner</span>
+                    </div>
+
+                    <div class="adbanner">
+                        <span>Ad Banner</span>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+</div>
+</div>
+<style>
+    .dropdown_main_search .result h1 {
+        color: #14537f;
+        display: inline-block;
+        font-size: 35px;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin: 0;
+    }
+
+    .details_list {
+        background-color: #f5f5f5;
+        border: 1px solid #d9dce0;
+        font-size: 14px;
+        font-weight: 300;
+        margin: 10px 0;
+        padding: 18px;
+    }
+</style>
+<script>
+    var GetName = function (that) {      
+        
+        $(that).prev('input[type = hidden]').val($(that).find("option:selected").text())
+        //if($(that).find("option:selected").text() == --Select--)
+        //{
+        //    $(that).prev('input[type = hidden]').val(null)
+        //}
+        //else
+        //{
+            
+        //}
+    }
+    $("#myform").validate({
+        ignore: ".ignore"
+    })
+</script>

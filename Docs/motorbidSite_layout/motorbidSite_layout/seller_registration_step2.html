@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AutoBid</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/autobid.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"><script src="js/jquery-1.10.2.js"></script>
+
+
+	<script>
+	$(document).ready(function() {
+			 $("#header").load("header.html"); 
+			 $("#footer").load("footer.html");
+			
+			
+			$("li.signInLink a").click(function() {
+			 alert("test");
+				//Do stuff when clicked
+			});
+			 
+			 
+		});
+	
+	
+    $(function () {
+    $('#myTab a:last').tab('show');
+    })
+	
+	
+	</script>
+</head>
+
+<body>
+<div id="header"></div>
+     
+ 	
+    <div class="section">
+
+        <div class="container">
+
+            <div class="row">
+            	<div class="col-md-8 formbg">
+                    
+                    
+                    <div class="row steptitle">
+                    Choose you Membership Plan</div>
+                   
+                   
+                    <div>
+                    
+                    
+                    </div>
+                    <div class="row formarea">
+                    <form class="form-horizontal" role="form">
+                      
+                      
+                      
+                      
+                      
+                      <div class="form-group" style="border-bottom:1px solid #FFFFFF;margin-right: -30px; padding-bottom: 20px;">
+                      </div>
+                      
+                      
+                     
+                     <div id="pricePlans">
+		<ul id="plans">
+			<li class="plan">
+				<ul class="planContainer">
+					<li class="title"><h2>Basic Membership</h2></li>
+					<li class="price"><p>$0/<span>month</span></p></li>
+					<li>
+						<ul class="options">
+							<li>2x <span>option 1</span></li>
+							<li>Free <span>option 2</span></li>
+							<li>Unlimited <span>option 3</span></li>
+							<li>Unlimited <span>option 4</span></li>
+							<li>1x <span>option 5</span></li>
+						</ul>
+					</li>
+					<li class="button"><a href="#">Purchase</a></li>
+				</ul>
+			</li>
+
+			<li class="plan">
+				<ul class="planContainer">
+					<li class="title"><h2 class="bestPlanTitle">Silver Membership</h2></li>
+					<li class="price"><p class="bestPlanPrice">$20/month</p></li>
+					<li>
+						<ul class="options">
+							<li>2x <span>option 1</span></li>
+							<li>Free <span>option 2</span></li>
+							<li>Unlimited <span>option 3</span></li>
+							<li>Unlimited <span>option 4</span></li>
+							<li>1x <span>option 5</span></li>
+						</ul>
+					</li>
+					<li class="button"><a class="bestPlanButton" href="#">Purchase</a></li>
+				</ul>
+			</li>
+
+			<li class="plan">
+				<ul class="planContainer">
+					<li class="title"><h2>Gold Membership</h2></li>
+					<li class="price"><p>$30/<span>month</span></p></li>
+					<li>
+						<ul class="options">
+							<li>2x <span>option 1</span></li>
+							<li>Free <span>option 2</span></li>
+							<li>Unlimited <span>option 3</span></li>
+							<li>Unlimited <span>option 4</span></li>
+							<li>1x <span>option 5</span></li>
+						</ul>
+					</li>
+					<li class="button"><a href="#">Purchase</a></li>
+				</ul>
+			</li>
+
+		</ul> 
+	</div>
+                      
+                      <div class="form-group">
+                        <div class="col-md-12" style="text-align:center;">
+						
+                        <button type="button" class="btn btn-primary btn-lg active">Next</button>
+
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                </div>
+            
+                <div class="col-md-4">
+                
+                <div>
+      <h2>Auction Today</h2>
+      <div class="auctionnews">
+      		<div class="well">
+            <div class="newsRow">
+                    <img src="images/newsl-car-thumb-small.png"/>
+                    	<h4>Side Widget Well</h4>
+                        <div class="time"><span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span></div>
+                        <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+             </div>
+             <div class="newsRow" style="clear:both;">
+                    <img src="images/newsl-car-thumb-small.png"/>
+                    	<h4>Side Widget Well</h4>
+                        <div class="time">
+                        	<span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span>
+                        </div>
+                        <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+             </div>
+          </div>
+       </div>
+       </div>
+       
+       <div>
+       	      <h2 class="bestbuy">Best Buy</h2>
+      <div class="bestbuylist">
+      		<div class="well">
+            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+           		 <ul class="list-unstyled">
+                                <li><a href="#">Best Motability cars</a>
+                                </li>
+                                <li><a href="#">Best automatic cars</a>
+                                </li>
+                                <li><a href="#">Best crossover cars</a>
+                                </li>
+                                <li><a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li><a href="#">Best estate cars</a>
+                                </li>
+                                <li><a href="#"> Best selling cars</a>
+                                </li>
+                                <li><a href="#">Best first car</a>
+                                </li>
+                            </ul>
+          <div class="seemorelink"> <a href="#">See all see best buy >></a> <div>
+          </div>
+       </div>
+      </div>
+      </div>
+
+       </div>
+       
+       
+      </div>
+                
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+   <!-- /.section Research Best Buy vehicles available -->
+<!--<div class="section reseachBestBuy">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-8">
+      	<div class="headerrow"><h2>New Car Research </h2></div>
+        <div class="clientlogo">
+        	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+           	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+           	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+    </div>
+    
+    
+    
+  </div>
+ </div>
+ </div>-->
+<!-- /.section Other vehicles available -->
+    <!-- /.footer -->
+	<div id="footer"></div>
+    <!-- /.footer -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/modern-business.js"></script>
+
+</body>
+
+</html>

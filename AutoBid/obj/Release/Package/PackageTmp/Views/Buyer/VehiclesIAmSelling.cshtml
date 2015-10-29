@@ -1,0 +1,345 @@
+﻿@model List<AutoBid.Models.CarBuyer.CarBuyerInfoModel>
+@{
+    ViewBag.Title = "VehiclesIAmSelling";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/3.3.0/ekko-lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/3.3.0/ekko-lightbox.min.js"></script>
+
+
+<div id="auctionSale-pop-up" class="modal fade " role="dialog">
+    <div class="modal-dialog" style="width:70%">
+        <div class="modal-content ">
+            <div class="modal-header bg-blue-soft ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Auction House Sale</b></h4>
+            </div>
+           
+            <div class="modal-body ">
+                <div id="msg" style="display:none;"></div>
+             
+                <div id="content"></div>
+                <div class="row">
+
+                    <div class="col-md-8">
+
+                        <div class="form-group" id="aucName">
+                           
+
+                        </div>
+                        <br />
+                        <div class="form-group" id="aucDt">
+                           
+
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="divhdnAucVec" style="display:none;">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="AddAucSale" class="btn btn-success ladda-button" data-style="expand-left">Add</button>
+                @*<button type="button" id="AddAucSaleCan" class="btn btn-success ladda-button" data-style="expand-left">Cancel</button>*@
+            </div>
+           
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="section">
+    <div class="container">
+        @Html.Partial("_BuyerLink")
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row auction_house_content">
+
+                    <h1>Vehicles I am Selling</h1>
+                    <div class="col-md-12">
+                        <table width="100%" id="VehiclesIAmSelling" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th>Title</th>
+                                    <th> </th>
+                                    <th>Reserve</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int count = 1;
+                                    foreach (var item in Model)
+                                    {
+                                        int imgcount = 1;
+                                        <tr>
+                                            <td>@Html.Label(count.ToString())</td>
+                                            <td width="20%">
+                                                @if (item.BuyerImages.Count > 0)
+                                                {
+                                                    foreach (var img in item.BuyerImages)
+                                                    {
+                                                        if (imgcount == 1)
+                                                        {
+                                                            if (@img.Filename != "")
+                                                            {
+                                                                <a href="/Content/Assets/CarSellerImages/@img.Filename" data-title="@item.Title" data-toggle="lightbox" class="thumbnail light" id='lunchmodal_@imgcount' onclick="imgdisplay(event,@imgcount);">
+                                                                    <img src="~/Content/Assets/CarSellerImages/@img.Filename" alt="@img.Filename" class="img-responsive" width="100%" />
+                                                                </a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="/Content/Images/noimage.jpg" alt="" class="img-responsive" width="100%" />
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            if (@img.Filename != "")
+                                                            {
+                                                                <a href="/Content/Assets/CarSellerImages/@img.Filename" data-title="@item.Title" data-toggle="lightbox light" class="thumbnail" style="display:none">
+                                                                    <img src="/Content/Assets/CarSellerImages/@img.Filename" alt="@img.Filename" class="img-responsive" width="100%" style="display:none" />
+                                                                </a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="/Content/Images/noimage.jpg" alt="" class="img-responsive" width="100%" />
+                                                            }
+                                                        }
+                                                        imgcount = imgcount + 1;
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <img src="/Content/Images/noimage.jpg" alt="" class="img-responsive" width="100%" />
+                                                }
+
+
+
+                                            </td>
+                                            <td width="20%">@item.Title</td>
+
+                                            <td width="20%"><span class="cAd">@item.WayOfSelling</span></td>
+                                            <td width="20%">@item.BuyingPrice £</td>
+                                            @if (item.WayOfSellingID == 1)
+                                            {
+                                                <td width="20%">
+                                                    <div class="increaseOffer"><a class="btn btn-info" href="/CarSeller/EditDetails/@item.VehicleID"><span class="fa fa-edit"></span> Edit Details</a></div><br />
+
+                                                    @if(item.IsSendToAuction==false)
+                                                    {
+                                                        
+                                                    <div class="makeCounterOffer"><a class="btn btn-primary auction" id='@("addauction_"+item.VehicleID)' href="javascript:void(0)" data-datac="@item.VehicleID" onclick="AddToAuction(this)">Send To Auction</a></div>
+                                                    }
+                                                    else
+                                                     { 
+                                                    <div class="makeCounterOffer"><a class="btn btn-danger removeAuction" id='@("removeauction_"+item.VehicleID)' href="javascript:void(0)" data-datac="@item.VehicleID" onclick="RemoveFromAuction(this)">Remove From Auction</a></div>
+                                                    }
+                                                    
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td width="25%"></td>
+                                            }
+
+                                        </tr>
+                                            count = count + 1;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#VehiclesIAmSelling').dataTable({
+            "iDisplayLength": 10
+        });
+
+    });
+    $(document).ready(function ($) {
+        $(document).delegate('*[data-toggle="lightbox"]', 'click', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+
+    });
+
+
+
+    function AddToAuction(that) {
+        var vehicleID = $(that).data('datac');
+
+
+        $.ajax({
+            async: true,
+            type: 'GET',
+            url: "/Buyer/SendToAuction/",
+            success: function (data) {
+
+                if (!jQuery.isEmptyObject(data)) {
+
+                    var html = "";
+                    html += "<input type=\"hidden\" id=\"hdnVehicleID\" value=\"" + vehicleID + "\" />"
+
+                    html += " <label class='col-sm-4 control-label'>Auction House Name</label>";
+                    html += '<select class="form-control" id="ddlAucHouseName" onchange="ChangeAvailability(this,&quot;onchange&quot;)" >';
+
+                    html += '<option value=""> --Select--  </option>';
+
+                    $.each(data, function (index, value) {
+
+                        html += '<option value="' + value.AuctionHouseID + '">' + value.AuctionHouseName + ' </option>';
+
+                    });
+                    html += '</select></div>';
+
+                    $('#aucName').html(html);
+
+                }
+
+                $("#auctionSale-pop-up").modal("show");
+
+            }
+        });
+    }
+
+    function RemoveFromAuction(that)
+    {
+        var vehicleID = $(that).data('datac');
+       
+        
+       $.ajax({
+            type: "POST",
+            datatype: 'json',
+            data: { id: "" + vehicleID + " " },
+            url: '@Url.Action("GetFromAuction", "Buyer")',
+            success: function (result) {
+                console.log(result);
+
+
+                $.ajax({
+                    type: "POST",
+                    datatype: 'json',
+                    data: { VehicleID: "" + vehicleID + " ", AuctionHouseCarSellingID: "" + result + "" },
+                    url: '@Url.Action("DeleteFromAuction", "Buyer")',
+                    success: function (result) {
+                        //$("#addauction_" + vehicleID).removeClass("btn-danger removeAuction");
+                        //$("#addauction_" + vehicleID).addClass("btn-primary auction");
+                        //$("#addauction_" + vehicleID).text("Send To Auction");
+
+                        $("#removeauction_" + vehicleID).removeClass("btn btn-danger removeAuction");
+                        $("#removeauction_" + vehicleID).addClass("btn btn-primary auction");
+                        $("#removeauction_" + vehicleID).text("Send To Auction");
+                        $("#removeauction_" + vehicleID).attr("id", "addauction_" + vehicleID);
+                        $('#addauction_' + vehicleID).attr('onclick', 'AddToAuction(this)');
+
+                    }
+                });
+            }
+
+        });
+    }
+
+    var ChangeAvailability = function (that, firetype) {
+
+        var auctionhouseid = 0;
+
+        if (firetype == "onchange") {
+            auctionhouseid = $(that).val();
+            $.ajax({
+                async: true,
+                type: 'GET',
+                url: "/Buyer/FindAuctionSale/auction/" + auctionhouseid,
+                success: function (data) {
+                    console.log(data);
+
+                    if (!jQuery.isEmptyObject(data)) {
+                        console.log("data");
+                        html = "";
+                        html += "<label class='col-sm-4 control-label'>Sale Date</label>";
+
+                        html += '<select class="form-control" id="ddlAucHouseSaleDT">';
+
+                        $.each(data, function (index, value) {
+
+                            html += '<option value="' + value.AuctionHouseSaleID + '">' + value.SaleDate + ' </option>';
+
+                        });
+                        html += '</select></div>';
+                       
+                        $("#aucDt").html(html);
+                        $('#AddAucSale').prop('disabled', false);
+                        
+
+
+                    }
+                    else {
+                        html = "";
+                        console.log("null");
+                        $("#aucDt").html(html);
+                        $('#AddAucSale').prop('disabled', true);
+
+                    }
+
+                    $("#auctionSale-pop-up").modal("show");
+
+                }
+
+
+            });
+
+        }
+    }
+
+    $('#AddAucSale').click(function () {
+
+        var vehicleid = $('#hdnVehicleID').val();
+        var aucHouseid = jQuery("#ddlAucHouseName option:selected").val();
+        var aucHouseSaleid = jQuery("#ddlAucHouseSaleDT option:selected").val();
+
+        $.ajax({
+            type: "POST",
+            datatype: 'json',
+            data: { VehicleID: "" + vehicleid + "", AuctionHouseID: "" + aucHouseid + "", AuctionHouseSaleID: "" + aucHouseSaleid + "" },
+            url: '@Url.Action("AddToAuction", "Buyer")',
+            success: function (result) {
+                console.log("#removeauction_" + vehicleid);
+                $('#aucName').html("");
+                $('#aucDt').html("");
+                 
+                $("#addauction_" + vehicleid).removeClass("btn-primary auction");
+                $("#addauction_" + vehicleid).addClass("btn-danger removeAuction");
+                $("#addauction_" + vehicleid).text("Remove From Auction");
+                $("#addauction_" + vehicleid).attr("id", "removeauction_" + vehicleid);
+                $('#removeauction_' + vehicleid).attr('onclick', 'RemoveFromAuction(this)');
+
+                $("#auctionSale-pop-up").modal("hide");
+
+                
+                                
+            }
+        });
+
+    });
+
+</script>
+

@@ -1,0 +1,837 @@
+﻿@model AutoBid.Models.Auction.AuctionHouseAddEditVehicleModel
+@{
+    ViewBag.Title = "AddEditVehicleTitleSpecific";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal fade" id="imageUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-input">
+        <div class="modal-content">
+            <div class="jumbotron">
+                <form action="~/AuctionHouseAddEditVehicle/UploadImage/" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+                    <div class="fallback">
+
+                        <input name="file" type="file" multiple accept="image/*" />
+                        <input type="submit" value="Upload" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="auctionSale-pop-up" class="modal fade " role="dialog">
+    <div class="modal-dialog" style="width:70%">
+        <div class="modal-content ">
+            <div class="modal-header bg-blue-soft ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Auction House Sale</b></h4>
+            </div>
+            <form id="frmAucSaleNew" method="post" action="/AuctionHouseAddEditVehicle/AddNewAuctionHouse" novalidate="novalidate">
+                <div class="modal-body ">
+                    <div id="msg" style="display:none;"></div>
+                    <div id="content"></div>
+                    <div class="row">
+
+                        <div class="col-md-8">
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="inputDate">Sale Date</label>
+                                <div class="col-sm-8 datewrap">
+                                    <span class="fa fa-calendar"></span>
+                                    @Html.TextBoxFor(m => m.NewSaleDate, new { @class = "form-control", placeholder = "Enter Sale Date", id = "SaleDate" })
+
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="title">Title</label>
+                                <div class="col-sm-4">
+                                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control ", placeholder = "Title" })
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="AddAucSale" class="btn btn-success ladda-button" data-style="expand-left">Add</button>
+                    <button type="button" id="AddAucSaleCan" class="btn btn-success ladda-button" data-style="expand-left">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="section formwrap">
+    <div class="container">
+
+        @Html.Partial("_AuctionHouseVehicleMenu")
+
+        <div class="row mb20">
+            <div class="col-md-8 formbg mb20">
+                <div class="row">
+                    <ul class="steps">
+                        <li class="step1 tab1 active" id="liDetails"> <span>1</span> Add Vehicle </li>
+                        <li class="step2 tab2" id="details2"> <span>2</span> Photo &amp; Document Upload </li>
+                        <li class="step3 tab3" id="liPhotoUpload"> <span>3</span> Confirm &amp; Upload </li>
+                    </ul>
+                </div>
+                <div id="tab1">
+                    <div class="row steptitle">
+                        <div class="col-md-12"><span class="num">1</span> Basic details about car in upcoming sales.</div>
+
+                    </div>
+                    <div class="row formarea">
+                        <form id="frmAuctionHouseSaleAddEditVehicle" class="form-horizontal" method="post" action="/AuctionHouseAddEditVehicle/Index" novalidate="novalidate">
+                            <div class="highlight">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="saleDate">Sale date</label>
+                                    <div class="col-sm-4">
+                                        @Html.HiddenFor(m => m.AuctionHouseVehicleID, new { @id = "hdnAucVehicleID" })
+                                        @if (Model.AuctionHouseSaleList.Count > 0 || Model.AuctionHouseSaleList != null)
+                                        {
+                                            @Html.DropDownList("SaleID", new SelectList(Model.AuctionHouseSaleList, "AuctionHouseSaleID", "Title"), "--Select--", new { @class = "form-control", @id = "ddlSale" })
+                                            @Html.ValidationMessageFor(m => m.Title)
+                                        }
+
+                                    </div>
+                                    <div class="col-sm-4"> <a id="aucSaleNew" href="javascript:void(0);" class="btn btn-primary"><span class="fa fa-plus"></span> Create Sale</a> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="reserve">Reserve</label>
+                                    <div class="col-sm-4">
+
+                                        @Html.TextBoxFor(m => m.Reserve, new { @class = "form-control ", @placeholder = "$3000" })
+                                        @Html.ValidationMessageFor(m => m.Reserve)
+                                    </div>
+                                    <div class="col-sm-4 notify"> Value with CAP </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="reserve">Registration#</label>
+                                    <div class="col-sm-4">
+                                        @Html.TextBoxFor(m => m.RegistrationNo, new { @class = "form-control ", @placeholder = "RegistrationNo" })
+
+                                        @Html.ValidationMessageFor(m => m.RegistrationNo)
+                                    </div>
+                                    <div class="col-sm-4" id="divRegError" style="color:red;display:none;">
+
+                                    </div>
+                                    <div class="col-sm-4 notify">  </div>
+                                </div>
+                            </div>
+                            <div class="highlight">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Make</label>
+
+                                    <div class="col-md-4">
+                                        @if (Model.MakeList.Count > 0 || Model.MakeList != null)
+                                        {
+                                            @Html.DropDownList("MakeID", new SelectList(Model.MakeList, "ID", "Makename"), "--Select--", new { @class = "form-control", @id = "ddlMakes" })
+                                        }
+                                        @Html.TextBoxFor(m => m.NewCarMakeName, new { @id = "txtNewMakename", @style = "display:none;", @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.MakeID)
+                                        <span class="linktext" id="spnCarMakeNotInList">My car make not in list.<br></span>
+                                    </div>
+
+                                    <div class="col-sm-4"> <a class="underline" href="javascript:void(0)">Not your car</a> </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Model</label>
+                                    <div class="col-sm-8">
+
+                                        @Html.HiddenFor(m => m.ModelID, new { @id = "hdnModelID" })
+                                        @Html.DropDownList("ModelID", new SelectList(Model.CarModelList, "ID", "Modelname"), "--Select--", new { @class = "form-control", @id = "ddlModels" })
+                                        <span id="spnCarModelNotInList" class="linktext">My car model not in list.</span>
+                                        @Html.TextBoxFor(m => m.NewCarModelName, new { @id = "txtNewModelname", @style = "display:none;", @class = "form-control" })
+
+
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <label class="col-sm-4 control-label">Engine Size</label>
+                                    <div class="col-sm-8">
+                                        @if (Model.EngineSizeList.Count > 0 || Model.EngineSizeList != null)
+                                        {
+                                            @Html.DropDownList("EngineSizeID", new SelectList(Model.EngineSizeList, "ID", "EngineSizeName"), "--Select--", new { @class = "form-control" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.EngineSizeID)
+
+
+                                    </div>
+                                </div>*@
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="reserve">Engine Size</label>
+                                    <div class="col-sm-4">
+
+                                        @Html.TextBoxFor(m => m.EngineSize, new { @class = "form-control ", @placeholder = "Engine Size" })
+                                        @Html.ValidationMessageFor(m => m.EngineSize)
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Fuel Type</label>
+                                    <div class="col-sm-8">
+
+                                        <div id="divFuelTypes">
+
+                                            @if (Model.FuelTypeList.Count > 0 || Model.FuelTypeList != null)
+                                            {
+                                                for (int i = 0; i < Model.FuelTypeList.Count; i++)
+                                                {
+                                                    <label class="checkbox-inline">
+                                                        @Html.CheckBoxFor(m => m.FuelTypeList[i].Checked, new { @id = "fueltype_" + i, })
+                                                        @Html.HiddenFor(m => m.FuelTypeList[i].ID)
+                                                        <span style="font-weight:bold;">
+                                                            @Html.DisplayFor(m => m.FuelTypeList[i].Text)
+                                                        </span>
+                                                    </label>
+                                                }
+                                                <span id="spanfuelmsg"></span>
+                                            }
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="color">Exterior/InteriorColour</label>
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.ExtIntColor, new { @class = "form-control", placeholder = "White" })
+                                        @Html.ValidationMessageFor(m => m.ExtIntColor)
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="inputPassword3">Body Style</label>
+                                    <div class="col-sm-8">
+                                        @if (Model.BodyTypeList.Count > 0 || Model.BodyTypeList != null)
+                                        {
+                                            @Html.DropDownList("BodyTypeID", new SelectList(Model.BodyTypeList, "ID", "Type"), "--Select--", new { @class = "form-control" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.BodyTypeID)
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="inputDate">Registration Date</label>
+                                    <div class="col-sm-8 datewrap">
+                                        <span class="fa fa-calendar"></span>
+                                        @Html.TextBoxFor(m => m.RegistrationDate, new { @class = "form-control", placeholder = "Enter Registration Date", id = "RegistrationDate" })
+                                        @Html.ValidationMessageFor(m => m.RegistrationDate)
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="vinno">VIN Number</label>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(m => m.VINnumber, new { @class = "form-control", placeholder = "23902790 W/UW" })
+                                        @Html.ValidationMessageFor(m => m.VINnumber)
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="javascript:void(0)" class="underline">Where's this?</a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="mileage">Exact Mileage</label>
+                                    <div class="col-sm-8">
+
+                                        @Html.TextBoxFor(m => m.ExactMileage, new { @class = "form-control", placeholder = "22km/l" })
+                                        @Html.ValidationMessageFor(m => m.ExactMileage)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="MOT_ed">MOT Expiry Date</label>
+                                    <div class="col-sm-8 datewrap">
+                                        <span class="fa fa-calendar"></span>
+                                        @Html.TextBoxFor(m => m.MOTExpiryDate, new { @class = "form-control", placeholder = "Enter MOT Expiry Date", id = "MOTExpiryDate" })
+                                        @Html.ValidationMessageFor(m => m.MOTExpiryDate)
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="Tax_ed">Tax Expiry Date</label>
+                                    <div class="col-sm-8 datewrap">
+                                        <span class="fa fa-calendar"></span>
+                                        @Html.TextBoxFor(m => m.TAXExpiryDate, new { @class = "form-control", placeholder = "TAX Expiry Date", id = "TAXExpiryDate" })
+                                        @Html.ValidationMessageFor(m => m.TAXExpiryDate)
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="inputEmail3">Date of first registration</label>
+                                    <div class="col-sm-8 datewrap">
+                                        <span class="fa fa-calendar"></span>
+                                        @Html.TextBoxFor(m => m.DateOfFirstRegistration, new { @class = "form-control", placeholder = "Date Of First Registration" })
+                                        @Html.ValidationMessageFor(m => m.DateOfFirstRegistration)
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="highlight">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Imported</label>
+                                    <div class="col-sm-8">
+                                        <div id="divImportedTypes">
+                                            @if (Model.ImportedList.Count > 0 || Model.ImportedList != null)
+                                            {
+                                                for (int i = 0; i < Model.ImportedList.Count; i++)
+                                                {
+                                                    <label class="checkbox-inline">
+                                                        @Html.CheckBoxFor(m => m.ImportedList[i].Checked, new { @class = "chkimported", @id = "importedList_" + i, @name = "importedList" })
+                                                        @Html.HiddenFor(m => m.ImportedList[i].ID)
+                                                        <span style="font-weight:bold;">
+                                                            @Html.DisplayFor(m => m.ImportedList[i].Text)
+                                                        </span>
+                                                    </label>
+                                                }
+                                                <span id="spanImportmsg"></span>
+                                            }
+
+                                        </div>
+                                        <div> </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Transmission</label>
+                                    <div class="col-sm-8">
+                                        <div id="divTransmissionType">
+                                            @if (Model.TransmissionTypeList.Count > 0 || Model.TransmissionTypeList != null)
+                                            {
+                                                for (int i = 0; i < Model.TransmissionTypeList.Count; i++)
+                                                {
+                                                    <label class="checkbox-inline">
+                                                        @Html.CheckBoxFor(m => m.TransmissionTypeList[i].Checked, new { @id = "TransmissionTypeSelected_" + i, })
+                                                        @Html.HiddenFor(m => m.TransmissionTypeList[i].ID)
+                                                        <span style="font-weight:bold;">
+                                                            @Html.DisplayFor(m => m.TransmissionTypeList[i].Text)
+                                                        </span>
+                                                    </label>
+                                                }
+                                                <span id="spanTransmissionmsg"></span>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Full VS Provided</label>
+                                    <div class="col-sm-8">
+                                        <div id="divFullVS">
+                                            @if (Model.FullVSProvidedList.Count > 0 || Model.FullVSProvidedList != null)
+                                            {
+                                                for (int i = 0; i < Model.FullVSProvidedList.Count; i++)
+                                                {
+                                                    <label class="checkbox-inline">
+                                                        @Html.CheckBoxFor(m => m.FullVSProvidedList[i].Checked, new { @class = "chkfullvs", @id = "fullVSProvidedList_" + i, @name = "fullVSProvidedList" })
+                                                        @Html.HiddenFor(m => m.FullVSProvidedList[i].ID)
+                                                        <span style="font-weight:bold;">
+                                                            @Html.DisplayFor(m => m.FullVSProvidedList[i].Text)
+                                                        </span>
+                                                    </label>
+                                                }
+                                                <span id="spanFullVSmsg"></span>
+                                            }
+                                        </div>
+
+                                        <div> </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="VS-Details" class="col-sm-4 control-label">VS Details</label>
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.VSDetails, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.VSDetails)
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Interior Trim</label>
+                                    <div class="col-sm-8">
+                                        <div id="divInteriorTrimTypes">
+
+                                            @for (int i = 0; i < Model.InteriorTrimList.Count; i++)
+                                            {
+                                                <label class="checkbox-inline">
+                                                    @Html.HiddenFor(m => m.InteriorTrimList[i].ID)
+                                                    @Html.CheckBoxFor(m => m.InteriorTrimList[i].Checked, new { id = string.Format("interiortrimlist_{0}", i) })
+
+                                                    @Html.DisplayFor(m => m.InteriorTrimList[i].Text)
+                                                </label>
+                                            }
+                                            <span id="spanIntTrimmsg"></span>
+                                        </div>
+                                        <div> </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="formerKeeper" class="col-sm-4 control-label">Former Keepers</label>
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.FormerKeepersDetails, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.FormerKeepersDetails)
+
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Service History</label>
+                                    <div class="col-sm-8">
+                                        <div id="divService">
+                                            @if (Model.ServiceHistoryAuctionList.Count > 0 || Model.ServiceHistoryAuctionList != null)
+                                            {
+                                                for (int i = 0; i < Model.ServiceHistoryAuctionList.Count; i++)
+                                                {
+                                                    <label class="checkbox-inline">
+                                                        @Html.HiddenFor(m => m.ServiceHistoryAuctionList[i].ID)
+                                                        @Html.CheckBoxFor(m => m.ServiceHistoryAuctionList[i].Checked, new { id = string.Format("serviceauctionlist_{0}", i) })
+
+                                                        @Html.DisplayFor(m => m.ServiceHistoryAuctionList[i].Text)
+                                                    </label>
+                                                }
+                                                <span id="spanServicemsg"></span>
+                                            }
+                                        </div>
+                                        <div> </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lastService" class="col-sm-4 control-label">Last Service</label>
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.LastServiceDetails, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.LastServiceDetails)
+
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">VCAR Register</label>
+                                    <div class="col-md-4">
+                                        <div id="divVCARReg">
+                                            @if (Model.VCARregisteredList.Count > 0 || Model.VCARregisteredList != null)
+                                            {
+                                                for (int i = 0; i < Model.VCARregisteredList.Count; i++)
+                                                {
+                                                    <label class="checkbox-inline">
+                                                        @Html.CheckBoxFor(m => m.VCARregisteredList[i].Checked, new { @class = "chkvcar", @id = "VCARregisteredList_" + i, @name = "VCARregisteredList" })
+                                                        @Html.HiddenFor(m => m.VCARregisteredList[i].ID)
+                                                        <span style="font-weight:bold;">
+                                                            @Html.DisplayFor(m => m.VCARregisteredList[i].Text)
+                                                        </span>
+                                                    </label>
+                                                }
+                                                <span id="spanVCARRegmsg"></span>
+
+                                            }
+
+                                        </div>
+
+                                        <div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <a class="underline" href="javascript:void(0)">Where's this?</a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="VCARDetails" class="col-sm-4 control-label">VCAR Details</label>
+                                    <div class="col-sm-8">
+
+                                        @Html.TextBoxFor(m => m.VCARDetails, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.VCARDetails)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">HPI Clear</label>
+                                    <div id="divHPI">
+                                        @if (Model.HPIClearList.Count > 0 || Model.HPIClearList != null)
+                                        {
+                                            for (int i = 0; i < Model.HPIClearList.Count; i++)
+                                            {
+                                                <label class="checkbox-inline">
+                                                    @Html.CheckBoxFor(m => m.HPIClearList[i].Checked, new { @class = "chkhpi", @id = "HPIClearList_" + i, @name = "HPIClearList" })
+                                                    @Html.HiddenFor(m => m.HPIClearList[i].ID)
+                                                    <span style="font-weight:bold;">
+                                                        @Html.DisplayFor(m => m.HPIClearList[i].Text)
+                                                    </span>
+                                                </label>
+                                            }
+                                            <span id="spanHPImsg"></span>
+
+                                        }
+                                    </div>
+
+
+                                    <div> </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="inputPassword3">&nbsp;</label>
+                                <div class="col-sm-8">
+                                    <button class="btn btn-primary btn-lg active right btnnav" type="button" data-tab="#tab2" id="btnTabDetail1">  Next</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+                <div id="tab2" style="display:none;">
+                    <div class="row steptitle">
+                        <div class="col-md-12"><span class="num">2</span> Upload Photo &amp; Documents of the car.</div>
+                        @Html.HiddenFor(t => t.AuctionHouseVehicleID)
+                    </div>
+                    <div class="row formarea">
+
+                        <div class="highlight">
+
+                            <div class="row">
+                                @if (Model.AuctionHouseCarSellingVehicleImagesList != null)
+                                {
+                                    if (Model.AuctionHouseCarSellingVehicleImagesList.Count > 0)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model.AuctionHouseCarSellingVehicleImagesList)
+                                        {
+                                            <div class="col-md-3 portfolio-item" style="height:100px;">
+                                                <div class="editimg" style="position:relative;">
+                                                    <div class="btn fileinput-button">
+                                                        <form method="post" id='frmImgUpload_@i' action="/AuctionHouseAddEditVehicle/UploadVehicleImage" enctype="multipart/form-data" novalidate="novalidate" class="auctionhouse">
+                                                            <span>Edit Image</span>
+                                                            <input type="file" data-ctrlid='@i' name="files" id='auc_flVehicleFile_@i'>
+                                                            <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@i">
+                                                        </form>
+                                                        <a title="Zoom">
+                                                            <img class="img-responsive" data-isempty="false" src='@Url.Content("~/Content/Assets/AuctionHouseSaleVehicleImages/" + @item.Filename)' id="auc_imgVehicleImagePlaceHolder_@i">
+                                                        </a>
+                                                    </div>
+                                                    <img data-ctrlid='@i' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: block;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="auc_imgRemoveImage_@i">
+                                                    <div>
+                                                        <span data-ctrlid="@i" id="spnMessage_@i"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            i++;
+                                        }
+                                        for (var j = Model.AuctionHouseCarSellingVehicleImagesList.Count + 1; j <= 8; j++)
+                                        {
+                                            <div class="col-md-3 portfolio-item" style="height:100px;">
+                                                <div class="editimg" style="position:relative;">
+                                                    <div class="btn fileinput-button">
+                                                        <form method="post" id='frmImgUpload_@j' action="/AuctionHouseAddEditVehicle/UploadVehicleImage" enctype="multipart/form-data" novalidate="novalidate" class="auctionhouse">
+                                                            <span>Edit Image</span>
+                                                            <input type="file" data-ctrlid='@j' name="files" id='auc_flVehicleFile_@j'>
+                                                            <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@j">
+                                                        </form>
+                                                        <a title="Zoom">
+                                                            <img class="img-responsive" data-isempty="true" src='@Url.Content("~/Content/images/uploadimg.png")' id="auc_imgVehicleImagePlaceHolder_@j">
+                                                        </a>
+                                                    </div>
+                                                    <img data-ctrlid='@j' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: none;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="auc_imgRemoveImage_@j">
+                                                    <div>
+                                                        <span data-ctrlid="@j" id="spnMessage_@j"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i = 1; i <= 8; i++)
+                                        {
+                                            <div class="col-md-3 portfolio-item" style="height:100px;">
+                                                <div class="editimg" style="position:relative;">
+                                                    <div class="btn fileinput-button">
+                                                        <form method="post" id='frmImgUpload_@i' action="/AuctionHouseAddEditVehicle/UploadVehicleImage" enctype="multipart/form-data" novalidate="novalidate" class="auctionhouse">
+                                                            <span>Edit Image</span>
+                                                            <input type="file" data-ctrlid='@i' name="files" id='auc_flVehicleFile_@i'>
+                                                            <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@i">
+                                                        </form>
+                                                        <a title="Zoom">
+                                                            <img class="img-responsive" data-isempty="1" src='@Url.Content("~/Content/images/uploadimg.png")' id="auce_imgVehicleImagePlaceHolder_@i">
+                                                        </a>
+                                                    </div>
+                                                    <img data-ctrlid='@i' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: none;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="auc_imgRemoveImage_@i">
+                                                    <div>
+                                                        <span data-ctrlid="@i" id="spnMessage_@i"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+
+                                else
+                                {
+                                    for (var i = 1; i <= 8; i++)
+                                    {
+                                        <div class="col-md-3 portfolio-item" style="height:100px;">
+                                            <div class="editimg" style="position:relative;">
+                                                <div class="btn fileinput-button">
+                                                    <form method="post" id='frmImgUpload_@i' action="/AuctionHouseAddEditVehicle/UploadVehicleImage" enctype="multipart/form-data" novalidate="novalidate" class="auctionhouse">
+                                                        <span>Edit Image</span>
+                                                        <input type="file" data-ctrlid='@i' name="files" id='auc_flVehicleFile_@i'>
+                                                        <input type="hidden" value="40db7f02-e957-41af-9d1b-3c742733d4b6" name="TempImagesUniqueID" id="TempImagesUniqueID_@i">
+                                                    </form>
+                                                    <a title="Zoom">
+                                                        <img class="img-responsive" data-isempty="1" src='@Url.Content("~/Content/images/uploadimg.png")' id="auc_imgVehicleImagePlaceHolder_@i">
+                                                    </a>
+                                                </div>
+                                                <img data-ctrlid='@i' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: none;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="auc_imgRemoveImage_@i">
+                                                <div>
+                                                    <span data-ctrlid="@i" id="spnMessage_@i"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+
+                        </div>
+                        <div class="highlight">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Upload Files</label>
+                                <div class="col-sm-8">
+                                    @*<input type="file" title="Search for a file to add">*@
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"></label>
+                                <div class="col-sm-8">
+                                    <a class="btn btn-success" href="javascript:void(0);" id="btnAdd" data-target="#imageUploadModal"><span class="fa fa-plus"></span>  Add More File</a>
+                                    <a class="btn btn-danger" href='javascript:void(0);' id="btnDeleteOption" style="display:none;"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span> Delete</a>
+                                    <a class="btn btn-warning " href='javascript:void(0);' id="btnDoneOption" style="display:none;">Done</a>
+                                </div>
+                                <div id="gallery">
+
+
+                                    @*@if (Model != null)
+                                        {
+                                        if (Model.AuctionHouseCarSellingVehicleImagesMoreList.Count > 0 && Model.AuctionHouseCarSellingVehicleImagesMoreList != null)
+                                        {
+                                            foreach (var pres in Model.AuctionHouseCarSellingVehicleImagesMoreList)
+                                            {
+
+                                                <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="position:relative;">
+
+                                                    <span class="glyphicon glyphicon-remove galleryclose" style="display:none;" data-value='@pres.AuctionHouseCarSellingVehicleImagesMoreID' onclick='deleteImage(this);'></span>
+                                                    <img data-ctrlid='@pres.AuctionHouseCarSellingVehicleImagesMoreID' style=" bottom: 7px; cursor: pointer; left: 13px; position: absolute; z-index: 1; display: none;" src='@Url.Content("~/Content/images/RemoveImage.png")' id="auc_imgRemoveImage_@pres.AuctionHouseCarSellingVehicleImagesMoreID">
+                                                    <a class="thumbnail" href='@Url.Content("~/Content/Assets/AuctionHouseSaleImagesMore/")@pres.Filename' data-toggle="lightbox" data-gallery="multiimages" data-title="Aucimages">
+                                                        <img class="img-responsive" src='@Url.Content("~/Content/Assets/AuctionHouseSaleImagesMore/")@pres.Filename' alt="">
+                                                    </a>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div id="nodata" style="text-align:center;"><h4>No Car Images found.</h4></div>
+                                        }
+                                        }*@
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="inputPassword3">&nbsp;</label>
+                            <div class="col-sm-8" style="float:right;">
+
+                                @if (Model.AuctionHouseCarSellingVehicleImagesList != null && Model.AuctionHouseCarSellingVehicleImagesList.Count > 0)
+                                {
+                                    <button class="btn btn-primary btn-lg active right" style="display:block;" type="button" id="TabPhotoUpload">Next</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-primary btn-lg active right" style="display:none;" type="button" id="TabPhotoUpload">Next</button>
+                                }
+
+                                <button class="btn btn-primary btn-lg active left PreviousBtn" type="button" id="TabPrev2" style="float:right;margin-right:10px;">Back</button>
+
+
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+                <div id="tab3" style="display:none;">
+                    <div class="row steptitle">
+                        <!-- <div class="col-md-8"><span class="num">3</span> Upload Photo &amp; Documents of the car.</div>-->
+                        <div class="col-md-12"></div>
+                    </div>
+                    <div class="row formarea">
+                        <form role="form" class="form-horizontal">
+                            <div class="highlight" id="divHtml">
+
+
+
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="inputPassword3">&nbsp;</label>
+                                <div class="col-sm-8">
+                                    @*<button class="btn btn-primary btn-lg active right" style="display:block;" type="button" id="TabPhotoUpload">Next</button>
+                                        <button class="btn btn-primary btn-lg active left PreviousBtn" type="button" id="TabPrev2" style="float:right;margin-right:10px;">Back</button>*@
+                                    <div style="float:left">
+                                        <button class="btn btn-primary btn-lg active left PreviousBtn" type="button" id="TabPrevUpload">Back</button>
+                                    </div>
+                                    <div style="float:right">
+                                        <button class="btn btn-primary btn-lg active right nextbtn" type="button" id="btnFinish" onclick="Home();">Confirm</button>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+
+                <div>
+                    <h2>My Product On Auction Today</h2>
+                    <div class="auctionnews">
+                        <div class="well">
+                            <div class="newsRow">
+                                <img src="~/Content/images/newsl-car-thumb-small.png">
+                                <h4>Side Widget Well</h4>
+                                <div class="time"><span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span></div>
+                                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                            </div>
+                            <div class="newsRow" style="clear:both;">
+                                <img src="~/Content/images/newsl-car-thumb-small.png">
+                                <h4>Side Widget Well</h4>
+                                <div class="time">
+                                    <span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span>
+                                </div>
+                                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="bestbuy">Best Buy</h2>
+                    <div class="bestbuylist">
+                        <div class="well">
+                            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Best Motability cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best automatic cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best crossover cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best estate cars</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Best selling cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best first car</a>
+                                </li>
+                            </ul>
+                            <div class="seemorelink">
+                                <a href="#">See all see best buy &gt;&gt;</a> <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="adbanner"> <span>Ad Banner</span> </div>
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <script src="~/Content/js/jquery.inputmask.js"></script>
+    <script src="~/Content/js/jquery.inputmask.date.extensions.js"></script>
+    <script src="~/Content/js/jquery.inputmask.numeric.extensions.js"></script>
+    <link href="~/Content/Assets/dropzone/dropzone.css" rel="stylesheet" />
+    <script src="~/Content/Assets/dropzone/dropzone.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/AuctionHouseVehicles.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.form.js"></script>
+
+    <script>
+        $('#MOTExpiryDate').on('changeDate', function (ev) {
+            $(this).datepicker('hide');
+        });
+        $('#TAXExpiryDate').on('changeDate', function (ev) {
+            $(this).datepicker('hide');
+        });
+        $('#DateOfFirstRegistration').on('changeDate', function (ev) {
+            $(this).datepicker('hide');
+        });
+        $('#RegistrationDate').on('changeDate', function (ev) {
+            $(this).datepicker('hide');
+        });
+
+        $('#SaleDate').on('changeDate', function (ev) {
+            $(this).datepicker('hide');
+        });
+
+
+        //$(".buttonClass").click(function () {
+        //    $(".auction_house>ul>li").children().removeClass("active");
+        //    var tab = $(this).attr("data-value");
+        //    PushImages();
+        //    $("[id^=tab]").hide();
+        //    $(tab).show();
+        //    $(this).addClass("active");
+
+        //});
+
+
+    </script>
+

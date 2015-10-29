@@ -1,0 +1,117 @@
+﻿@model AutoBid.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Choose Seller Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 formbg2 login-wrap">
+                <div class="sellerfg_header centertext">
+                    Please Select Account Type
+                </div>
+                <div class="row">
+                    <div class="account_Type">
+                        <strong class="sellertype_title" style="margin-top:5px;">Choose the type of seller you are</strong>
+                        <div class="form-group">
+                            <div class="typeofseller">
+
+                                @{int i = 0;}
+                                @foreach (var item in Model.CarSellerTypeList)
+                                {
+
+                                    <label class="radio-inline">
+                                        @if (i == 0)
+                                        {
+                                            @Html.RadioButtonFor(m => m.CarSellerTypeID, item.Value, new { @checked = true, @name = "userType" })@item.Text
+                                        }
+                                        else
+                                        {
+                                            @Html.RadioButtonFor(m => m.CarSellerTypeID, item.Value, new { @name = "userType" })@item.Text
+                                        }
+                                    </label>
+                                        i++;
+
+                                }
+                              
+                                <div class="alert alert-info"><strong>Tips:</strong> Both accounts will allow you to buy and sell. What kind of account should I have?</div>
+                            </div>
+                        </div>
+                        <div class="form-group from-row-login">
+                            <input type="button" onclick="Redirect()" class="btn btn-success registerBtn" value="Continue" id="btnContinue">
+                            <input type="button" onclick="RedirectAuctionHouse()" class="btn btn-success registerBtn" value="Auction House Registration" id="btnAuctionHouse">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                </div>
+                <div>
+                    <h2 class="bestbuy">Best Buy</h2>
+                    <div class="bestbuylist">
+                        <div class="well">
+                            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Best Motability cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best automatic cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best crossover cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best estate cars</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Best selling cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best first car</a>
+                                </li>
+                            </ul>
+                            <div class="seemorelink">
+                                <a href="#">See all see best buy &gt;&gt;</a> <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .account_Type {
+        text-align: center;
+        margin: 10px;
+    }
+
+        .account_Type .typeofseller {
+            background: none repeat scroll 0 0 #fff;
+            border: 1px solid #999;
+            padding: 20px;
+        }
+
+    .typeofseller {
+        margin: 10px 0 20px;
+    }
+</style>
+<script>
+    var Redirect = function () {
+        var link = $('input[name=CarSellerTypeID]:checked').val();
+        window.location.href = '/Account/Register/'+link;
+    }
+    var RedirectAuctionHouse = function () {
+       
+        window.location.href = '/AuctionHouse/'
+    }
+</script>

@@ -1,0 +1,151 @@
+﻿@model PagedList.IPagedList<AutoBid.Models.Auction.AuctionHouseModel>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "SearchAuctionHouse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row auctionhouse_search">
+                    <div class="header">
+                        <h1>Auction House Search</h1>
+                    </div>
+                    <div class="content">
+                        <h3>Find your nearest Auction Company and Live Sale</h3>
+                        <div class="divider"></div>
+                        <div class="form-container">
+                            <form class="form-inline" id="searchForm" role="form" method="GET" action="/AuctionHouse/SearchAuctionHouse" novalidate="novalidate">
+                                <div class="form-group">
+                                    <label class="" for="exampleInputEmail2">Enter postal code </label>
+                                    @Html.TextBox("postalcode", "", new { @class = "form-control" })
+                                </div>
+                                <button type="submit" class="btn btn-warning" id="btnAuctionSearch"><span class="fa fa-search"></span>   Search</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="result">
+                        <h1>Results</h1>
+                        <span class="right">
+                            <div class="">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search by Distance">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div>
+                        </span>
+
+                    </div>
+                    
+                    @if (Model.Count > 0)
+                    {
+                        
+                            foreach (var item in Model)
+                            {
+                            <div class="result_list">
+                                <div class="header">
+                                    <h1>@item.AuctionHouseName</h1>
+                                    <span class="right"><span class="badge">2 miles away</span></span>
+                                </div>
+
+                                <div class="divider"></div>
+
+                                <div class="row">
+                                    <div class="auctionhouse_logo col-md-3">
+                                        @if (@item.Logo != null && @item.Logo != "")
+                                        {
+                                            <img src="~/Content/images/@item.Logo" width="211" height="148">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/images/noimage.jpg" width="86%">
+                                        }
+                                    </div>
+
+                                    <div class="auctionhouse_list col-md-8">
+                                        <ul>
+                                            @*<li>Sales Tuesday & Friday</li>*@                                            
+                                            <li><a href="#">@item.CarCount</a> vehicles entered for next sale</li>                                           
+                                            <li>Open to motorbid public and PRO</li>
+
+                                        </ul>
+
+                                        <span class="right"><button type="button" class="btn btn-viewstock btn-xs">View stock list for upcoming sales</button></span>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                       
+                    }
+                    else
+                    {
+                        <div class="col-md-12 centertext ">
+                            <h1>No result found</h1>
+                        </div>
+                    }
+                    <span class="right">
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                        @Html.PagedListPager(Model, page => Url.Action("SearchAuctionHouse", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+@Scripts.Render("~/Content/other")
+<script type="text/javascript">
+    //$("#btnAuctionSearch").on("click", function () {
+    //    var searchValue = $("#txtSearch").val();
+    //    if ($('#searchForm').valid()) {
+    //        $("#searchForm").ajax({
+    //            data: { postalCode: searchValue },
+    //            type: 'GET',
+    //            datatype: 'json',
+    //            success: function (res) {
+
+    //            },
+    //            error: function (err) {
+    //                console.log(err);
+    //            }
+    //        });
+    //    }
+
+    //})
+
+    @*$("#btnAuctionSearch").on("click", function () {
+        var searchValue = $("#txtSearch").val();
+
+        $.ajax({
+            type: "POST",
+            data: { "postalcode": searchValue },
+            url: '@Url.Action("SearchAuctionHouseByPostalCode", "AuctionHouse")',
+            success: function (result) {
+                console.log(result);
+                var html = "";
+                html += "<strong id='strAucHouseDescrip'>" + result.About + "</strong> ";
+
+            }
+        });
+
+    })*@
+</script>
+

@@ -1,0 +1,3506 @@
+/* 
+Custom CSS for...
+AutoBid!
+*/
+
+/* Global Styles */
+@font-face {
+ font-family: 'Roboto';
+ src: url('../fonts/717376709-Roboto-Light.eot');
+ src: url('../fonts/717376709-Roboto-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/717376709-Roboto-Light.svg#Roboto') format('svg'), url('../fonts/717376709-Roboto-Light.woff') format('woff'), url('../fonts/717376709-Roboto-Light.ttf') format('truetype');
+ font-weight: normal;
+ font-style: normal;
+}
+html, body {
+	height: 100%;
+	font-family: 'Roboto';
+}
+body {
+	padding-top: 50px;/* body padding for fixed top nav */
+}
+
+::selection {
+	background: #1166A2; /* Safari */
+	color:#fff;
+	}
+::-moz-selection {
+	background: #1166A2; /* Firefox */
+	color:#fff;
+}
+.img-home-portfolio, .img-customer, .portfolio-item {
+	margin-bottom: 30px;
+}
+.tab-pane {
+	margin-top: 15px;
+}
+/* Page Sections */
+.section, .section-colored {
+	padding: 30px 0 0;
+}
+.section-colored {
+	background-color: #e1e1e1;/* change this to change the background color of a colored section */
+}
+.sidebar {
+	margin-top: 40px;
+}
+.sidebar ul {
+	border-radius: 5px;
+	padding: 5px;
+	border: 1px solid #cccccc;
+}
+/* Half Page Height Carousel Customization */
+.carousel {
+	height: 50%;
+}
+.item, .active, .carousel-inner {
+	height: 100%;
+}
+.fill {
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+/* Social Icons Styles */
+.list-social-icons {
+	margin-bottom: 45px;
+}
+.tooltip-social a {
+	text-decoration: none;
+	color: inherit;
+}
+.facebook-link a:hover {
+	color: #3b5998;
+}
+.linkedin-link a:hover {
+	color: #007fb1;
+}
+.twitter-link a:hover {
+	color: #39a9e0;
+}
+.google-plus-link a:hover {
+	color: #d14836;
+}
+/* Service Page Styles */
+.service-icon {
+	font-size: 50px;
+}
+/* 404 Page Styles */
+.error-404 {
+	font-size: 8em;
+}
+/* Pricing Page Styles */
+.price {
+	font-size: 4em;
+}
+.price-cents {
+	vertical-align: super;
+	font-size: 50%;
+}
+.price-month {
+	font-size: 35%;
+	font-style: italic;
+}
+/* Footer Styles */
+footer {
+	margin: 50px 0;
+}
+/*commonmdd*/
+.bold {
+	font-weight:bold;
+}
+.container1 {
+	width:100%;
+}
+.right {
+	float:right;
+}
+.left {
+	float:left;
+}
+/*navigation-dd*/
+.navTxt {
+	color:#fff;
+	display: block;
+	line-height: 50px;
+	margin-left:10px;
+}
+.greentext {
+	color:#48c313;
+}
+.welcome {
+	padding:0 10px;
+	border-right: 1px solid #073e66;
+}
+.bluenav {
+	background:#0f75bc;
+	color:#fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+	color:#fff;
+}
+li.bluenav {
+	border-left:1px solid #3a9fe5;
+}
+li.bluenavactive {
+	color:#3a9fe5;
+}
+.navbar-nav > li.menuItem > a {
+	font-weight:bold;
+}
+.navbar-nav > li.menuItem > a span {
+	border-right:1px solid #fff;
+	padding-right:12px;
+}
+.nav > li.menuItem > a {
+	padding-right:1px;
+	padding-left:12px;
+}
+.navbar-nav > li.menuItem > a span {
+	display:block;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+	background-color: #222222;
+	color: #2d9fee;
+}
+.mainnav  li.menuItem  a:hover {
+	color: #2d9fee;
+}
+.logowrap {
+	padding:13px 0;
+}
+.navbar-nav > li.menuItemlast > a span {
+	border-right:0px;
+}
+.advertisement img {
+	float:right;
+}
+/*navigation-dd*/
+/*main nav dd*/
+
+.mainnav, .mainnav .navbar-inverse, .mainnav .navbar-inverse .navbar-nav > .active > a, .mainnav .navbar-inverse .navbar-nav > .active > a:hover, .mainnav .navbar-inverse .navbar-nav > .active > a:focus {
+	background: #0e73b9; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlNzNiOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iIzA4NjdhOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMTU5OTYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #0e73b9 0%, #0867a9 51%, #015996 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0e73b9), color-stop(51%, #0867a9), color-stop(100%, #015996)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #0e73b9 0%, #0867a9 51%, #015996 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #0e73b9 0%, #0867a9 51%, #015996 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #0e73b9 0%, #0867a9 51%, #015996 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #0e73b9 0%, #0867a9 51%, #015996 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e73b9', endColorstr='#015996', GradientType=0 ); /* IE6-8 */
+}
+.mainnav .navbar-toggle, .mainnav .navbar-inverse .navbar-toggle {
+	border: 1px solid #083f66;
+	background: #011a2d;
+}
+.mainnav .auctionloginBtn {
+	margin-top:8px;
+	background:#011a2d;
+	border-radius:0px;
+	border:1px solid #157cc3;
+}
+.mainnav .auctionMenu, .mainnav .navbar-inverse .auctionMenu {
+	color:#fff;
+}
+.mainnav .navbar-left li {
+	border-left:1px solid #3A9FE5;
+}
+.mainnav .navbar-left li:first-child {
+	border-left:0px;
+}
+.motorbidPro {
+	text-transform:uppercase;
+	font-style:italic;
+	font-weight:bold;
+	color:#51ff07;
+}
+.mainnav .navbar
+{
+	margin-bottom:0px;
+}
+
+.mainnav .navbar-ex2-collapse
+{
+	padding-left:0px;
+}
+
+/*first row home*/
+/*Vehicle on Sale Today*/
+.actionNotification {
+	text-align:right;
+}
+
+h2
+{
+	color:#0f75bc;
+	font-size:18px;
+	font-weight:bold;
+	padding:0px;
+	margin:0px;
+	clear:both;
+	
+}
+h2 span, .greenspn, .bluespan
+{
+	font-size:12px;
+	font-weight:bold;
+
+}
+.greenspn, .greenspn a
+{
+	color:#2a7a09;
+}
+.greenspn a
+{
+	text-decoration:underline;
+}
+.greenspn a:hover
+{
+	color:409c1a;
+}
+.bluespan
+{
+	color:#0d71b6;
+}
+
+.underline
+{
+	text-decoration:underline;
+}
+
+.actionNotification .badge
+{
+	background:#000000;
+	color:#51ff07;
+}
+.col-md-8 .col-md-8
+{
+	padding-left:0px;
+}
+
+.auctionTodaySec .col-md-8 .col-md-2
+{
+	margin-left:21px;
+}
+
+.imagebg
+{
+	width:105%;
+	position:relative;
+}
+
+/*.imagebg img
+{
+	width:100%;
+}
+*/
+.carinfo
+{
+	position:absolute;
+	left:0;
+	bottom:0;
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBhNmJhZSIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhNmJhZSIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(top,  rgba(10,107,174,0.5) 0%, rgba(10,107,174,0.9) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(10,107,174,0.9)), color-stop(100%,rgba(10,107,174,0.5))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(10,107,174,0.5) 0%,rgba(10,107,174,0.5) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(10,107,174,0.5) 0%,rgba(10,107,174,0.9) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(10,107,174,0.5) 0%,rgba(10,107,174,0.9) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(10,107,174,0.5) 0%,rgba(10,107,174,0.9) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#800a6bae', endColorstr='#800a6bae',GradientType=0 ); /* IE6-8 */
+
+	width:100%;
+	color:#fff;
+	font-size:12px;
+	padding:2px 2px
+
+}
+
+.lightgreen
+{
+	color:#41ff00;
+}
+
+.auctionTodaySec .col-md-8 .col-md-2:first-child
+{
+	/*margin-left:10px;*/
+}
+.margin_bottom_10{margin-bottom:15px;overflow:hidden;}
+
+.main_image{height:120px;min-width:100%;width:auto;}
+@media(max-width: 990px) {
+    .main_image{height:auto;min-width:50px;min-height:68px;}
+
+}
+
+
+.rowAuctionTodayHeader
+{
+	border-bottom:1px solid #a3a0a0;
+	margin-bottom:10px;
+	padding-bottom:5px;
+}
+.auctionTodaySec .col-md-8 .col-md-2
+{
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.auctionTodayRow2
+{
+	margin-top:10px;
+}
+/*Actions/classified tab*/
+.auctionFilterWrap .tab-content {
+	padding:1px 17px;
+	border-left:1px solid #c5c5c5;
+	border-bottom:1px solid #c5c5c5;
+	border-right:1px solid #c5c5c5;
+	-webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.40);
+	-moz-box-shadow:2px 2px 3px 0px rgba(50, 50, 50, 0.40);
+	box-shadow:2px 2px 3px 0px rgba(50, 50, 50, 0.40);
+	background:url(../images/auctionFilterWrabg.png) no-repeat right bottom;
+}
+.auctionFilter .radio {
+	display: inline-block;
+	margin-left:10px;
+}
+.auctionFilter .radio:first-child {
+	margin-left:0px;
+}
+.auctionFilterWrap .nav-tabs > li > a {
+	border-radius: 0;
+	color:#414141;
+	background:#f2f2f2;
+	border-top:1px solid #c5c5c5;
+	border-right:1px solid #c5c5c5;
+	border-bottom:1px solid #c5c5c5;
+	border-left:1px solid #c5c5c5;
+	
+}
+.auctionFilterWrap .nav-tabs > li.active > a {
+	color:#529137;
+	background:#fff;
+	border-bottom:1px solid #fff;
+}
+
+.auctionFilterWrap .nav-tabs > li:first-child > a
+{
+	margin-right:0px;
+	border-right:0px;
+}
+.searchWrap
+{
+	margin:15px 0 23px;
+}
+
+.auctionFilterWrap .form-control {
+  
+  color: #3e3e3e;
+  background-color: #f7f7f7;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+ 
+}
+
+
+.searchWrap .btn-success
+{
+	background: #8ec801; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzhlYzgwMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iIzhlYzYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4N2JmMDEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #8ec801 0%, #8ec600 48%, #87bf01 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8ec801), color-stop(48%,#8ec600), color-stop(100%,#87bf01)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8ec801', endColorstr='#87bf01',GradientType=0 ); /* IE6-8 */
+ border-radius: 0px;
+ padding: 6px 40px;
+ text-transform:uppercase;
+ font-weight:bold;
+ font-size:16px;
+ margin-top:15px;
+  margin-bottom:15px;
+
+}
+
+.searchWrap .btn-success:hover
+{
+	background: #8ec801; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzhlYzgwMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iIzhlYzYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4N2JmMDEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #8ec801 0%, #8ec600 48%, #87bf01 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8ec801), color-stop(48%,#8ec600), color-stop(100%,#87bf01)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #8ec801 0%,#8ec600 48%,#87bf01 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8ec801', endColorstr='#87bf01',GradientType=0 ); /* IE6-8 */
+
+}
+::-webkit-input-placeholder { color:#787878; }
+::-moz-placeholder { color:#787878; } /* firefox 19+ */
+:-ms-input-placeholder { color:#787878; } /* ie */
+input:-moz-placeholder { color:#787878; }
+
+/*first row home*/
+
+/*second row home*/
+
+.carousel
+{
+	border:1px solid #c6c6c6;
+	padding:20px;
+	background:#fff;
+	margin-top:10px;
+}
+
+.carousel-control.left
+{
+	background:none;
+}
+
+.carousel-control.right
+{
+	background:none;
+}
+.carousel .col-sm-3 img
+{
+	
+}
+.carousel .col-sm-3
+{
+	border:1px solid #c6c6c6;
+	padding:0px;
+	margin-left:1%;
+	width:23%;
+}
+
+.carousel .col-sm-3:first-child
+{
+	margin-left:2%;
+}
+
+.carinfo1
+{
+	padding:2px 10px;
+	font-weight:bold;
+}
+
+.carinfo1 .biddingInfo
+{
+	font-size:12px;
+}
+
+.carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right
+{
+	top: 41%;
+	
+}
+
+.carousel-control
+{
+	font-size: 44px;
+}
+/*news*/
+.newsRow img
+{
+	float:left; 
+	margin-right:7px;
+}
+.well
+{
+	margin-top:10px;
+	border-radius:0px;
+	background:#fff;
+	padding:10px;
+	border:1px solid #C6C6C6;
+}
+.well .time
+{
+	overflow:hidden;
+}
+.well h4
+{
+	color:#0d71b6;
+	font-size:16px;
+	font-weight:normal;
+	padding:0px 0px 2px 0px;
+}
+.well .newsRow
+{
+	overflow:hidden;
+	padding:11px 0;
+	border-top: 1px solid #C6C6C6;
+}
+
+.well .newsRow:first-child
+{
+	border-top: 0px;
+}
+.datetime
+{
+	/*float:right;*/
+}
+/*third row*/
+.headerrow, .clientlogo
+{
+	padding:10px;
+	border:1px solid #C6C6C6;
+}
+.bestbuy
+{
+	padding:10px;
+	border-bottom:1px solid #C6C6C6;
+}
+.clientlogo
+{
+	border-top:0px;
+}
+
+.clientlogo img
+{
+	padding:8px 6px;
+}
+
+.reseachBestBuy .well
+{
+	border:0px;
+	 -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .0);
+     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .0);
+	 padding-top:0px;
+}
+
+.reseachBestBuy p
+{
+	font-size:12px;
+}
+
+
+
+.bestbuylist ul.list-unstyled li a
+{
+	background:url(../images/bestbuybullet.png) no-repeat left; 
+	padding-left:50px;
+	padding-top:3px;
+	padding-bottom:3px;
+	color:#578f3f;
+	display:block;
+}
+.bestbuylist .seemorelink
+{
+	border-bottom:1px solid #C6C6C6;
+	border-top:1px solid #C6C6C6;
+	text-align:right;
+	color:#1f7ec0;
+}
+
+.bestbuylist .seemorelink a
+{
+	color:#1f7ec0;
+}
+
+.auctionSliderNews
+{
+	margin-top:25px;
+}
+/*main nav dd*/
+
+
+
+
+/* Created by Amol 21 May 2014*/
+
+.footerbg{
+	background-color: #011a2d;
+	background-image: url(../images/footerbg.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	color:#99a8b3;
+	}
+
+.bottom_banner{
+	background-color:#578f3f;
+	color:#fff;
+	font-size:12px;
+	}
+.bottom_banner .col-md-1{
+	padding-right: 0px;
+	}
+
+.fvbg{
+	background-image: url(../images/bottom_banner_titlebg.jpg);
+	background-repeat: no-repeat;
+	background-position: -20px top;
+	padding: 14px 0 10px 16px;
+	font-weight:bold;
+	font-size:18px;
+	}
+
+.fvbg_list{
+	font-size:14px;
+}
+
+.fvbg_spacing{
+	padding: 16px 0 14px 16px;
+}
+
+.fvbg_readmore{
+	border-left:1px solid #6ea755;
+	padding: 16px 0 17px 16px;
+	
+	}
+.footer_L2{
+	font-size:12px;
+	min-height:300px;
+}
+.footer_L2 h1{
+	color:#fff;
+	font-weight:bold;
+	font-size:13px;
+	padding-left: 6px;
+}
+
+.footer_L2 ul{
+	list-style-position: inside;
+	list-style-type: none;
+	padding-left:0;
+}
+
+.footer_L2 img{
+	margin:0 0 10px 0;
+}
+
+.footer_L3{
+	font-size:12px;
+	font-weight:bold;
+	margin: 7px 0 20px 0;
+}
+
+.footer_L3 small{
+	font-size:12px;
+	color:#2d4354;
+}
+
+.helpline{
+	color:#99a8b3;
+	font-size:18px;
+	text-align: right;
+	}
+.helpline span{
+	color:#578f3f;
+	font-size:18px;
+	}
+
+.tac{text-align:center;}
+
+.row .steps {
+    background: none repeat scroll 0 0 #e2e7e0;
+    font-weight: bold;
+    line-height: 42px;
+    margin-bottom: 5px;
+    overflow: auto;
+    width: 100%;
+	padding-left:0;
+}
+.row .steps .step1{
+    width: 34%;
+}
+.row .steps .step2, .row .steps .step3{
+    width: 33%;
+}
+.row .steps li {
+    background-color: #e2e7e0;
+	border-right: 3px solid #FFFFFF;
+    display: inline-block;
+    float: left;
+}
+.row .steps li span {
+    background: none repeat scroll 0 0 #267EC8;
+    border-radius: 13px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 26px;
+    margin: 0 10px;
+    text-align: center;
+    width: 26px;
+}
+.row .steps li.active{
+    background-color: #267EC8;
+	border-right: 3px solid #FFFFFF;
+    color: #FFFFFF;
+    display: inline-block;
+    float: left;
+}
+
+.row .steps li.active span {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 13px;
+    color: #267EC8;
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 26px;
+    margin: 0 10px;
+    text-align: center;
+    width: 26px;
+}
+
+.steptitle{
+    font-weight:bold;
+	margin: 20px 0 0 20px;
+    font-size: 1.5em;
+}
+
+.steptitle span.num {
+    background: none repeat scroll 0 0 #267EC8;
+    border-radius: 13px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 0.85em;
+    line-height: 26px;
+    margin: 0 10px;
+    text-align: center;
+    width: 26px;
+}
+
+.formbg{background-color:#ededed;}
+.formbg1{background-color:#ededed; padding-top: 20px;}
+.formbg2{background-color:#ededed; padding:10px;}
+
+.formarea{padding:0 30px;}
+
+
+
+
+
+/***  26 May 2014 Created Amol ***/
+
+
+#plans,#plans ul,#plans ul li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#pricePlans:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+#pricePlans {
+	zoom: 1;
+}
+
+#pricePlans {
+	max-width: 69em;
+	margin: 0 auto;
+}
+
+#pricePlans #plans .plan {
+	background: #fff;
+	float: left;
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin: 0 0 20px 0;
+
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.planContainer .title h2 {
+	font-size: 2.125em;
+	font-weight: 300;
+	color: #3e4f6a;
+	margin: 0;
+	padding: .6em 0;
+}
+
+.planContainer .title h2.bestPlanTitle {
+	background: #3e4f6a;
+
+	background: -webkit-linear-gradient(top, #267EC8, #364761);
+	background: -moz-linear-gradient(top, #267EC8, #364761);
+	background: -o-linear-gradient(top, #267EC8, #364761);
+	background: -ms-linear-gradient(top, #267EC8, #364761);
+	background: linear-gradient(top, #267EC8, #364761);
+	color: #fff;
+	border-radius: 5px 5px 0 0;
+}
+
+
+.planContainer .price p {
+	background: #3e4f6a;
+
+	background: -webkit-linear-gradient(top, #267EC8, #364761);
+	background: -moz-linear-gradient(top, #267EC8, #364761);
+	background: -o-linear-gradient(top, #267EC8, #364761);
+	background: -ms-linear-gradient(top, #267EC8, #364761);
+	background: linear-gradient(top, #267EC8, #364761);
+	color: #fff;
+	font-size: 0.32em;
+	font-weight: 700;
+	height: 2.6em;
+	line-height: 2.6em;
+	margin: 0 0 1em;
+}
+
+.planContainer .price p.bestPlanPrice {
+	background: #578F3F;
+}
+
+.planContainer .price p span {
+	color: #b0b8c8;
+}
+
+.planContainer .options {
+	margin-top: 10em;
+}
+
+.planContainer .options li {
+	font-weight: 700;
+	color: #364762;
+	line-height: 2.5;
+}
+
+.planContainer .options li span {
+	font-weight: 400;
+	color: #979797;
+}
+
+.planContainer .button a {
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #B3B3B3;
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 2.8em;
+	background-color: #EDEDED;
+    border: 1px solid #DCDCDC;
+	display: inline-block;
+	width: 80%;
+	height: 2.8em;
+	border-radius: 4px;
+	margin: 1.5em 0 1.8em;
+}
+
+.planContainer .button a.bestPlanButton {
+	color: #fff;
+	background: #578F3F;
+	border: 1px solid #477433;
+}
+
+#credits {
+	text-align: center;
+	font-size: .8em;
+	font-style: italic;
+	color: #777;
+}
+
+#credits a {
+	color: #333;
+}
+
+#credits a:hover {
+	text-decoration: none;
+}
+
+
+.login_popupdiv{
+	position:absolute;
+	width:25em;
+	padding:8px 0;
+	background: #3e4f6a;
+
+	background: -webkit-linear-gradient(top, #267EC8, #364761);
+	background: -moz-linear-gradient(top, #267EC8, #364761);
+	background: -o-linear-gradient(top, #267EC8, #364761);
+	background: -ms-linear-gradient(top, #267EC8, #364761);
+	background: linear-gradient(top, #267EC8, #364761);
+	color: #fff;
+	border-radius:  0 0 5px 5px;
+	right:90px;
+	top:50px;
+	padding:10px;
+	z-index:100;
+	}
+
+.login_popupdiv .form-horizontal .form-group {
+    margin-left: 0px;
+    margin-right: 0px;
+	margin-bottom: 15px;
+}
+
+
+
+
+
+/** 27 May 2014 created Amol **/
+
+.formbg2 .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.sellerfg_header{
+	background-color:#1166a2;
+	font-size:24px;
+	color:#fff;
+	padding:0px 10px 5px 10px;
+	overflow:hidden;
+	}
+	
+
+.sellerfg_header_img{
+	overflow: hidden;
+	background-color: #f3f3f3;
+	text-align:center;
+	}
+	
+.sellerfg_header_imgsize{
+	height: auto;
+    width: 100%;
+	}
+
+.selyourcar_bg{
+	background-color:#000;
+	margin-bottom:10px;
+	}
+.selyourcar_div1{
+	padding:55px 20px;
+	}
+.selyourcar_div1 input{
+	height:60px;
+	border:3px solid #7ec4cc;
+	font-size:24px;
+	}
+
+.selyourcar_div2{
+	background: #218094;
+
+	background: -webkit-linear-gradient(top, #45d9e3, #218094);
+	background: -moz-linear-gradient(top, #45d9e3, #218094);
+	background: -o-linear-gradient(top, #45d9e3, #218094);
+	background: -ms-linear-gradient(top, #45d9e3, #218094);
+	background: linear-gradient(top, #45d9e3, #218094);
+	width:1px;
+	height:256px;
+	padding-left: 0;
+    padding-right: 0;
+	}
+
+.selyourcar_div3{
+	color:#FFFFFF;
+	padding: 20px;
+	/*border-left: 1px solid #218094;*/
+	}
+
+.selyourcar_div3 strong{
+	color:#bebc16;
+	}
+
+.btn-sellurcar{
+	background: #45d9e3;
+	background: -webkit-linear-gradient(top, #218094, #45d9e3);
+	background: -moz-linear-gradient(top, #218094, #45d9e3);
+	background: -o-linear-gradient(top, #218094, #45d9e3);
+	background: -ms-linear-gradient(top, #218094, #45d9e3);
+	background: linear-gradient(top, #218094, #45d9e3);
+	width: 245px;
+	height: 75px;
+	text-transform: uppercase;
+	font-size:18px;
+	font-weight:bold;
+	}
+.typeofseller{margin:10px 0 20px 0;}
+
+.createliveauction{
+	background: #207987;
+	background: -webkit-linear-gradient(top, #0e3b40, #207987);
+	background: -moz-linear-gradient(top, #0e3b40, #207987);
+	background: -o-linear-gradient(top, #0e3b40, #207987);
+	background: -ms-linear-gradient(top, #0e3b40, #207987);
+	background: linear-gradient(top, #0e3b40, #207987);
+	text-transform: uppercase;
+	color: #FFFFFF;
+	text-align: center;
+	border-radius: 2px;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 10px 0;
+	letter-spacing: 1px;	
+	}
+
+.createliveauction img{
+	margin: -3px 0 0 15px;
+}
+
+.sellerdashboard_header{
+	background: #2d5b90;
+	background: -webkit-linear-gradient(top, #2d5b90, #52a6f9);
+	background: -moz-linear-gradient(top, #2d5b90, #52a6f9);
+	background: -o-linear-gradient(top, #2d5b90, #52a6f9);
+	background: -ms-linear-gradient(top, #2d5b90, #52a6f9);
+	background: linear-gradient(top, #2d5b90, #52a6f9);
+	border:1px solid #374c90;
+	font-size:18px;
+	font-weight: bold;
+	color:#fff;
+	text-align: center;
+	padding:10px;
+	}
+
+.sellerdashboard_header_container{
+	background-color: #fafafa;
+	border:1px solid #eaeaea;
+	border-radius: 0 0 2px 2px;
+	text-align: center;
+	margin-bottom:20px;
+	padding:20px 0;
+	}
+
+
+/** 02 June 2014 created Amol  **/
+
+.singlecarpg{
+	margin-bottom:30px;
+	
+	}
+
+.singlecarpg .col-md-1 {
+    width: 12.3333%;
+}
+
+.singlecarpg h2 {
+	color: #0F75BC;
+    font-size: 28px;
+    font-weight: lighter;
+    line-height: 32px;
+    text-transform: capitalize;
+}
+
+.pr10{padding-right:10px;}
+.regno{
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #000;
+	background-color: #FC0;
+	padding: 2px 8px;
+	border: 1px solid #CC0;	
+	}
+.singlecar_gallery li{
+	width:78px;
+	padding:0;
+	margin-top:10px;
+	border-top:3px solid #eaeaea;
+	border-bottom:3px solid #eaeaea;
+	}
+.singlecar_gallery li:hover, .singlecar_gallery.active{
+	border-top:3px solid #cd1641;
+	border-bottom:3px solid #cd1641;
+	cursor: pointer; 
+	}
+
+.singlecar_galleryimg{
+	width:320px;
+	position:relative;
+	display:inline-table;
+	}
+
+.singlecar_galleryimg_header{
+	text-align:center;
+	bottom:0;
+	position:absolute;
+	width:100%
+	}
+	
+.singlecar_galleryimg_header h3{
+	color:#ffffff;
+	color:rgba(255,255,255,1);
+	font-size:14px;
+	font-weight:bold;
+	margin: 20px 0;
+	}
+.singlecar_galleryimg_container{
+	background: rgb(0,0,0); /* The Fallback */
+	background: rgba(0,0,0,0.4);
+    bottom: 0;
+    padding: 25px 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+	}
+
+.enter-live-bid{
+	border-radius: 50px;
+    color: #224E22;
+    font-size: 22px;
+    font-weight: 900;
+    height: 90px;
+    text-shadow: 0 1px 1px #76CF76;
+    text-transform: uppercase;
+    width: 236px;
+	background: #4CAE4C;
+	background: -webkit-linear-gradient(top, #5CB85C, #4CAE4C);
+	background: -moz-linear-gradient(top, #5CB85C, #4CAE4C);
+	background: -o-linear-gradient(top, #5CB85C, #4CAE4C);
+	background: -ms-linear-gradient(top, #5CB85C, #4CAE4C);
+	background: linear-gradient(top, #5CB85C, #4CAE4C);
+	}
+
+
+.fancybox{
+    height: 100%;
+    position: absolute;
+    top: 0;
+	bottom:0;
+    width: 100%;
+    z-index: 9999;
+	}
+
+
+.fancyboxbg{
+	background: rgb(0,0,0); /* The Fallback */
+	background: rgba(0,0,0,0.7);
+    height: 100%;
+    padding: 25px 0;
+    position: fixed;
+    width: 100%;
+}
+
+.fancybox-container{
+	position: fixed;
+	top: 30%;
+	left: 40%;
+	margin-top: -50px;
+	margin-left: -100px;
+	background: #f5f5f5;
+	background: -webkit-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -moz-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -o-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -ms-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: linear-gradient(top, #e7e7e7, #f5f5f5);
+	border-radius: 5px;
+    width: 35%;
+	padding:30px;
+    text-align: left;
+	}
+	
+.fancybox-container h3{
+	border-bottom: 1px solid #d7d9dd;
+	padding-bottom: 10px;
+	
+	}
+
+.link1{
+	font-size: 21px;
+	line-height: 32px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: #e24939;
+	text-decoration: underline;
+	margin-top: 20px;	
+	
+}
+
+
+.fancybox-container span.flr{
+	float: right;
+    margin-top: 15px;
+}
+
+.close {
+    margin-right: -10px;
+    margin-top: -15px;
+}
+
+
+.adbanner{
+	background: #f5f5f5;
+	background: -webkit-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -moz-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -o-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -ms-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: linear-gradient(top, #e7e7e7, #f5f5f5);
+	border: 8px solid #EAEAEA;
+    color: #838486;
+    font-size: 22px;
+    font-weight: 900;
+    height: 250px;
+    margin-top: 20px;
+    text-align: center;
+    text-shadow: 0 1px 1px #FFFFFF;
+    text-transform: uppercase;
+	position:relative;
+	}
+
+.adbanner span{
+	display: block;
+    margin-top: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+ul.dropdown-menu li
+{
+	border-top: 1px solid #eee;
+}
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+/*---Payment method--*/
+
+.paymentProductPreviewHeader
+{
+
+ margin-top:20px;
+ border-bottom:1px groove #999;
+ padding-bottom:10px;
+	
+}
+.paymentProductPreviewHeader img
+{
+	border: 4px solid #fff;
+}
+.paymentProductPreviewHeader h2
+{
+	font-size: 19px;
+	font-weight:bold;
+	color:#333;
+	
+}
+
+
+.wonat {
+    background-color: #1BA39C;
+    border: 1px solid #CCCC00;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px 8px;
+}
+
+.smallTitle
+{
+	margin-left:18px;
+ 	border-bottom:1px groove #999;
+}
+
+.headermagin
+{
+	margin:20px 0;
+}
+.paymenyoptions
+{
+	background:#fff;
+	padding:5px;
+}
+.paymenyoptions .radio
+{
+	margin:10px 0;
+}
+
+.paymenyoptions .radio img
+{
+	verticle-align:middle;
+}
+
+.paymenyoptions .radio .othercard
+{
+	margin-top:13px;
+}
+
+.paymenyoptions .radio .paypal
+{
+	margin-top:10px;
+}
+
+.paymentDetails .headermagin
+{
+	margin-top:0px;
+}
+.paymentad
+{
+	margin-bottom:20px;
+}
+
+.billdetails th, .billdetails td
+{
+	background:#333;
+	color: #fff;
+}
+
+.congratulationsHeader
+{
+	color: #CF000F;
+}
+
+/*  3 June 2014 Created Amol */
+
+
+
+
+.lub-columns .col-md-3 {
+    width: 28%;
+	margin-right:20px;
+}
+
+.livefeed_divtop{
+	border-top:1px solid #DDDDDD;
+	border-right:1px solid #DDDDDD;
+	border-left:1px solid #DDDDDD;
+	}
+
+.livefeed_divbottom{
+	background-color: #DDDDDD;
+	padding:10px 0;
+	}
+
+.livefeed_display{
+	padding:20px;
+	}
+
+.livefeed_display h4{
+	color: #1166A2;
+	}
+
+
+.livefeed_display p{
+	color: #999999;
+	border-bottom:1px solid #DDDDDD;
+	margin-bottom:5px;
+	font-size:12px;
+	}
+
+.livefeed_display p strong{
+	color: #333333;
+	}
+
+.livefeed_divbottom p{
+	margin-bottom:1px;
+	}
+
+.livefeed_divbottom h2{
+	font-size:32px;
+	color:#F00;
+	}
+
+.livefeed_divbottom .green{
+	font-size:32px;
+	color:#6C0;
+	}
+.livefeed_header{
+	background-color:#1166a2;
+	font-size:17px;
+	font-weight: 300;
+	color:#fff;
+	padding:0px 10px 5px 10px;
+	overflow:hidden;
+	}
+
+.livefeed_divbottomrow{
+	margin-top:20px;
+	}
+
+.livefeed_divbottomrow .col-md-6, .livefeed_divbottomrow .col-md-5{
+    padding:0;
+}
+
+.livefeed_divbottomrow .col-md-6 {
+    width: 49%;
+}
+
+.mr06{margin-right:6px;}
+.mt20{margin-top:20px;}
+.mb20{margin-bottom:20px;}
+
+
+
+.bidhistory{
+	border-bottom:1px solid #DDDDDD;
+	border-right:1px solid #DDDDDD;
+	border-left:1px solid #DDDDDD;
+    padding:12px 0px 0 0px;
+	font-size:12px;
+	}
+
+.bidhistory li{
+    padding:5px 12px;
+	font-size:12px;
+	}
+
+.bidhistory li:nth-child(odd) {
+    background-color: #F9F9F9;   
+}
+
+.nextlots{
+	border-bottom:1px solid #DDDDDD;
+	border-right:1px solid #DDDDDD;
+	border-left:1px solid #DDDDDD;
+    padding:12px 0px 0 0px;
+	font-size:12px;
+	}
+
+.nextlots img{
+	width:50px;
+	height:50px;
+	}
+
+.nextlots h4{
+	font-size:13px;
+	font-weight: 700;
+	margin-bottom: 5px;
+    margin-top: 0px;
+	}
+
+.nextlots .newsRow{
+	display: inline-block;
+    margin: 0 10px 10px 10px;
+    position: relative;
+    width: 100%;
+	}
+
+.bidbar{
+	background-color:#eaedf2;
+	}
+
+.bidbar_header{
+	color: #333333;
+    font-size: 17px;
+    font-weight: 400;
+    overflow: hidden;
+    padding: 10px 20px;
+	}
+
+.bidbar_divider{
+	height:2px;
+	border-top:1px solid #d6dadd;
+	border-bottom:1px solid #fbffff;
+	}
+.bidbar_container{
+    padding: 20px;
+	}
+
+.timer{
+	color: #333333;
+	font-size: 18px;
+	font-weight: 500;
+	color: #ff6a2f;
+	margin: 0 0px 10px 0px;
+	text-transform: uppercase;
+	display:block;
+	}
+
+.bidbar_container .btngroup button{ margin-bottom:5px;}
+
+/*--login screen Sell---*/
+.centertext
+{
+	text-align:center;
+}
+.loginhead
+{
+	margin-bottom:50px;
+	border-bottom:1px groove #999;
+	padding-bottom:10px;
+}
+.login-wrap h3, .auction_search_body h3
+{
+	font-size:22px;
+}
+.login-wrap
+{
+	padding:0px;
+	-webkit-box-shadow: 1px 2px 5px 0px rgba(50, 50, 53, 0.59);
+-moz-box-shadow:    1px 2px 5px 0px rgba(50, 50, 53, 0.59);
+box-shadow:         1px 2px 5px 0px rgba(50, 50, 53, 0.59);
+margin-bottom:20px;
+}
+.login-wrap .login-left-sec
+{
+	background:#f6f7fb;
+}
+.login-left-sec
+{
+	padding:10px;
+}
+.login-wrap .sellerfg_header
+{
+	padding:10px;
+	background: rgb(14,104,190); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlNjhiZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ4JSIgc3RvcC1jb2xvcj0iIzNlNmZjZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YTc2ZGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(14,104,190,1) 0%, rgba(62,111,206,1) 48%, rgba(106,118,220,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(14,104,190,1)), color-stop(48%,rgba(62,111,206,1)), color-stop(100%,rgba(106,118,220,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(14,104,190,1) 0%,rgba(62,111,206,1) 48%,rgba(106,118,220,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(14,104,190,1) 0%,rgba(62,111,206,1) 48%,rgba(106,118,220,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(14,104,190,1) 0%,rgba(62,111,206,1) 48%,rgba(106,118,220,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(14,104,190,1) 0%,rgba(62,111,206,1) 48%,rgba(106,118,220,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e68be', endColorstr='#6a76dc',GradientType=0 ); /* IE6-8 */
+
+}
+.margin-auto
+{
+	margin:0 auto;
+}
+
+.login-wrap .form-group
+{
+	width:70%;
+	margin:14px auto;
+}
+.login-wrap .from-row-login
+{
+	position:relative;
+	text-align:center;
+}
+.login-wrap .from-row-login .form-control
+{
+	padding-left:30px;
+}
+.login-wrap .form-group .fa
+{
+	position:absolute;
+	left:10px;
+	top:10px;
+	color:#999;
+}
+.forgotPassLink, .forgotUserLink
+{
+	font-size:12px;
+	padding-right:10px;
+	float:left;
+}
+.forgotPassLink
+{
+	color:#3288cc;
+}
+.forgotUserLink
+{
+	color:#24b335
+}
+
+.login-wrap .col-md-6
+{
+	text-align:right;
+	padding:0px;
+}
+
+.login-wrap .signinBtn
+{
+	float:left;
+	margin:20px 0;
+	background: rgb(14,104,190); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: rgb(14,104,190); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBlNjhiZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iIzM4ODNlMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzMTc0YzIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(14,104,190,1) 0%, rgba(56,131,224,1) 51%, rgba(49,116,194,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(14,104,190,1)), color-stop(51%,rgba(56,131,224,1)), color-stop(100%,rgba(49,116,194,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(14,104,190,1) 0%,rgba(56,131,224,1) 51%,rgba(49,116,194,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(14,104,190,1) 0%,rgba(56,131,224,1) 51%,rgba(49,116,194,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(14,104,190,1) 0%,rgba(56,131,224,1) 51%,rgba(49,116,194,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(14,104,190,1) 0%,rgba(56,131,224,1) 51%,rgba(49,116,194,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e68be', endColorstr='#3174c2',GradientType=0 ); /* IE6-8 */
+border: 0px;
+padding: 10px 20px;
+font-weight:bold;
+}
+
+
+.registerRight h3
+{
+	margin-top:70px;
+}
+
+.registerRight p
+{
+	font-size:16px;
+}
+
+.registerBtn
+{
+	padding:10px 20px;
+	background: rgb(67,188,241); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQzYmNmMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0NGJiZjMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(67,188,241,1) 0%, rgba(68,187,243,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(67,188,241,1)), color-stop(100%,rgba(68,187,243,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(67,188,241,1) 0%,rgba(68,187,243,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(67,188,241,1) 0%,rgba(68,187,243,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(67,188,241,1) 0%,rgba(68,187,243,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(67,188,241,1) 0%,rgba(68,187,243,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43bcf1', endColorstr='#44bbf3',GradientType=0 ); /* IE6-8 */
+font-weight:bold;
+border:0px;
+}
+
+/*--login screen Sell---*/
+/*--Auction House Search---*/
+.auctionHouseSearch
+{
+	padding:0px;
+}
+.auctionHouseSearch .sellerfg_header
+{
+	padding:15px;
+}
+
+.auction_search_body h3
+{
+	text-indent:20px;
+}
+.search-bodywrap
+{
+	padding:20px 20px 40px 30px;
+}
+
+.auction_search_body .loginhead 
+{
+	border-bottom: 2px groove #FFFFFF;
+	margin-bottom:20px;
+	
+}
+.auction_search_body .btn-warning 
+{
+	font-weight:bold;
+	
+}
+.resultHead, .resultHead .sellerfg_header, .resultHead .col-md-4
+{
+	background-color: #fff;	overflow:hidden;
+}
+.resultHead .col-md-4
+{
+	padding:20px 0;
+}
+
+.resultHead .sellerfg_header
+{
+	color:#0f547e;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.search-distance
+{
+	background: #eaedf2;
+	border:0px;
+}
+
+
+
+/*---Payment method--*/
+
+
+
+
+
+
+/* Auction house Dashboard*/
+.saleselected
+{
+	background:#95a5a6;
+	color:#fff;
+	font-weight:bold;
+}
+
+.saleselected::-webkit-input-placeholder {
+  color:#fff;
+  font-weight:bold;
+}
+
+.saleselected:-moz-placeholder { /* Firefox 18- */
+   color:#fff;
+   font-weight:bold;
+}
+
+.saleselected::-moz-placeholder {  /* Firefox 19+ */
+  color:#fff;
+  font-weight:bold;
+}
+
+.saleselected:-ms-input-placeholder {  
+   color:#fff;
+   font-weight:bold;
+}
+
+.reserve
+{
+	background:#F1C40F;
+	border: 2px dashed #cfa602;
+	font-weight:bold;
+}
+
+.notify
+{
+	color:#d35400;
+	line-height:30px;
+}
+
+.highlight
+{
+	background:#fafafa;
+	padding:20px;
+	margin:0 10px 20px 0px;
+	border:1px dotted #646464;
+	overflow:auto;
+	
+}
+.datewrap
+{
+	position:relative;
+}
+a.underline
+{
+	text-decoration:underline;
+	line-height:30px;
+}
+.datewrap .fa-calendar
+{
+	display: block;
+    left: 22px;
+    position: absolute;
+    top: 10px;
+    width: 100px;
+    z-index: 1;
+	color:#999;
+}
+
+.datewrap input
+{
+	padding-left:25px;
+}
+
+.editimg
+{
+	background:#fff;
+	display:block;
+	color:#000;
+	text-align:center;
+}
+.editimg .btn
+{
+	width:100%;
+	border-radius:0px;
+}
+.fileupload-buttonbar .btn, .fileupload-buttonbar .toggle {
+    margin-bottom: 5px;
+}
+.fileinput-button {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileinput-button input {
+    cursor: pointer;
+    direction: ltr;
+    font-size: 200px;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.nextbtn, .print-list
+{
+	margin-left:10px;
+}
+.saleHead
+{
+	background:#267EC8;
+	padding: 5px 10px 0;
+	color:#fff;
+	overflow:hidden;
+}
+.saleHead h4
+{
+	font-weight:bold;
+}
+.salestockWrap
+{
+	margin-bottom:40px;
+}
+
+.auction_house a, .auction_house > li > a {
+    text-decoration: none;
+}
+.auction_house a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.auction_house
+{
+	color:#ffffff;
+}
+.auction_house .nav {
+    margin-bottom: 30px;
+	background-color:#011a2d;
+	color: #ffffff;
+}
+
+.auction_house .nav-justified > li
+{
+	border-left:1px solid #eee;
+}
+.auction_house .nav-justified > li:first-child
+{
+	border-left:0px;
+}
+
+.auction_house .nav > li > a:hover, .auction_house .nav > li > a:focus {
+    background-color: #19507a;
+    text-decoration: none;
+	color: #FFFFFF;
+	border-radius:0px;
+}
+.auction_house ul.dropdown-menu li {
+    border-top: 1px solid #022c4d;
+	padding: 6px 0;
+}
+.auction_house .dropdown-menu {
+    background-clip: padding-box;
+    background-color: #011a2d;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 4px  4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+    display: none;
+    float: left;
+    font-size: 14px;
+    left: 0;
+    list-style: none outside none;
+    margin: 2px 0 0;
+    min-width: 198px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 100%;
+    z-index: 1000;
+}
+
+.auction_house .dropdown-menu > li > a {
+    clear: both;
+    color: #b9c6d8;
+    display: block;
+    font-weight: normal;
+    line-height: 1.42857;
+    padding: 3px 20px;
+    white-space: nowrap;
+}
+
+.auction_house .dropdown-menu > li > a:hover, .auction_house .dropdown-menu > li > a:focus {
+    background-color: #19507a;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.auction_house .open > .dropdown-menu {
+    display: block;
+}
+
+.auction_house_content h1{
+	border-bottom: 2px dashed #DCDCDC;
+	color: #428BCA;
+	font-weight: normal;
+	margin: 20px 17px 30px 15px;
+	padding-bottom: 8px;
+	text-transform: uppercase;
+	}
+
+.auction_house_content{
+	padding-bottom: 20px;
+	}
+
+/*Seller UI CSS*/
+
+.inputRegNo
+{
+	background:#F7CA18;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.selyourcar_div1 input.inputRegNo
+{
+	border:3px solid #b59206;
+	background:#F7CA18;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+
+.inputRegNo::-webkit-input-placeholder
+{
+    color: #333333;
+    font-weight: bold; 
+	}
+.inputRegNo::-moz-placeholder 
+{ 
+    color: #333333;
+    font-weight: bold;
+} /* firefox 19+ */
+.inputRegNo:-ms-input-placeholder 
+{ 
+    color: #333333;
+    font-weight: bold;
+} /* ie */
+.inputRegNoinput:-moz-placeholder 
+{ 
+    color: #333333;
+    font-weight: bold;
+}
+
+.selyourcar_div1 .carMileage
+{
+	background:#1BA39C;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+.carMileage::-webkit-input-placeholder
+{
+    color: #fff;
+    font-weight: bold; 
+	}
+.carMileage::-moz-placeholder 
+{ 
+    color: #fff;
+    font-weight: bold;
+} /* firefox 19+ */
+.carMileage:-ms-input-placeholder 
+{ 
+    color: #fff;
+    font-weight: bold;
+} /* ie */
+.carMileage:-moz-placeholder 
+{ 
+    color: #fff;
+    font-weight: bold;
+}
+/*Seller UI CSS*/
+.paymenyoptionsWrap
+{
+	border: 1px solid #C6C6C6;
+	padding:20px;
+}
+.paymentDetailsRight .headermagin
+{
+	margin: 0;
+	font-size: 18px;
+    font-weight: bold;
+	text-transform: uppercase;
+	padding:10px;
+}
+.arrow2
+{
+	float:right;
+}
+.paymentDetailsRight .headermagin a
+{
+	color:#fff;
+}
+.salesPack 
+{
+	margin:20px 0;
+}
+.salesPack a
+{
+	color:#fff;
+}
+.salesPack a:hover
+{
+	text-decoration:underline;
+}
+
+.sellmycarForm
+{
+	margin:0px 23px 20px 10px;
+}
+
+.inputRegNo2ndstsp
+{
+	margin-bottom:0px;
+}
+.formHighlightheader h1
+{
+	font-size:20px;
+}
+
+a.makeOffer, a.whatsthis
+{
+	line-height: 20px;
+	margin-right:10px;
+}
+
+.linemessage
+{
+	padding:10px;
+	margin-bottom:20px;
+}
+
+/*Seller UI CSS*/
+
+/***** Created Amol 11 June 2014 *****/
+
+.auctionhouse_profile .header{
+	background-color:#15547f;
+	color:#febb80;
+	padding: 20px;
+    font-size: 18px;
+	font-weight: 500;
+	}
+	
+.auctionhouse_profile .header h1{
+	color:#ffffff;
+	font-weight: 300;
+    font-size: 35px;
+	margin:0;
+	display:inline-block;
+	}
+	
+.auctionhouse_profile .header span{
+	margin:8px 0 0;
+	}
+	
+.auctionhouse_profile .content{
+	background-color:#eaedf2;
+	color:#040404;
+	padding: 20px;
+	font-weight: 300;
+    font-size: 13px;
+	line-height:22px;
+	margin-bottom:25px;
+	}
+	
+.auctionhouse_profile .content img{
+	border:3px solid #ffffff;
+	-moz-box-shadow:    1px 1px 3px 3px #ccc;
+	-webkit-box-shadow: 1px 1px 3px 3px #ccc;
+	box-shadow:         1px 1px 3px 3px #ccc;
+	margin: 0 20px 20px 0;
+	}	
+	
+.auctionhouse_profile .content h3{
+	color:#2b2b2b;
+	font-weight: 500;
+    font-size: 18px;
+	margin:0 0 10px 0;
+	display:inline-block;
+	}
+
+.auctionhouse_profile .content .divider, .auctionhouse_search .content .divider {
+	height:2px;
+	border-top:1px solid #d6dadd;
+	border-bottom:1px solid #fbffff;
+	margin-bottom:25px;
+	}
+	
+.auctionhouse_profile .content span{
+    margin: -10px 0 0 0;
+	}
+.auctionhouse_profile .content .socialnetwork{
+	color:#ffffff;
+    font-size: 16px;
+	}
+
+.auctionhouse_profile .content .socialnetwork .facebook{
+	background-color: #3A589B;
+    border-radius: 30px;
+    height: 32px;
+    margin: 0 4px 0 0;
+    padding: 8px;
+    text-align: center;
+    width: 33px;
+	}
+
+.auctionhouse_profile .content .socialnetwork .twitter{
+	background-color: #598DCA;
+    border-radius: 30px;
+    height: 33px;
+    margin: 0 5px 0 0;
+    padding: 9px;
+    width: 33px;
+	}
+
+.auctionhouse_profile .terms{
+	color:#ffffff;
+    font-size: 18px;
+	font-weight: 400;
+    padding: 20px;
+	text-align:center;
+	display:block;
+	background-color:#b53023;
+	margin-bottom:25px;
+	}
+
+.auctionhouse_profile .terms a{
+	color: #ffffff;
+	text-decoration: underline;
+	}
+
+.auctionhouse_profile .terms a:hover{
+	color: #ffffff;
+	text-decoration: none;
+	}
+
+.adbanner2{
+	background: #f5f5f5;
+	background: -webkit-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -moz-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -o-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: -ms-linear-gradient(top, #e7e7e7, #f5f5f5);
+	background: linear-gradient(top, #e7e7e7, #f5f5f5);
+	border: 8px solid #EAEAEA;
+    color: #838486;
+    font-size: 22px;
+    font-weight: 900;
+    height: 150px;
+    margin-top: 20px;
+    text-align: center;
+    text-shadow: 0 1px 1px #FFFFFF;
+    text-transform: uppercase;
+	position:relative;
+	margin-bottom:25px;
+	}
+
+.adbanner2 span{
+	display: block;
+    margin-top: 53px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box1{
+	background-color:#eaedf2;
+	border: 1px solid #bce0e8;
+	padding:10px 7px 0 7px;
+	text-align:center;
+	}
+.auctionhouse_profile_sidebar .rightsidebar_box1 .header{
+	background-color:#b53023;
+	padding: 14px 8px;
+	color:#ffffff;
+	}
+
+.auctionhouse_profile_sidebar .rightsidebar_box1 h1{
+	color:#ffffff;
+	font-weight: 400;
+    font-size: 18px;
+	margin:0 0 2px 0;
+	}
+
+
+.auctionhouse_profile_sidebar .rightsidebar_box1 a{color:#ffffff; text-decoration:underline;}
+
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > thead > tr > th,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tbody > tr > th,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tfoot > tr > th,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > thead > tr > td,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tbody > tr > td,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tfoot > tr > td {
+    border-top: 1px solid #ffffff;
+    line-height: 1.42857;
+    padding: 8px;
+    vertical-align: top;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > thead > tr > th,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tbody > tr > th,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tfoot > tr > th{
+	color:#8b8b8b;
+	font-weight: 300;
+    font-size: 18px;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > thead > tr > td,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tbody > tr > td,
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tfoot > tr > td {
+	color:#333333;
+	text-align:left;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tbody > tr > td.time{
+	color:#b95b08;
+	font-weight: 400;
+    font-size: 18px;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box1 .table > tbody > tr > td.time .badge {
+	background-color: #ff9130;
+	padding: 3px 12px;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box2{
+	background-color:#eaedf2;
+	padding:0;
+	margin:12px 0;
+	}
+.auctionhouse_profile_sidebar .rightsidebar_box2 .header{
+	background-color:#15547f;
+	padding: 14px 8px;
+	color:#ffffff;
+	text-align:left;
+	}
+
+.auctionhouse_profile_sidebar .rightsidebar_box2 h1{
+	color:#ffffff;
+	font-weight: 500;
+    font-size: 18px;
+	margin:0 0 2px 0;
+	}
+
+.auctionhouse_profile_sidebar .rightsidebar_box2 .table > tbody > tr > td .badge {
+	background-color: #ff9130;
+	padding: 3px 12px;
+	text-transform: uppercase;
+	font-size: 14px;
+	margin-left:10px;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box2 .table > thead > tr > td,
+.auctionhouse_profile_sidebar .rightsidebar_box2 .table > tbody > tr > td,
+.auctionhouse_profile_sidebar .rightsidebar_box2 .table > tfoot > tr > td {
+	color:#a32518;
+}
+
+
+.auctionhouse_profile_sidebar .rightsidebar_box3, .auctionhouse_profile_sidebar .rightsidebar_box4, .auctionhouse_profile_sidebar .rightsidebar_box5{
+	background-color: #3cb5cf;
+    border: 1px solid #8c8c8c;
+	color:#ffffff;
+	font-weight: 500;
+    font-size: 18px;
+	border-radius:45px;
+	padding:10px;
+	margin-bottom:15px;
+}
+
+.auctionhouse_profile_sidebar .rightsidebar_box6{
+	background: #ef8323;
+	background: -webkit-linear-gradient(top, #ff9130, #de7314);
+	background: -moz-linear-gradient(top, #ff9130, #de7314);
+	background: -o-linear-gradient(top, #ff9130, #de7314);
+	background: -ms-linear-gradient(top, #ff9130, #de7314);
+	background: linear-gradient(top, #ff9130, #de7314);
+    border: 1px solid #8c8c8c;
+	color:#ffffff;
+	font-weight: 300;
+    font-size: 35px;
+	border-radius:20px;
+	padding: 8px 10px 12px;
+	margin-bottom:15px;
+}
+
+
+.auctionhouse_profile_sidebar .rightsidebar_box3 img,
+.auctionhouse_profile_sidebar .rightsidebar_box4 img,
+.auctionhouse_profile_sidebar .rightsidebar_box5 img{
+	margin-right:15px;
+}
+
+.rightsidebar_box_arrow{
+	margin: 10px 12px 10px 0;
+	float:right;
+	}
+
+.auctionhouse_profile_sidebar .btn {
+    display: block;
+	text-align:left;
+    white-space: normal;
+}
+
+.chat{
+	margin: 5px 12px 10px 20px;
+	}
+	
+.auctionhouse_search .header{
+	background-color:#15547f;
+	color:#febb80;
+	padding: 20px;
+    font-size: 18px;
+	font-weight: 500;
+	margin-top:20px;
+	}
+
+.auctionhouse_search .content{
+	background-color:#eaedf2;
+	color:#040404;
+	font-weight: 300;
+    font-size: 13px;
+	line-height:22px;
+	margin-bottom:25px;
+	}
+	
+.auctionhouse_search .header h1{
+	color:#ffffff;
+	font-weight: 300;
+    font-size: 35px;
+	margin:0px 0 0px 20px;
+	display:inline-block;
+	}
+.auctionhouse_search .content h3{
+	color:#2b2b2b;
+	font-weight: 300;
+    font-size: 18px;
+	margin:25px 0 17px 40px;
+	display:inline-block;
+	}
+
+.form-container{
+	padding:20px 40px 40px 40px;
+	}
+
+.auctionhouse_search label {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 5px;
+	 margin-right: 15px;
+}
+
+.auctionhouse_search .result h1{
+	color: #14537f;
+	font-weight: 700;
+	font-size: 35px;
+	margin: 0px 0 0px 0px;
+	display: inline-block;
+	letter-spacing: 0px;
+	}
+.result_list{
+	background-color:#f5f5f5;
+    border: 1px solid #d9dce0;
+	font-weight: 300;
+    font-size: 14px;
+	margin:10px 0;
+	}
+
+.auctionhouse_search .result_list .header{
+	background-color:#f5f5f5;
+	color:#29292a;
+	padding: 20px;
+	margin-top:0px;
+	}
+.auctionhouse_search .result_list .header h1 {
+	color:#29292a;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 300;
+    margin: 0 0 0 10px;
+}
+
+.auctionhouse_search .result_list .header .badge {
+	background-color: #e8e8e8;
+	padding: 10px 20px;
+	font-size: 14px;
+	color:#29292a;
+	margin-left:10px;
+    font-weight: 500;
+	border-radius: 20px;
+}
+
+.auctionhouse_search .result_list .divider {
+    border-bottom: 1px solid #FBFFFF;
+    border-top: 1px solid #D6DADD;
+    height: 2px;
+    margin-bottom: 25px;
+}
+
+.auctionhouse_logo{
+    margin: 0 20px 20px 20px;
+	}
+
+.auctionhouse_list ul{
+	padding-left: 15px ;
+	}
+
+.auctionhouse_list li{
+	border-bottom: 1px solid #d7d9dd;
+	padding: 10px ;
+	list-style-position: inside;
+	}
+
+.auctionhouse_list li a{
+	color:#e24939;
+    font-weight: 700;
+	text-decoration:underline;
+	}
+	
+.auctionhouse_list h3 {
+	color:#29292a;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 10px 20px;
+}
+
+.auctionhouse_list h3 small {
+	color:#29292a;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+.btn-viewstock {
+    background-color: #e24939;
+    border-color: #d54536;
+    color: #FFFFFF;
+	text-transform:uppercase;
+	padding: 3px 14px;
+    font-weight: 600;
+	font-size: 11px;
+}
+
+.auctionhouse_search .details h1 {
+	color:#0f75bc;
+    display: block;
+    font-size: 36px;
+    font-weight: 300;
+    margin: 0 0 12px 0px;
+}
+
+.auctionhouse_search .details h2 {
+	color:#29292a;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 0px 0px;
+}
+
+.auctionhouse_search .details h2 span {
+	color:#e24939;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 0px 15px;
+}
+
+.auctionhouse_search .details .livenow {
+	color: #30a62a;
+	font-size: 18px;
+	font-weight: 800;
+	margin: 5px 3px 0 15px;
+	font-style: italic;
+}
+
+.details_list{
+	background-color:#f5f5f5;
+    border: 1px solid #d9dce0;
+	font-weight: 300;
+    font-size: 14px;
+	margin:10px 0;
+	padding:18px 0 0;
+	}
+
+.list_content{
+    margin: 0 20px 20px;
+}
+
+.btn-watchlive {
+    background-color: #30a62a;
+    border-color: #2b9425;
+    color: #FFFFFF;
+	text-transform:uppercase;
+	padding: 3px 14px;
+    font-weight: 600;
+	font-size: 11px;
+}
+
+.watchlive{
+	text-align:right;
+	padding-top: 20px;
+	}
+
+.watchlive_span{
+	display:block;
+	margin-bottom: 8px;
+	}
+
+.date_span{
+    font-weight: 800;
+	font-size: 16px;
+	display:block;
+	
+	}
+	
+	
+/***** Created Amol 16 June 2014 *****/	
+	
+.thankyou{
+	padding:40px;
+	text-align:center;
+	}	
+	
+.thankyou h1{
+	font-weight:bold;
+	text-transform: uppercase;
+	color:#F00;
+	}	
+	
+.selyourcar_bg .col-md-4 {
+    width: 40%;
+}	
+
+.auction_house .nav-justified > li {
+    display: table-cell;
+    width: auto;
+}
+	
+ @media screen and (min-width: 480px) and (max-width: 768px) {	
+.steptitle{
+    font-weight:bold;
+	margin: 0 0 0 20px;
+    padding-top: 20px;
+    font-size: 1.5em;
+}
+
+ }
+ 
+ @media screen and (min-width: 300px) and (max-width: 768px) {	
+ 
+.auction_house .nav-justified > li {
+    display: block;
+    width: 100%;
+}
+ }
+ 
+ @media screen and (min-width: 300px) and (max-width: 980px) {	
+.selyourcar_bg .col-md-4 {
+    width: 100%;
+}
+
+.auction_house ul.dropdown-menu li {
+    border-top: 1px solid #28597f;
+	padding: 6px 0;
+}
+
+
+.auction_house .dropdown-menu {
+    background-clip: padding-box;
+    background-color: #214a6a;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 4px  4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+    display: none;
+    float: left;
+    font-size: 14px;
+    left: 0;
+    list-style: none outside none;
+    margin: -5px 0 0;
+    width: 100%;
+    padding: 5px 10px;
+    position: relative;
+    top: 100%;
+    z-index: 1000;
+}
+
+.auction_house .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #eee;
+    border-color: #428bca;
+}
+.auction_house .nav-justified > li > a {
+    margin-bottom: 5px;
+    text-align: left;
+}
+.auction_house .nav-pills > li > a {
+    border-radius: 4px;
+}
+
+
+
+ }
+ 
+ @media screen and (min-width: 980px) and (max-width: 1190px) {	
+.btn-sellurcar{
+	background: #45d9e3;
+	background: -webkit-linear-gradient(top, #218094, #45d9e3);
+	background: -moz-linear-gradient(top, #218094, #45d9e3);
+	background: -o-linear-gradient(top, #218094, #45d9e3);
+	background: -ms-linear-gradient(top, #218094, #45d9e3);
+	background: linear-gradient(top, #218094, #45d9e3);
+	width: 220px;
+	height: 75px;
+	text-transform: uppercase;
+	font-size:18px;
+	font-weight:bold;
+	}
+ }
+ 
+	
+ @media (min-width: 300px) and (max-width: 1024px) {	
+
+.selyourcar_div1 {
+    padding: 55px 20px 25px 20px;
+}
+.selyourcar_div2{
+	width:0px;
+	height:1px;
+	padding-left: 0;
+    padding-right: 0;
+	}
+	
+.selyourcar_bg .col-md-1{
+	min-height: 1px;
+	width:0px;
+	}
+	
+
+
+
+	
+ }
+	
+	
+	
+	
+	
+/***** Created Amol 11 June 2014 *****/
+/* Responsive Styles */
+@media (max-width: 767px) {
+ .carousel {
+ height: 70%;
+/* increases the carousel height so it looks good on phones */
+  }
+}
+
+/*ddresposive*/
+
+@media (min-width: 768px) {
+ .nav > li.menuItem > a, .nav > li.bold > a {
+ padding-left: 5px;
+}
+ .navbar-nav > li.menuItem > a span, .navbar-nav > li.bold > a span {
+ padding-right: 5px;
+}
+ .navbar-nav.navbar-right:last-child {
+ margin-right: 0px;
+}
+}
+ @media (max-width: 768px) {
+ .logowrap {
+ margin-top:40px;
+}
+ .advertisement img {
+ width:100%;
+ height:auto;
+}
+ .header .navbar-ex1-collapse {
+ float:right;
+ border-top:1px solid #eee;
+ width:100%;
+}
+
+.mainnav .navbar-left li a
+{
+	padding-left:25px;
+}
+
+.auctionloginBtn
+{
+	margin-left:15px;
+}
+.auctionTodayRow2 {
+    margin-top: 0px;
+}
+
+
+}
+ @media (max-width: 995px) {
+ .header .navbar-ex1-collapse {
+ float:right;
+ border-top:1px solid #eee;
+ width:100%;
+}
+ .logowrap {
+ margin-top:40px;
+}
+.auctionTodayRow2 {
+    margin-top: 0px;
+}
+
+.carousel .col-sm-3
+{
+	width:100%;
+}
+
+.carousel .col-sm-3 .imagebg img
+{
+	width:20%;
+}
+.carousel .col-sm-3 .imagebg .carinfo
+{
+	width:80%;
+}
+
+
+}
+ @media screen and (min-width: 480px) and (max-width: 768px) {
+ .logowrap {
+ margin-top:0px;
+}
+ .navbar-nav {
+ margin-bottom:0px;
+}
+ .navbar-nav > li.menuItem > a span {
+ border-right:0px;
+ padding-right:0px;
+}
+ .navbar-nav > li.menuItem > a, .navbar-nav > li.bold > a, .navbar-nav > li.bluenav> a {
+ padding-left:30px;
+ margin-top:0px;
+ padding-top:6px;
+ padding-bottom:6px;
+}
+ .navbar-nav > li.menuItem > a, .navbar-nav > li.bold > a {
+ border-top:1px solid #484848;
+}
+ .navbar-nav > li.bluenav a {
+ padding-bottom:7px;
+ padding-top:7px;
+}
+ .navbar-nav > li.bluenavactive > a {
+ border-bottom:1px solid #3c80dd;
+}
+ .navTxt {
+ margin-left:20px;
+}
+ .mainnav .navbar-inverse .navbar-collapse, .mainnav .navbar-inverse .navbar-form {
+ border:1px solid #fff;
+}
+.mainnav .navbar-nav {
+ margin-top:0px;
+ margin-bottom:0px;
+}
+.mainnav .auctionloginBtn {
+ margin-bottom:20px;
+}
+ .mainnav .navbar-left li {
+ border-bottom:1px solid #3A9FE5;
+}
+.auctionTodaySec .col-md-8 .col-md-2:first-child, .auctionTodaySec .col-md-8 .col-md-2
+{
+	margin-left:0px;
+}
+.imagebg
+{
+	position:static!important;
+	width:100%;
+	float:left;
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: rgb(10,107,174); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBhNmJhZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwODY2OGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(10,107,174,1) 0%, rgba(8,102,140,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(10,107,174,1)), color-stop(100%,rgba(8,102,140,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a6bae', endColorstr='#08668c',GradientType=0 ); /* IE6-8 */
+
+
+}
+.carinfo
+{
+	position:static!important;
+	background:none;
+	padding-top:10px;
+	font-size:14px;
+	padding-left:20px;
+}
+
+.imagebg .carinfo, .imagebg img
+{
+	float:right;
+}
+
+.imagebg .carinfo
+{
+	width:80%;
+}
+
+.imagebg img
+{
+	width:20%;
+}
+
+.rowAuctionTodayHeader
+{
+	width:99%;
+	margin-left:10px;
+	margin-top:20px;
+}
+.auctionFilterWrap #minPrice
+{
+	margin-bottom:13px;
+}
+
+.carousel .col-sm-3
+{
+	width: 23%;
+}
+
+.carousel .col-sm-3 img
+{
+	width:100%;
+}
+}
+ @media(max-width: 480px) {
+ .logowrap {
+ margin-top:0px;
+}
+ .navbar-nav > li.menuItem > a span {
+ border-right:0px;
+ padding-right:0px;
+}
+ .navbar-nav > li.menuItem > a, .navbar-nav > li.bold > a, .navbar-nav > li.bluenav> a {
+ padding-left:30px;
+ margin-top:0px;
+ padding-top:6px;
+ padding-bottom:6px;
+}
+ .navbar-nav > li.menuItem > a, .navbar-nav > li.bold > a {
+ border-top:1px solid #484848;
+}
+ .navbar-nav > li.bluenav a {
+ padding-bottom:7px;
+ padding-top:7px;
+}
+ .navbar-nav > li.bluenavactive > a {
+ border-bottom:1px solid #3c80dd;
+}
+ .navTxt {
+ margin-left:20px;
+}
+ .mainnav .navbar-inverse .navbar-collapse, .mainnav .navbar-inverse .navbar-form {
+ border:1px solid #fff;
+}
+.mainnav .navbar-nav {
+ margin-top:0px;
+ margin-bottom:0px;
+}
+ .mainnav .auctionloginBtn {
+ margin-bottom:20px;
+}
+.mainnav .navbar-left li {
+ border-bottom:1px solid #3A9FE5;
+}
+.auctionTodaySec .col-md-8 .col-md-2:first-child, .auctionTodaySec .col-md-8 .col-md-2
+{
+	margin-left:0px;
+}
+.imagebg
+{
+	position:static!important;
+	width:100%;
+	float:left;
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: rgb(10,107,174); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBhNmJhZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwODY2OGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(10,107,174,1) 0%, rgba(8,102,140,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(10,107,174,1)), color-stop(100%,rgba(8,102,140,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a6bae', endColorstr='#08668c',GradientType=0 ); /* IE6-8 */
+
+
+}
+.carinfo
+{
+	position:static!important;
+	background:none;
+	padding-top:10px;
+	font-size:13px;
+	padding-left:20px;
+}
+
+.imagebg .carinfo, .imagebg img
+{
+	float:right;
+}
+
+.imagebg .carinfo
+{
+	width:80%;
+}
+
+.imagebg img
+{
+	width:20%;
+}
+.rowAuctionTodayHeader
+{
+	width:99%;
+	margin-left:10px;
+	margin-top:20px;
+}
+
+.rowAuctionTodayHeader h2 span.greenspn
+{
+	display:block;
+}
+
+.auctionFilterWrap #minPrice
+{
+	margin-bottom:13px;
+}
+
+.carousel .col-sm-3
+{
+	width: 23%;
+}
+.carousel .col-sm-3 img
+{
+	width:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+#pricePlans #plans .plan {
+	/*width: 49%;*/
+	width: 100%;
+	margin: 0 2% 20px 0;
+}
+
+#pricePlans #plans > li:nth-child(2n) {
+	margin-right: 0;
+}
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+#pricePlans #plans .plan {
+	width: 49%;
+	margin: 0 2% 20px 0;
+}
+
+#pricePlans #plans > li:nth-child(2n) {
+	margin-right: 0;
+}
+
+}
+
+@media screen and (min-width: 1025px) {
+
+#pricePlans {
+	margin: 2em 0 2em 2em;
+}
+
+#pricePlans #plans .plan {
+	width:32%;
+	margin: 0 1.33% 20px 0;
+
+	-webkit-transition: all .25s;
+	   -moz-transition: all .25s;
+	    -ms-transition: all .25s;
+	     -o-transition: all .25s;
+	        transition: all .25s;
+}
+
+#pricePlans #plans > li:last-child {
+	margin-right: 0;
+}
+
+#pricePlans #plans .plan:hover {
+	-webkit-transform: scale(1.04);
+	   -moz-transform: scale(1.04);
+	    -ms-transform: scale(1.04);
+	     -o-transform: scale(1.04);
+	        transform: scale(1.04);
+}
+
+.planContainer .button a {
+	-webkit-transition: all .25s;
+	   -moz-transition: all .25s;
+	    -ms-transition: all .25s;
+	     -o-transition: all .25s;
+	        transition: all .25s;
+}
+
+.planContainer .button a:hover {
+	background: #267EC8;
+	color: #fff;
+}
+
+.planContainer .button a.bestPlanButton:hover {
+	background: none repeat scroll 0 0 #76A761;
+    border: 1px solid #6A9657;
+}
+
+}
+@media (max-width: 767px) {
+.login_popupdiv {
+	border-radius:  0;
+	right:0px;
+	width:100%
+  }
+}
+
+
+ @media screen and (min-width: 768px) and (max-width: 992px) 
+ {
+ .auctionTodaySec .col-md-8 .col-md-2:first-child
+{
+	margin-left:21px;
+}
+	.imagebg
+{
+	position:static!important;
+	width:100%;
+	float:left;
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: rgb(10,107,174); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBhNmJhZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwODY2OGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(10,107,174,1) 0%, rgba(8,102,140,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(10,107,174,1)), color-stop(100%,rgba(8,102,140,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(10,107,174,1) 0%,rgba(8,102,140,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a6bae', endColorstr='#08668c',GradientType=0 ); /* IE6-8 */
+
+
+}
+.carinfo
+{
+	position:static!important;
+	background:none;
+	padding-top:10px;
+	font-size:14px;
+	padding-left:20px;
+}
+
+.auctionTodayRow2
+{
+	margin-top:0px;
+}
+.imagebg .carinfo, .imagebg img
+{
+	float:right;
+}
+
+.imagebg .carinfo
+{
+	width:80%;
+}
+
+.imagebg img
+{
+	width:20%;
+}
+
+.rowAuctionTodayHeader
+{
+	width:99%;
+	margin-left:10px;
+	margin-top:20px;
+}
+.auctionFilterWrap #minPrice
+{
+	margin-bottom:13px;
+}
+.carousel .col-sm-3
+{
+	width: 23%;
+}
+.carousel .col-sm-3 img
+{
+	width:100%;
+}
+
+.login_popupdiv
+{
+	top:102;
+}
+
+ }
+ 
+  @media screen and (min-width: 768px) and (max-width: 1200px) 
+  {
+	  .auctionTodayRow, .rowAuctionTodayHeader
+	{
+		margin-right:0px;
+	}
+	
+	
+	
+  }
+ 
+ @media (min-width: 992px) {
+ .navbar-right {
+ padding-right:10px;
+}
+
+.auctionTodaySec .col-md-4 
+{
+	width:36%
+	
+}
+
+.auctionTodaySec .col-md-8 
+{
+	width:64%
+	
+}
+.auctionSliderNews .col-md-4 
+{
+	width:25%
+	
+}
+
+.auctionSliderNews .col-md-8 
+{
+	width:71%
+	
+}
+
+.auctionSliderNews .col-md-4 
+{
+	width:28%
+	
+}
+
+.reseachBestBuy .col-md-8 
+{
+	width:71%
+	
+}
+
+.reseachBestBuy .col-md-4 
+{
+	width:28%
+	
+}
+
+.linktext{
+    color:blue; text-decoration:underline; cursor:pointer; font-size:9pt;
+}
+
+}
+ .LoaderImg {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+ .LoaderImg img {
+    left: 40%;
+    position: fixed;
+    top: 45%;
+    z-index: 100;
+}
+  .Submit-Btn {
+        margin-right: 5px;
+    }
+ .steptitle {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 20px 0 0 20px;
+}
+ .item, .active, .carousel-inner {
+    height: 100%;
+}
+.tab-pane {
+    margin-top: 15px;
+}
+/**********************************************************09-06-2015*********************************************************/
+
+
+/*26/06/14 Buyer Account css DD*/
+.makeCounterOffer
+{
+	margin-top:10px;
+}
+
+.increaseOffer .btn, .makeCounterOffer .btn
+{
+	width:100%;
+}
+
+.auctionHouseName
+{
+	font-weight:bold;
+}
+
+.livebid
+{
+	color:#3498DB;
+	text-transform:uppercase;
+}
+
+.offerAccepted
+{
+	color:#049372;
+	text-transform:uppercase;
+	display:block;
+}
+
+.offerRejected
+{
+	color:#CF000F;
+	text-transform:uppercase;
+	display:block;
+}
+.cAd
+{
+	color:#95A5A6;
+}
+.buyeraccountwrap
+{
+	background:#eaedf2;
+}
+
+.accountmenu > li > a:hover, .accountmenu > li > a:focus, .accountmenu > li.active > a
+{
+	background:#222;
+}
+
+.accountmenu > li
+{
+	border-bottom:1px solid #8db4d5;
+}
+
+.accountcontent
+{
+	border-left: 2px groove #fbffff;
+}
+
+.inforow
+{
+	padding:20px 5px;
+	background:#fff;
+}
+
+.adlongleft
+{
+	margin-top:40px; width:100%
+}
+
+.sellerfg_header_img img
+{
+	width:100%;
+	height:auto;
+}
+/*16/07/14 Select Account Type CSS*/
+.account_Type
+{
+	padding:20px 40px;
+}
+.account_Type
+{
+	text-align:center;
+}
+.account_Type .typeofseller
+{
+	border:1px solid #999;
+	padding:20px;
+	background:#fff;
+}
+
+.account_Type .typeofseller .alert-info
+{
+	margin-top:30px;
+}
+
+/*********soutik**********/
+.imagebg1 {height: 136px;border-bottom:1px solid #ccc;margin-bottom:10px;vertical-align:middle;display:table-cell;}
+.imagebg1 .thumbnail{border:0;padding:0;margin:0;background:none;border-radius:0;}
+.carinfo1 {font-weight: bold;margin-top: 6px;}
+.imagebg1 img{max-height:136px;}
+
+.new_text{text-shadow: none;font-size: 14px;font-family: arial;font-weight: normal;}
+#RememberMe{margin-left:0}
+
+
+
+
+
+/*16/07/14 Select Account Type CSS*/
+/*26/06/14 Buyer Account css*/		
+ @media screen and (min-width: 480px) and (max-width: 768px) {	
+.steptitle{
+    font-weight:bold;
+	margin: 0 0 0 20px;
+    padding-top: 20px;
+    font-size: 1.5em;
+}
+
+ }
+ 
+ @media screen and (min-width: 300px) and (max-width: 768px) {	
+ 
+/*26/06/14 Buyer Account css*/	
+
+.auction_house .nav-justified > li {
+    display: block;
+    width: 100%;
+	border-left:0px;
+	margin-left:0px;
+	
+}
+.auction_house
+{
+	margin-right:0px;
+	margin-left:0px;
+}
+/*26/06/14 Buyer Account css*/	
+ }
+ 
+ .auctionhouse_search .header {
+    background-color: #15547f;
+    color: #febb80;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    padding: 20px;
+}
+.auctionhouse_search .content {
+    background-color: #eaedf2;
+    color: #040404;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 22px;
+    margin-bottom: 25px;
+}
+.auctionhouse_search .header h1 {
+    color: #ffffff;
+    display: inline-block;
+    font-size: 35px;
+    font-weight: 300;
+    margin: 0 0 0 20px;
+}
+.auctionhouse_search .content h3 {
+    color: #2b2b2b;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 25px 0 17px 40px;
+}
+
+.details_list {
+    background-color: #f5f5f5;
+    border: 1px solid #d9dce0;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 10px 0;
+    padding: 18px 0 0;
+}
+.list_images {
+    margin: 0 20px 20px;
+}
+
+.singlecar_gallery li {
+    border-bottom: 3px solid #eaeaea;
+    border-top: 3px solid #eaeaea;
+    margin-top: 10px;
+    padding: 0;
+    width: 78px;
+}
+.singlecar_gallery li:hover, .singlecar_gallery.imgactive {
+    border-bottom: 3px solid #cd1641;
+    border-top: 3px solid #cd1641;
+    cursor: pointer;
+}
+.imggallery.imgactive {
+     border-bottom: 3px solid #cd1641;
+    border-top: 3px solid #cd1641;
+    cursor: pointer;
+}
+.singlecar_galleryimg {
+    display: inline-table;
+    position: relative;
+    width: 300px;
+}
+
+.singlecar_galleryimg_header {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.singlecar_galleryimg_header h3 {
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.singlecar_galleryimg_container {
+    background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
+    bottom: 0;
+    padding: 25px 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.datepicker {
+    z-index:99999 !important;
+}

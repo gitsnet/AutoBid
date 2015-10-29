@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>AutoBid</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<!-- Add custom CSS here -->
+<link href="css/autobid.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<script src="js/jquery-1.10.2.js"></script>
+
+
+<script>
+	/*$(document).ready(function() {
+			 $("#header").load("header.html"); 
+			 $("#footer").load("footer.html");
+			
+			
+			$("li.signInLink a").click(function() {
+			 alert("test");
+				//Do stuff when clicked
+			});
+			 
+			 
+		});*/
+	
+	
+    $(function () {
+    $('#myTab a:last').tab('show');
+    })
+	
+	
+</script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top header" role="navigation">
+  <div class="container1">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <span class="navTxt">24/7 Customer service <span class="greentext">(780) 267-8080</span></span> </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><span class="navTxt welcome">Welcome  UserName</span></li>
+        <!--<li class="active menuItem"><a href="javascript:void(0)"><span>Home</span></a></li>
+        <li class="menuItem"><a href="javascript:void(0)"><span>Mobile</span></a></li>
+        <li class="menuItem"><a href="javascript:void(0)"><span>Tablet</span></a></li>
+        <li class="menuItem"><a href="javascript:void(0)"><span>Your Thoughts</span></a></li>-->
+        <li class="menuItem"><a href="18_Sell-Buylogin.html">My Account</a></li>
+        <li class="menuItem menuItemlast"><a href="javascript:void(0)"><span>T&C&#8217;s</span></a></li>
+        <li class="bluenav bluenavactive signInLink"><a href="login.html">Sign In</a></li>
+        <li class="bluenav"><a href="seller_registration_step1.html">Register</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<div class="container">
+  <div class="row show-grid logowrap">
+    <div class="col-md-4"><a class="logo" href="index.html"><img src="images/logo.png" alt="autobid"/></a></div>
+    <div class="col-md-8 advertisement"><img src="images/carp-advertisement.png"  alt="advertisement"/></div>
+  </div>
+</div>
+<div class="mainnav">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle auctionMenu" data-toggle="collapse" data-target=".navbar-ex2-collapse"> <span class="sr-only">Toggle navigation</span> <span class=""><span class="fa fa-legal"></span> Auction Menu</span> </button>
+        <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex2-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active"><a href="1index.html"><span>Home</span></a></li>
+                    <li><a href="javascript:void(0)"><span>Sell </span></a></li>
+                    <li><a href="javascript:void(0)"><span>Buy </span></a></li>
+                    <li><a href="javascript:void(0)l"><span>Auction Houses</span></a></li>
+                    <li><a href="javascript:void(0)"><span>Dealers</span></a></li>
+                    <li><a href="javascript:void(0)"><span>Motorbid <span class="motorbidPro">PRO</span></span></a></li>
+                </ul>
+                <button type="button" class="btn btn-primary navbar-right auctionloginBtn">
+                    <span>Auction House Login</span>
+                </button>
+            </div>
+      <!-- /.navbar-collapse -->
+      
+      
+      
+      
+      
+    </div>
+    <!-- /.container -->
+  </nav>
+</div>
+
+
+<!-- /.section Auction today and filter -->
+<div class="section auctionTodaySec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="auctionFilterWrap">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">Auctions</a></li>
+            <li><a href="#profile" data-toggle="tab">Classified</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+              <div class="auctionFilter">
+                <form role="form">
+                  <div  class="form-group"> <span class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                      Post Code </label>
+                    </span> <span class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1" checked>
+                      Distance </label>
+                    </span> </div>
+                  <div class="form-group">
+                    <input type="text" placeholder="Make" id="makeinput" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" placeholder="Model" id="model" class="form-control">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input type="text" placeholder="Min Price" id="minPrice" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" placeholder="Max Price" id="maxPrice" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group searchWrap">
+                    <button class="btn btn-success" type="submit">Search</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="tab-pane" id="profile">
+              <div class="auctionFilter">
+                <form role="form">
+                  <div  class="form-group"> <span class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                      Post Code </label>
+                    </span> <span class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1" checked>
+                      Distance </label>
+                    </span> </div>
+                  <div class="form-group">
+                    <input type="text" placeholder="Make" id="makeinput1" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" placeholder="Model" id="mode1l" class="form-control">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input type="text" placeholder="Min Price" id="minprice1" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" placeholder="Max Price" id="maxprice1" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group searchWrap">
+                    <button class="btn btn-success" type="submit">Search</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row rowAuctionTodayHeader">
+          <div class="col-md-8">
+            <h2>Vehicles on sale today <span class="greenspn">(567 vehicles on live sale today)</span></h2>
+          </div>
+          <div class="col-md-4 actionNotification">
+            <div><span class="bluespan underline">Auction houses wanting to use Motorbid</span></div>
+            <div><span class="greenspn"><span class="badge">5</span> Live auction today </span> </div>
+          </div>
+        </div>
+        <div class="row auctionTodayRow">
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+                <div class="biddinginfotime">Time left : <span class="lightgreen"> 3 hrs 40 min</span></div>
+                <div class="biddinginfotime">Price : <span class="lightgreen"> £ 1500</span></div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+        </div>
+        <div class="row auctionTodayRow auctionTodayRow2">
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>	
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+          <div class="col-md-2">
+            <div class="imagebg">
+              <div class="carinfo">
+                <div class="makeinfo">Toyota</div>
+                <div class="makeinfo"><strong>Version</strong> Luxul 1.8</div>
+              </div>
+              <img src="images/car-thumb-medium.png"/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.section Auction today and filter -->
+<!-- /.section Other vehicles available -->
+<div class="section auctionSliderNews">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+      <h2>Other Vehicles available to buy   <span class="greenspn">(567 vehicles to <a href="javascript:void(0)"/>buy Now</a>)</span></h2>
+        <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
+        <div class="carousel-wrap">
+         <!-- <ol class="carousel-indicators">
+            <li class="" data-slide-to="0" data-target="#carousel-example-generic"></li>
+            <li data-slide-to="1" data-target="#carousel-example-generic" class="active"></li>
+            <li data-slide-to="2" data-target="#carousel-example-generic" class=""></li>
+          </ol> -->
+          <div class="carousel-inner">
+            <div class="item active"> 
+            <div class="row">
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+        	</div>
+            </div>
+            <div class="item "> 
+            <div class="row">
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+        	</div>
+            </div>
+            <div class="item"> 
+            <div class="row">
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <div class="imagebg1">
+                 <img src="images/carousel-car-thumb-medium.png"></div>
+                  <div class="carinfo1">
+                  	<div class="makeInfo">Seat Leon</div>
+                    <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                  </div>
+              </div>
+        	</div>
+            </div>
+          </div>
+          </div>
+          <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a data-slide="next" href="#carousel-example-generic" class="right carousel-control"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+      </div>
+      <div class="col-md-4">
+      <h2>Auction Today</h2>
+      <div class="auctionnews">
+      		<div class="well">
+            <div class="newsRow">
+                    <img src="images/newsl-car-thumb-small.png"/>
+                    	<h4>Side Widget Well</h4>
+                        <div class="time"><span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span></div>
+                        <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+             </div>
+             <div class="newsRow" style="clear:both;">
+                    <img src="images/newsl-car-thumb-small.png"/>
+                    	<h4>Side Widget Well</h4>
+                        <div class="time">
+                        	<span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span>
+                        </div>
+                        <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+             </div>
+          </div>
+       </div>
+      </div>
+      </div>
+    </div>
+  </div>
+<!-- /.section Other vehicles available -->
+
+<!-- /.section Research Best Buy vehicles available -->
+<div class="section reseachBestBuy">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-8">
+      	<div class="headerrow"><h2>New Car Research </h2></div>
+        <div class="clientlogo">
+        	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+           	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+            <a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+           	<a href="#"><img src="images/logo1.png"/></a>
+            <a href="#"><img src="images/logo2.png"/></a>
+            <a href="#"><img src="images/logo3.png"/></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+      <h2 class="bestbuy">Best Buy</h2>
+      <div class="bestbuylist">
+      		<div class="well">
+            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+           		 <ul class="list-unstyled">
+                                <li><a href="#">Best Motability cars</a>
+                                </li>
+                                <li><a href="#">Best automatic cars</a>
+                                </li>
+                                <li><a href="#">Best crossover cars</a>
+                                </li>
+                                <li><a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li><a href="#">Best estate cars</a>
+                                </li>
+                                <li><a href="#"> Best selling cars</a>
+                                </li>
+                                <li><a href="#">Best first car</a>
+                                </li>
+                            </ul>
+          <div class="seemorelink"> <a href="#">See all see best buy >></a> <div>
+          </div>
+       </div>
+      </div>
+      </div>
+    </div>
+  </div>
+ </div>
+ </div>
+<!-- /.section Other vehicles available -->
+
+
+<!-- /.container -->
+<div class="bottom_banner">
+<div class="container">
+<div class="row">
+      <div class="col-xs-12 col-md-2 fvbg"> Fludic VERNA </div>
+      <div class="col-xs-12 col-md-9 fvbg_spacing fvbg_list"> Engine start stop button with Smart Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engine  start stop button with Smart Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Engine  start stop button with Smart Key </div>
+      <div class="col-xs-12 col-md-1 fvbg_readmore"> <strong>READ MORE</strong> </div>
+     </div>
+     </div>
+    </div>
+    <div class="footerbg">
+      <div class="container">
+      <footer>
+        
+        <div class="row footer_L2">
+          <div class="col-xs-12 col-md-4"> <img src="images/logo_footer.png" width="232" height="64" alt="motorbid">
+            <h1>About CarBuyer</h1>
+            Carbuyer provides trusted car reviews from experts and owners, comparisons, car buying guides and more - helping you decide which car to buy. </div>
+          <div class="col-xs-12 col-md-2">
+            <h1> Body Styles</h1>
+            <ul>
+              <li>Convertible / Cabriolet</li>
+              <li>Coupé / Sports car</li>
+              <li>Estate</li>
+              <li>Hatchback</li>
+              <li>MPV / People Carrier</li>
+              <li>Micro Car / City Car</li>
+              <li>Mini MPVs</li>
+              <li>SUV / 4x4</li>
+              <li>Saloon</li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-md-2">
+            <h1>New Cars</h1>
+            <ul>
+              <li>Compare Cars</li>
+              <li>Upcoming Cars in India</li>
+              <li>Indian Car Pictures</li>
+              <li>Toyota Cars</li>
+              <li>Maruti Cars</li>
+              <li>Honda Cars</li>
+              <li>Hyundai Cars</li>
+              <li>Popular Cars</li>
+              <li>Maruti Swift</li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-md-2">
+            <h1>Company</h1>
+            <ul>
+              <li>Contact us</li>
+              <li>Send us a Mail</li>
+              <li>Jobs at Gaadi</li>
+              <li>Press</li>
+              <li>Privacy Policy</li>
+              <li>Visitor Agreement</li>
+              <li>Sitemap</li>
+              <li>Used Car Sitemap</li>
+              <li>QnA Sitemap</li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-md-2">
+            <h1>Connect with us</h1>
+            <img src="images/btn_facebook.png" width="165" height="36" alt="Follow Us on Facebook"> <img src="images/btn_twitter.png" width="165" height="36" alt="Follow Us on Twitter"> <img src="images/btn_youtube.png" width="165" height="36" alt="Follow Us on YouTube"> </div>
+        </div>
+        <div class="row footer_L3">
+          <div class="col-xs-12 col-md-4"> © Copyright Motorbid Limited. All rights reserved<br>
+            <small>Powered By Mti systems</small> </div>
+          <div class="col-xs-12 col-md-4 tac"> <a href="#">Dealers wanting to advertise on Motorbid</a> </div>
+          <div class="col-xs-12 col-md-4 helpline"> Help Line<span>: 18004192277</span> </div>
+        </div>
+      </footer>
+      </div>
+    </div>
+<!-- /.container -->
+<!-- JavaScript -->
+<script src="js/bootstrap.js"></script>
+<script src="js/modern-business.js"></script>
+
+<script src="js/autobid_custom.js"></script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,194 @@
+﻿@model AutoBid.Models.CarDetails.CarDetailsModel
+
+@{
+    ViewBag.Title = "CarDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="row auctionhouse_search">
+                    <div class="details">
+                        <h2><span>&pound;@Model.Price</span>&nbsp;&nbsp;l&nbsp;&nbsp; @Model.ModelName @Model.MakeName @Model.RegistrationNo</h2>
+
+                        <span class="right">
+                            <button type="button" class="btn btn-info"><i class="fa fa-print"></i> Print this Page</button>
+                        </span>
+
+                    </div>
+
+                    <div class="details_list">
+
+
+                        <div class="row">
+                            <div class="auctionhouse_logo col-md-3">
+                                <div class="singlecar_galleryimg">
+                                    @*<img src="images/details_gallery_img001b.jpg" width="212" height="173">*@
+                                    @if (Model.carType == "carseller")
+                                    {
+                                        if (Model.CarImages.Count > 0 && Model.CarImages != null)
+                                        {
+                                            int i = 0;
+                                            foreach (var item in Model.CarImages)
+                                            {
+                                                if (i == 0)
+                                                {
+                                                    <img src="/Content/Assets/CarSellerImages/@item.Filename" width="212" height="173" id="bigImage">
+                                                    break;
+                                                }
+                                                i++;
+                                            }
+                                        }
+                                        else
+                                        {
+                                             <img src="/Content/images/noimage.jpg" width="212" height="173" id="bigImage">
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Model.AucCarImages.Count > 0 && Model.AucCarImages != null)
+                                        {
+                                            int i = 0;
+                                            foreach (var item in Model.AucCarImages)
+                                            {
+                                                if (i == 0)
+                                                {
+                                                    <img src="/Content/Assets/AuctionHouseSaleVehicleImages/@item.Filename" width="212" height="173" id="bigImage">
+                                                    break;                                                  
+                                                }
+                                                i++;
+                                            }
+                                        }
+                                         else
+                                        {
+                                             <img src="/Content/images/noimage.jpg" width="212" height="173" id="bigImage">
+                                        }
+                                        
+                                    }
+
+                                </div>
+
+                            </div>
+
+                            <div class="buyacar_list col-md-4">
+                                <ul>
+                                    @*<li>1996 (P)</li>*@
+                                    <li>@Model.ExactMileage</li>
+                                    <li>@Model.TransmissionType</li>
+                                     @if(Model.carType == "carseller")
+                                      { 
+                                    <li>@Model.FuelType</li>
+                                      }
+                                     else
+                                     {
+                                        <li>@Model.fuelType </li>
+                                     }   
+                                      
+
+                                </ul>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h2>Contact Details</h2>
+                                <h2>
+                                    <span>
+                                        @Model.ContactNumber<br>
+                                        <a href="#">@Model.Email</a>
+                                    </span>
+                                </h2>
+                                <button class="btn btn btn-viewstock btn-xs btn-block mt20" type="button">See all vehicles from this dealer</button>
+                                <button type="button" class="btn btn-success btn-lg btn-block">Make Offer</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 list_images">
+                                <ul class="list-inline singlecar_gallery">
+                                    @if (Model.carType == "carseller")
+                                    {
+                                        if (Model.CarImages.Count > 0 && Model.CarImages != null)
+                                        {
+                                            int i = 0;
+                                            foreach (var item in Model.CarImages)
+                                            {
+                                                if (i == 0)
+                                                {
+                                                    //  <li class="active"><img src="/Content/Assets/CarSellerImages/@item.Filename" width="78" height="59"></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a href="javascript:;" class="imggallery"><img src="/Content/Assets/CarSellerImages/@item.Filename" width="78" height="59"></a></li>
+                                                }
+                                                i++;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        if (Model.AucCarImages.Count > 0 && Model.AucCarImages != null)
+                                        {
+                                            int i = 0;
+                                            foreach (var item in Model.AucCarImages)
+                                            {
+                                                if (i == 0)
+                                                {
+                                                    //  <li class="active"><img src="/Content/Assets/CarSellerImages/@item.Filename" width="78" height="59"></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a href="javascript:;" class="imggallery"><img src="/Content/Assets/AuctionHouseSaleVehicleImages/@item.Filename" width="78" height="59"></a></li>
+                                                }
+                                                i++;
+                                            }
+                                        }
+                                    }
+
+                                </ul>
+
+                            </div>
+                            <div class="col-md-8">
+                                <span class="date_span mb20">Vehicle Description:</span>
+
+                                <p>@Model.Description</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/jquery.elevatezoom.js"></script>
+<script type="text/javascript">
+
+    $(".imggallery").on("click", function () {
+        //alert($(this).children().prop("src"));
+        var source = ($(this).children().prop("src"));
+        $("#bigImage").attr('src', source);
+        //$(".imggallery").removeClass("imgactive");
+        //$(this).addClass("imgactive");
+        //alert($("a.imggallery").length);
+    });
+
+
+</script>

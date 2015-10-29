@@ -1,0 +1,75 @@
+﻿@model AutoBid.Models.Auction.AuctionHouseModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<div class="section formwrap">
+    <div class="container">
+        @Html.Partial("_AuctionHouseVehicleMenu")
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row auction_house_content">
+
+                    <h1>Sales</h1>
+
+                    <div class="col-md-12">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped" id="tblSales">
+                            <tr>
+                                <th>#</th>
+                                <th>Sale Date</th>
+                                <th>Vehicles Sold</th>
+                                <th>Provisional</th>
+                                <th>No Bid</th>
+                            </tr>
+                            @if (Model.AuctionHouseSaleList.Count > 0)
+                            {
+                                foreach (var item in Model.AuctionHouseSaleList)
+                                {
+                                    <tr>
+                                        <td>@item.Title</td>
+                                        <td>@Convert.ToDateTime(item.SaleDate).ToShortDateString()</td>
+                                        <td><a href="#">@item.AuctionHouseCarSellingList.Count</a></td>
+                                        <td><a href="#">20</a></td>
+                                        <td><a href="#">10</a></td>
+                                    </tr>
+
+                                }
+                            }
+                            
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+            <div class="col-md-3">
+
+
+                <div class="adbanner">
+                    <span>Ad Banner</span>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#tblSales').dataTable();
+
+    });
+</script>

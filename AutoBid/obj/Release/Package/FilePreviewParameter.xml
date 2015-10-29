@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="stage.globalitservice.info" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Amrita\\Autobid12_08_2015\\Autobid\\AutoBid\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Amrita\\Autobid12_08_2015\\Autobid\\AutoBid\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." value="Data Source=NITS-PC\SQLEXPRESS;Initial Catalog=AutoBid;Persist Security Info=True;User ID=sa;Password=manager;MultipleActiveResultSets=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Amrita\\Autobid12_08_2015\\Autobid\\AutoBid\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="AutoBidContext-Web.config Connection String" description="AutoBidContext Connection String used in web.config by the application to access the database." value="Data Source=NITS-PC\SQLEXPRESS;Initial Catalog=AutoBid;Persist Security Info=True;User ID=sa;Password=manager;MultipleActiveResultSets=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Amrita\\Autobid12_08_2015\\Autobid\\AutoBid\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AutoBidContext']/@connectionString" />
+  </parameter>
+</parameters>

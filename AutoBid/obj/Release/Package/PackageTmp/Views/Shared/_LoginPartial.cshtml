@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNet.Identity
+@model AutoBid.Models.LoginViewModel
+@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole( "Users" ))
+{
+    
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @*@Html.AntiForgeryToken()*@
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><span class="navTxt welcome">Welcome  @Html.ActionLink(User.Identity.GetUserName() , "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })</span></li>
+
+            <li class="bluenav"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="bluenav"><a href="javascript:void(0);" id="btnLogin">Login</a></li>
+        <li class="bluenav bluenavactive signInLink">@Html.ActionLink("Register", "Index", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+
+        @*@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+    </ul>
+}
+<div class="login_popupdiv" id="userloginPopup" style="display:none;">
+    <div class="">
+
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @*@Html.AntiForgeryToken()*@
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-sm-4 control-label new_text",@style="color:#fff;" })               
+                <div class="col-sm-8">                    
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-sm-4 control-label new_text", @style = "color:#fff;" })
+                <div class="col-sm-8">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+
+            <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" value="Log in" class="btn btn-success signinBtn" />
+                    </div>
+            </div>
+            @*<div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <a class="btn btn-success signinBtn" type="submit" href="index.html">Sign In</a>
+                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-success signinBtn" })
+                    <input type="submit" value="Log in" class="btn btn-success signinBtn" />
+                </div>
+            </div>*@
+        }
+
+
+
+
+    </div>
+</div>
+<script>
+    $("#btnLogin").on("click", function () {
+        $("#userloginPopup").slideToggle();
+    });
+</script>

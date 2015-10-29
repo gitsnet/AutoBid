@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "InsertAuctionHouse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="section formwrap">
+    <div class="container">
+        <div class="row">
+            <div class="row steptitle">
+                Auction House
+            </div>
+            <br>
+            <div class="col-md-12">
+                <form class="form-inline" method="post" action="/AuctionHouse/InsertAuctionHouse">
+                    <div class="form-group">
+                        <label for="exampleInputName2">Name</label> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                    </div>
+                    <br> <br>
+                    <div class="form-group">
+                        <label for="exampleInputEmail2">Address</label>&nbsp; &nbsp;&nbsp; &nbsp;
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div> <br> <br>
+                    <div class="form-group">
+                        <label for="exampleInputEmail2">Post Code</label>&nbsp; &nbsp;
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder=""> &nbsp; <a href=".">Find</a>
+                    </div> <br> <br>
+                    <div class="form-group">
+
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <label for="exampleInputEmail2">Logo Upload</label>&nbsp; &nbsp;
+                            <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
+                            <div>
+                                <!--  <span class="btn btn-file"><span class="fileupload-new">Select Image</span> -->
+                                <span class="fileupload-exists"></span>
+                                <input type="file" /></span>
+                                <br>
+                                <button type="button" class="uploadbtn btn btn-primary btn-lg active">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-default">Next</button> -->
+                </form>
+                <br>  <button type="button" class="btn btn-primary btn-lg active">Next</button>
+                <br> <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+

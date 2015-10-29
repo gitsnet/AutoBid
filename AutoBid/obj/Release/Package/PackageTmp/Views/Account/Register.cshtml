@@ -1,0 +1,413 @@
+﻿@model AutoBid.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+@{
+    string id = ViewContext.RouteData.Values["Id"].ToString();
+}
+<div class="section">
+
+    <div class="container">
+        <div class="row">
+            <div id="divRegistration">
+                <div class="col-md-8 formbg mb20">
+                    <div class="row steptitle">
+                        Seller Registration
+                    </div>
+                    @*<h4> Account Details</h4>
+                        <div style="border-bottom: 1px solid rgb(255, 255, 255); margin-right: -30px; margin-bottom: 20px; margin-left: -15px;">
+                        </div>*@
+                    <div class="row formarea">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "FrmSellerlogoUpload" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+                            {
+                                <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    @Html.ValidationSummary(true, "Errors: ")
+                                </div>
+                            }
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UserName, new { @class = "col-sm-4  control-label" })
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Password, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-sm-4 control-label" })
+                                <div class="col-sm-8">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" style="border-bottom:1px solid #FFFFFF;margin-right: -30px; padding-bottom: 20px;">
+                            </div>
+
+                            <div id="divPersonal">
+                                <div style="padding:0px 15px 15px 15px;">
+                                    <h4>Personal Information</h4>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Salutation, new { @class = "col-sm-4 control-label" })
+
+                                    <div class="col-sm-8">
+                                        @Html.EnumDropDownListFor(model => model.Salutation, "Select", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FirstName, new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.FirstName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.LastName, new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.LastName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Address, new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m=>m.Address)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Phone, new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Phone)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Email)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.PostalCode, new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.PostalCode)
+                                        <br>
+                                        For eg. : PO16 7GZ
+
+                                        <br>
+                                        <img style="position:relative; left:74px;" src="/Content/Images/IndicatingArrow.png">
+                                        <span style="position:relative; left:65px; top:10px; font-family:Arial; font-size:8.25pt;"> Please add a space.</span>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="border-bottom:1px solid #FFFFFF;margin-right: -30px; padding-bottom: 20px;"></div>
+                            </div>
+
+                            if (id == "2")
+                            {
+                                <div id="divCompanyInfo">
+                                    <div style="padding:0px 15px 15px 15px;">
+                                        <h4>Seller Information</h4>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyTypeID, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @{int i = 0;}
+                                            @foreach (var item in Model.CompanyTypeList)
+                                            {
+
+                                                <label class="radio-inline">
+                                                    @if (i == 1)
+                                                    {
+                                                        @Html.RadioButtonFor(m => m.CompanyTypeID, item.Value, new { @checked = true })@item.Text
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.RadioButtonFor(m => m.CompanyTypeID, item.Value)@item.Text
+                                                    }
+                                                </label>
+                                                    i++;
+
+                                            }
+                                            @Html.ValidationMessageFor(m => m.CompanyTypeID)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyName, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.CompanyName)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyAddress, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextAreaFor(m => m.CompanyAddress, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.CompanyAddress)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.City, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.City)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CountryName, new { @class = "col-sm-4 control-label" })
+
+                                        <div class="col-sm-8">
+                                            @Html.DropDownList("CountryID", new SelectList(Model.CountryList, "ID", "CountryName"), "--Select--", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.CountryID)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyPostalCode, new { @class = "col-sm-4 control-label" })
+
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.CompanyPostalCode, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.CompanyPostalCode)
+                                            <br>
+                                            For eg. : PO16 7GZ
+
+                                            <br>
+                                            <img style="position:relative; left:74px;" src="/Content/Images/IndicatingArrow.png">
+                                            <span style="position:relative; left:65px; top:10px; font-family:Arial; font-size:8.25pt;"> Please add a space.</span>
+                                            <br>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyContact, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.CompanyContact, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.CompanyContact)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyContact2, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.CompanyContact2, new { @class = "form-control" })
+                                          
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyContact3, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.CompanyContact3, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.CompanyNumber, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.CompanyNumber, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.CompanyNumber)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.VATNumber, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.VATNumber, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.VATNumber)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="comp_vat_number">Upload Logo</label>
+                                        <div class="col-sm-8">
+                                            <div class="portfolio-item">
+                                                <a title="Zoom" href="javascript:void(0)">
+                                                    <img class="img-responsive" src="/Content/Images/uploadimg.png">
+                                                </a>
+                                                @*<form method="post" id="FrmSellerlogoUpload" enctype="multipart/form-data">*@
+                                                    <div class="editimg">
+                                                        <span class="btn fileinput-button">
+                                                            <span class="fa fa-upload"></span><span>Click and upload Dealer logo</span>
+                                                            <input type="file" name="files" id="flUploadLogo" class="valid">
+                                                            @Html.HiddenFor(m=>m.CompanyLogo)
+                                                            @Html.ValidationMessageFor(m=> m.CompanyLogo)
+                                                        </span>
+                                                    </div>
+                                                @*</form>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.YearofFoundation, new { @class = "col-sm-4 control-label" })
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.YearofFoundation, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.YearofFoundation)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.NoOfEmployee, new { @class = "col-sm-4 control-label" }) <small>(optional)</small>
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.NoOfEmployee, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.NoOfEmployee)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.TurnOver, new { @class = "col-sm-4 control-label" }) <small>(optional)</small>
+                                        <div class="col-sm-8">
+                                            @Html.TextBoxFor(m => m.TurnOver, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.TurnOver)
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-4 control-label">&nbsp;</label>
+                                        <div class="col-sm-8">
+                                            <div class="checkbox">
+                                                <label>
+                                                    @Html.CheckBoxFor(m => m.ReceiveEmailNotification)
+                                                    Receive Email Notification
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-4 control-label">&nbsp;</label>
+                                <div class="col-sm-8">
+
+                                    <input type="submit" class="btn btn-primary btn-lg active" value="Submit">
+
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <div>
+                    <h2>Auction Today</h2>
+                    <div class="auctionnews">
+                        <div class="well">
+                            <div class="newsRow">
+                                <img src="~/Content/images/newsl-car-thumb-small.png" />
+                                <h4>Side Widget Well</h4>
+                                <div class="time"><span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span></div>
+                                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                            </div>
+                            <div class="newsRow" style="clear:both;">
+                                <img src="~/Content/images/newsl-car-thumb-small.png" />
+                                <h4>Side Widget Well</h4>
+                                <div class="time">
+                                    <span class="fa fa-clock-o"></span><span class="datetime">Wed, 19 Mar, 2014 ,<br>1 month(s) ago</span>
+                                </div>
+                                <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ 9995</strong></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="bestbuy">Best Buy</h2>
+                    <div class="bestbuylist">
+                        <div class="well">
+                            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Best Motability cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best automatic cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best crossover cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best estate cars</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Best selling cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best first car</a>
+                                </li>
+                            </ul>
+                            <div class="seemorelink">
+                                <a href="#">See all see best buy >></a> <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /.row -->
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<script src="~/Content/js/jquery.form.js"></script>
+<script src="~/Content/js/RegistrationScript.js"></script>
+<script src="~/Content/js/jquery.inputmask.js"></script>
+<script>
+
+    //$("#btnContinue").on("click", function () {
+    //    $("#userType").hide();
+    //    $("#divRegistration").slideDown("slow");
+    //    if ($("input[name=CarSellerTypeID]:checked").val() == "1") {
+    //        $("#divPersonal").show();
+    //    }
+    //    else {
+    //        $("#divCompanyInfo").show();
+    //    }
+    //});
+
+</script>

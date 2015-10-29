@@ -1,0 +1,256 @@
+﻿@model AutoBid.Models.Auction.AuctionHouseModel
+@{
+    ViewBag.Title = "Auction House";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style media="screen" type="text/css">
+    .steptitle {
+        color: red;
+    }
+
+    label {
+        color: #2a6496;
+    }
+
+    .btn-lg {
+        padding: 5px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 15px;
+    }
+
+    .uploadbtn {
+        display: inline;
+    }
+</style>
+
+<div class="section formwrap" style="position:relative; padding:0;">
+    
+
+    <div class="container">
+       
+
+
+        <div class="row">
+            <div class="col-md-6 steptitle">
+                Auction House
+            </div>
+        </div>
+        <div style="height:20px;"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="alert alert-danger" id="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <span id="alertmsg"></span>
+                </div>
+                <form id="frmAuctionHouseRegistration" method="post" novalidate="novalidate">
+                    <div id="tab1" class="tab">
+                      
+                        @Html.AntiForgeryToken()
+                        <div class="form-inline">
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputName2">User Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @autocomplete = "off" })
+                                        @Html.ValidationMessageFor(m => m.UserName)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4 ">
+                                        <label for="exampleInputEmail2">Password</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Password)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputEmail2">Confirm Password</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="margin_bottom_10">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8">
+                                    <button type="button" id="btnAuctionRegisterNext" class="btn btn-primary btn-lg active btnNav" data-tab="#tab2">Next</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="tab2" style="display:none;">
+                        <div class="form-inline">
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputName2">Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.AuctionHouseName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.AuctionHouseName)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4 ">
+                                        <label for="exampleInputEmail2">Address</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m=>m.Address)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputEmail2">Post Code</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.PostalCode)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <label for="exampleInputEmail2">Logo Upload</label>&nbsp; &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <img src="~/Content/images/uploadimg.png" class="thumbnail" id="imgAuctionLogo" style="width:100%;margin:0;" />
+
+                                        @*<form id="frmImgAuction" method="post" action="/AuctionHouse/UploadAuctionHouseImg" enctype="multipart/form-data" novalidate="novalidate">*@
+
+
+                                        <span class="btn fileinput-button">
+                                            <span class="fa fa-upload"></span><span>Click and upload Auction House logo</span>
+                                            <input type="file" name="file" id="flAuctionLogo" />
+                                          
+                                        </span>
+
+                                        @*</form>*@
+                                        @Html.HiddenFor(m => m.Logo, new { @class = "form-control", @id = "hdnAuctionLogo" })
+                                        @*@Html.ValidationMessageFor(m => m.Logo)*@
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="margin_bottom_10">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8">
+                                    <button type="button" class="btn btn-primary btn-lg active btnNav" data-tab="#tab1" data-type="prev">Previous</button>
+                                    <button type="button" class="btn btn-primary btn-lg active btnNav" data-tab="#tab3">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="tab3" style="display:none;">
+                        <div class="form-inline">
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputName2">Description</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(m => m.About, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.About)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputName2">Buyer Fees</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(m => m.Buyer_Fees, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Buyer_Fees)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="margin_bottom_10">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-8">
+                                        <button type="button" class="btn btn-primary btn-lg active btnNav" data-tab="#tab2" data-type="prev">Previous</button>
+                                        <button type="button" class="btn btn-primary btn-lg active btnNav" onclick="GeneratePreview();" data-tab="#tab4">Next</button>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="tab4" style="display:none;">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="row auctionhouse_profile">
+                                    <a href="javascript:void(0);" id="linkAucHouse">Edit Profile</a>
+
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-8 margin_bottom_10">
+                                        <div id="divAuctionPreviewContent"></div>
+                                        <button id="btnAuctionPrevious" class="btn btn-primary btn-lg active btnNav" type="button" data-tab="#tab3" data-type="prev">Previous</button>
+                                        <button id="btnAuctionRegisterConfirm" class="btn btn-primary btn-lg active" type="button">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+                <div id="tab5" style="display:none;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@Scripts.Render("~/Content/other")
+<script type="text/javascript" src="~/Content/js/AuctionHouseRegister.js"></script>
+<script type="text/javascript">
+    $("#linkAucHouse").click(function () {
+        console.log("Edit Profile");
+        $("#tab1").show();
+        $("#tab4").hide();
+    });
+</script>
+
+

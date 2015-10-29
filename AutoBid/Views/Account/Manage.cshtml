@@ -1,0 +1,35 @@
+﻿@using AutoBid.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="formbg2">
+                    <div class="sellerfg_header">Manage Account</div>
+                   <br />
+                    <section id="loginForm">
+                        @if (ViewBag.HasLocalPassword)
+                        {
+                            @Html.Partial("_ChangePasswordPartial")
+                        }
+                        else
+                        {
+                            @Html.Partial("_SetPasswordPartial")
+                        }
+                        </section>
+                        @*<section id="externalLogins">
+                            @Html.Action("RemoveAccountList")
+                            @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+                        </section>*@
+</div>
+                </div>
+        </div>
+        </div>
+    </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

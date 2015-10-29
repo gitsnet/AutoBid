@@ -1,0 +1,320 @@
+﻿@model AutoBid.Models.Home.IndexHomeModel
+@{
+    ViewBag.Title = "Home";
+}
+
+<!-- /.section Auction today and filter -->
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+@*<script src="~/Content/js/jquery.mockjax.js"></script>*@
+<script src="~/Content/js/bootstrap-typeahead.js"></script>
+<div class="section auctionTodaySec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="auctionFilterWrap">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab">Auctions</a></li>
+                        <li><a href="#profile" data-toggle="tab">Classified</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <div class="auctionFilter">
+                                <form role="form" action="/Home/Search" method="get">
+                                    <div class="form-group">
+                                        <span class="radio">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                                Post Code
+                                            </label>
+                                        </span> <span class="radio">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1" checked>
+                                                Distance
+                                            </label>
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        @*@Html.HiddenFor(m => m.MakeID, new { @class = "form-control", @id = "hdnmakeinput" })*@
+                                        @Html.TextBoxFor(m => m.MakeName, new { @class = "form-control", @id = "makeinput", @placeholder = "Make" })
+                                        @*<input type="text" placeholder="Make" id="makeinput" class="form-control">*@
+                                        @*<input type="hidden" id="hdnmakeinput" class="form-control">*@
+                                    </div>
+                                    <div class="form-group">
+
+                                        @*@Html.HiddenFor(m => m.ModelID, new { @class = "form-control", @id = "hdnmodelinput" })*@
+                                        @Html.TextBoxFor(m => m.ModelName, new { @class = "form-control", @id = "modelinput", @placeholder = "Model" })
+                                        @*<input type="text" placeholder="Model" id="modelinput" class="form-control">*@
+                                        @*<input type="hidden" id="hdnmodelinput" class="form-control">*@
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(m => m.minPrice, new { @class = "form-control", @id = "minPrice", @placeholder = "Min Price" })
+                                            @*<input type="text" placeholder="Min Price" id="minPrice" class="form-control">*@
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(m => m.maxPrice, new { @class = "form-control", @id = "maxPrice", @placeholder = "Max Price" })
+                                            @*<input type="text" placeholder="Max Price" id="maxPrice" class="form-control">*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group searchWrap">
+                                        <button class="btn btn-success" type="submit">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row rowAuctionTodayHeader">
+                    <div class="col-md-8">
+                        <h2>Vehicles on sale today <span class="greenspn">(@Model.HomeModelList.Count vehicles on live sale today)</span></h2>
+                    </div>
+                    <div class="col-md-4 actionNotification">
+                        <div><span class="bluespan underline">Auction houses wanting to use Motorbid</span></div>
+                        <div><span class="greenspn"><span class="badge">5</span> Live auction today </span> </div>
+                    </div>
+                </div>
+                <div class="row auctionTodayRow">
+                    @if (Model.HomeModelList.Count > 0)
+                    {
+                        foreach (var item in Model.HomeModelList)
+                        {
+                            <div class="col-md-2 margin_bottom_10">
+                                <div class="imagebg">
+                                    <div class="carinfo">
+                                        <div class="makeinfo">@item.VehicleMake</div>
+                                        <div class="makeinfo"><strong>Model</strong> @item.VehicleModel</div>
+                                        @*<div class="biddinginfotime">Time left : <span class="lightgreen"> 3 hrs 40 min</span></div>*@
+                                        <div class="biddinginfotime">Price : <span class="lightgreen"> £ @item.Price</span></div>
+                                    </div>
+                                    <a href="/CarDetails/Index/carseller/@item.EncodedVehicleID">
+                                        @if (!string.IsNullOrEmpty(item.VehicleImage))
+                                        {
+                                            <img src='@item.VehicleImage' class="main_image" />
+                                        }
+                                        else
+                                        {
+
+                                            <img src="~/Content/images/noimage.jpg" class="main_image" />
+                                        }
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        }
+                    }
+
+                </div>
+
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.section Auction today and filter -->
+<!-- /.section Other vehicles available -->
+<div class="section auctionSliderNews">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Other Vehicles available to buy   <span class="greenspn">(@Model.HomeModelList.Count vehicles to <a href="javascript:void(0)">buy Now</a>)</span></h2>
+                <div data-ride="carousel" class="carousel slide" id="carousel-example-generic" style="position:relative">
+                    <div class="carousel-wrap">
+
+                        <div class="carousel-inner">
+                            @if (Model.HomeModelList.Count > 0)
+                            {
+                                int count = 0;
+
+                                foreach (var item in Model.HomeModelList)
+                                {
+
+                                    if (count % 4 == 0)
+                                    {
+
+                                        if (count == 0)
+                                        {
+                                            @:<div class="item active">
+                                        }
+                                        else
+                                        {
+                                            @:<div class="item">
+                                        }
+                                        @:<div class="row">
+                                    }
+
+                                    <div class="col-xs-6 col-sm-3" style="height:200px;">
+                                        <div class="imagebg1">
+                                            <a href="/CarDetails/Index/@item.EncodedVehicleID">
+                                                <img src='@item.VehicleImage' class="thumbnail" width="100%" />
+                                            </a>
+                                        </div>
+                                        <div class="carinfo1">
+                                            <div class="makeInfo">@item.VehicleMake</div>
+                                            <div class="biddingInfo">Price : <span class="greenspn"> <strong>£ @item.Price</strong></span></div>
+                                        </div>
+                                    </div>
+
+                                    if (count % 4 == 3 || count == (Model.HomeModelList.Count - 1))
+                                    {
+                                        @:</div>
+                                    @:</div>
+
+
+
+
+                                    }
+
+                                    count++;
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a data-slide="next" href="#carousel-example-generic" class="right carousel-control"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+
+            </div>
+           @Html.Partial("_ViewLiveAuction");
+
+
+        </div>
+
+    </div>
+
+
+    <!-- /.section Other vehicles available -->
+    <!-- /.section Research Best Buy vehicles available -->
+    <div class="section reseachBestBuy">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="headerrow"><h2>New Car Research </h2></div>
+                    <div class="clientlogo">
+                        <a href="javascript:void(0);" class="vlokswagen" data-datac="vlokswagen" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo1.png")' /></a>
+                        <a href="javascript:void(0);" class="bmw" data-datac="bmw" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo2.png")' /></a>
+                        <a href="javascript:void(0);" class="bugatti" data-datac="bugatti" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo3.png")' /></a>
+                        <a href="javascript:void(0);" class="vlokswagen" data-datac="vlokswagen" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo1.png")' /></a>
+                        <a href="javascript:void(0);" class="bmw" data-datac="bmw" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo2.png")' /></a>
+                        <a href="javascript:void(0);" class="bugatti" data-datac="bugatti" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo3.png")' /></a>
+                        <a href="javascript:void(0);" class="vlokswagen" data-datac="vlokswagen" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo1.png")' /></a>
+                        <a href="javascript:void(0);" class="bmw" data-datac="bmw" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo2.png")' /></a>
+                        <a href="javascript:void(0);" class="bugatti" data-datac="bugatti" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo3.png")' /></a>
+                        <a href="javascript:void(0);" class="vlokswagen" data-datac="vlokswagen" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo1.png")' /></a>
+                        <a href="javascript:void(0);" class="bmw" data-datac="bmw" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo2.png")' /></a>
+                        <a href="javascript:void(0);" class="bugatti" data-datac="bugatti" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo3.png")' /></a>
+                        <a href="javascript:void(0);" class="vlokswagen" data-datac="vlokswagen" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo1.png")' /></a>
+                        <a href="javascript:void(0);" class="bmw" data-datac="bmw" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo2.png")' /></a>
+                        <a href="javascript:void(0);" class="bugatti" data-datac="bugatti" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo3.png")' /></a>
+                        <a href="javascript:void(0);" class="vlokswagen" data-datac="vlokswagen" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo1.png")' /></a>
+                        <a href="javascript:void(0);" class="bmw" data-datac="bmw" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo2.png")' /></a>
+                        <a href="javascript:void(0);" class="bugatti" data-datac="bugatti" onclick="GetVehicle(this);"><img src='@Url.Content("~/Content/images/logo3.png")' /></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="bestbuy">Best Buy</h2>
+                    <div class="bestbuylist">
+                        <div class="well">
+                            <p>All our best buy lists are continuously updated to show you today's very best cars</p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Best Motability cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best automatic cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best crossover cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best 4x4s and SUVs</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best estate cars</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Best selling cars</a>
+                                </li>
+                                <li>
+                                    <a href="#">Best first car</a>
+                                </li>
+                            </ul>
+                            <div class="seemorelink">
+                                <a href="#">See all see best buy >></a> <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.section Other vehicles available -->
+</div>
+</div>
+
+<!-- /.container -->
+<script>
+    function displayResultmake(item) {
+        //console.log(item)
+        //$("#hdnmakeinput").val(item.value);
+        $('#modelinput').typeahead({
+            ajax: {
+                url: '/Home/GetModels/' + item.value,
+                method: "get"
+            },
+            displayField: 'Modelname',
+            valueField: 'ID',
+            onSelect: displayResultModel,
+        });
+
+    }
+    function displayResultModel(item) {
+        $("#hdnmodelinput").val(item.value);
+    }
+    $(function () {
+
+        $('#makeinput').typeahead({
+            ajax: '/Home/GetMake',
+            onSelect: displayResultmake,
+            displayField: 'Makename',
+            valueField: 'ID',
+            timeout:500
+        });
+      
+
+    });
+
+    function GetVehicle(that)
+    {
+        var makename = $(that).data('datac');
+        console.log(makename);
+        $.ajax({
+            type: "POST",
+            datatype: 'json',
+            data: { name: "" + makename + " " },
+            url: '@Url.Action("GetMakeName", "Home")',
+            success: function (result) {
+                console.log(result);
+                
+                $.ajax({
+                    type: "POST",
+                    datatype: 'json',
+                    data: { id: result },
+                    url: '@Url.Action("GetVehicleDetails", "Home")',
+                    success: function (relult) {
+                        console.log(relult);
+                        
+
+                    }
+                });
+            }
+
+        });
+
+    }
+
+</script>
